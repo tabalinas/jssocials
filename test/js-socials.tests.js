@@ -87,4 +87,65 @@
         assert.strictEqual($element.data(JSSOCIALS_DATA_KEY), undefined, "jQuery data removed");
     });
 
+
+    QUnit.module("share rendering", {
+        afterEach: function() {
+            delete jsSocials.shares.testshare;
+        }
+    });
+
+    QUnit.test("share markup", function(assert) {
+        jsSocials.shares.testshare = {
+            logo: "test.png",
+            logoSize: 36,
+            label: "testLabel",
+            shareUrl: "http://test.com/share/?url={url}&text={text}"
+        };
+
+        var $element = $("#share").jsSocials({
+            shares: [{ share: "testshare", css: "custom-class", url: "testurl", text: "testtext" }]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        var $shares = $element.find("." + instance.sharesClass);
+        assert.equal($shares.length, 1, "shares block rendered");
+
+        var $share = $shares.find("." + instance.shareClass);
+        assert.equal($share.length, 1, "share block rendered");
+        assert.ok($share.hasClass("jssocials-share-testshare"), "share class is attached");
+        assert.ok($share.hasClass("custom-class"), "share custom class is attached");
+
+        var $shareButton = $share.find("." + instance.shareButtonClass);
+        assert.equal($shareButton.length, 1, "share button rendered");
+
+        var $shareLink = $shareButton.find("." + instance.shareLinkClass);
+        assert.equal($shareLink.length, 1, "share link rendered");
+        assert.equal($shareLink.attr("href"), "http://test.com/share/?url=testurl&text=testtext", "share href is correct");
+
+        var $shareLabel = $shareLink.find("." + instance.shareLabelClass);
+        assert.equal($shareLabel.length, 1, "share label rendered");
+        assert.equal($shareLabel.text(), "testLabel", "share label text rendered");
+
+        var $shareLogo = $shareLink.find("." + instance.shareLogoClass);
+        assert.equal($shareLogo.length, 1, "share logo rendered");
+        assert.equal($shareLogo.attr("src"), "test.png", "share logo src set");
+        assert.equal($shareLogo.height(), 36, "share logo height set");
+        assert.equal($shareLogo.width(), 36, "share logo width set");
+    });
+
+    QUnit.test("share custom url params", function(assert) {
+        jsSocials.shares.testshare = {
+            custom: "testcustom",
+            shareUrl: "http://test.com/share/?custom={custom}"
+        };
+
+        var $element = $("#share").jsSocials({
+            shares: ["testshare"]
+        });
+
+        var $shareLink = $element.find(".jssocials-share-link");
+        assert.equal($shareLink.attr("href"), "http://test.com/share/?custom=testcustom", "share link href has custom params");
+    });
+
 }(jQuery, window.jsSocials));

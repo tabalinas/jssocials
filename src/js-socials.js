@@ -3,6 +3,13 @@
     var JSSOCIALS = "JSSocials",
         JSSOCIALS_DATA_KEY = JSSOCIALS;
 
+    var getOrApply = function(value, context) {
+        if($.isFunction(value)) {
+            return value.apply(context, $.makeArray(arguments).slice(2));
+        }
+        return value;
+    };
+
     var shares = [];
 
     function Socials(element, config) {
@@ -20,7 +27,15 @@
 
     Socials.prototype = {
 
+        logoSize: 24,
+
         elementClass: "jssocials",
+        sharesClass: "jssocials-shares",
+        shareClass: "jssocials-share",
+        shareButtonClass: "jssocials-share-button",
+        shareLinkClass: "jssocials-share-link",
+        shareLogoClass: "jssocials-share-logo",
+        shareLabelClass: "jssocials-share-label",
 
         _init: function(config) {
             $.extend(this, config);
@@ -29,24 +44,94 @@
 
         _initShares: function() {
             var self = this;
-            self.shares = $.map(self.shares, function(share) {
-                if(typeof(share) === "string") {
-                    share = { name: share };
+            self.shares = $.map(self.shares, function(shareConfig) {
+                if(typeof(shareConfig) === "string") {
+                    shareConfig = { share: shareConfig };
                 }
 
-                var ShareClass = (share.name && shares[share.name]);
+                var share = (shareConfig.share && shares[shareConfig.share]);
 
-                if(!ShareClass) {
-                    throw Error("Share '" + share.name + "' is not found");
+                if(!share) {
+                    throw Error("Share '" + shareConfig.share + "' is not found");
                 }
 
-                return new ShareClass(share);
+                return $.extend({}, share, shareConfig);
             });
         },
 
         _render: function() {
             this._clear();
+
             this._$element.addClass(this.elementClass);
+
+            this._$shares = $("<div>").addClass(this.sharesClass)
+                .appendTo(this._$element);
+
+            this._renderShares();
+        },
+
+        _renderShares: function() {
+            $.each(this.shares, $.proxy(function(_, share) {
+                this._renderShare(share);
+            }, this));
+        },
+
+        _renderShare: function(share) {
+            var $share;
+
+            if($.isFunction(share.renderer)) {
+                $share = $(share.renderer());
+            } else {
+                $share = this._createShare(share);
+            }
+
+            $share.addClass(this.shareClass)
+                .addClass("jssocials-share-" + share.share)
+                .addClass(share.css)
+                .appendTo(this._$shares);
+        },
+
+        _createShare: function(share) {
+            var $result = $("<div>");
+
+            var $shareLink = this._createShareLink(share);
+
+            var $shareButton = $("<div>").addClass(this.shareButtonClass)
+                .append($shareLink);
+
+            $result.append($shareButton);
+
+            return $result;
+        },
+
+        _createShareLink: function(share) {
+            return $("<a>").addClass(this.shareLinkClass)
+                .attr({
+                    href: this._getShareUrl(share),
+                    target: "_blank"
+                })
+                .append(this._createShareLogo(share))
+                .append(this._createShareLabel(share));
+        },
+
+        _getShareUrl: function(share) {
+            var shareUrl = getOrApply(share.shareUrl, share);
+
+            return shareUrl.replace(/\{([a-zA-Z0-9]+)\}/g, function(match, field) {
+                return window.encodeURIComponent(share[field]) || "";
+            });
+        },
+
+        _createShareLogo: function(share) {
+            return $("<img>").addClass(this.shareLogoClass)
+                .css("height", share.logoSize || this.logoSize)
+                .css("width", share.logoSize || this.logoSize)
+                .attr("src", share.logo);
+        },
+
+        _createShareLabel: function(share) {
+            return $("<span>").addClass(this.shareLabelClass)
+                .text(share.label);
         },
 
         _clear: function() {

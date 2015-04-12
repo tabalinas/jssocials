@@ -10,6 +10,8 @@
         return value;
     };
 
+    var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp)$|^data:image\/(jpeg|png|gif|bmp);base64)/i;
+
     var shares = [];
 
     function Socials(element, config) {
@@ -123,10 +125,16 @@
         },
 
         _createShareLogo: function(share) {
-            return $("<img>").addClass(this.shareLogoClass)
-                .css("height", share.logoSize || this.logoSize)
-                .css("width", share.logoSize || this.logoSize)
-                .attr("src", share.logo);
+            var logoSize = share.logoSize || this.logoSize;
+            var logo = share.logo;
+
+            var $result = IMG_SRC_REGEX.test(logo)
+                ? $("<img>").css({ height: logoSize, width: logoSize }).attr("src", share.logo)
+                : $("<i>").addClass(logo).css("font-size", logoSize + "px");
+
+            $result.addClass(this.shareLogoClass);
+
+            return $result;
         },
 
         _createShareLabel: function(share) {

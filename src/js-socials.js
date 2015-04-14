@@ -126,8 +126,9 @@
         _getShareUrl: function(share) {
             var shareUrl = getOrApply(share.shareUrl, share);
 
-            return shareUrl.replace(/\{([a-zA-Z0-9]+)\}/g, function(match, field) {
-                return window.encodeURIComponent(share[field]) || "";
+            return shareUrl.replace(/(&?[a-zA-Z0-9]+=)\{([a-zA-Z0-9]+)\}/g, function(match, key, field) {
+                var value = share[field] || "";
+                return value ? (key + window.encodeURIComponent(value)) : "";
             });
         },
 

@@ -198,4 +198,20 @@
         assert.equal($shareLink.attr("href"), "http://test.com/share/?url=testurl&text=testtext", "share link href contains sharing url and text");
     });
 
+    QUnit.test("unused sharing params should be removed", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/?url={url}&text={text}&custom={custom}"
+        };
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            text: "testtext",
+            shares: ["testshare"]
+        });
+
+        var $shareLink = $element.find(".jssocials-share-link");
+        assert.equal($shareLink.attr("href"), "http://test.com/share/?url=testurl&text=testtext", "custom param removed from shareUrl");
+    });
+
+
 }(jQuery, window.jsSocials));

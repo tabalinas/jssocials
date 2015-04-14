@@ -183,4 +183,19 @@
         assert.equal($shareLogo.attr("src"), imgBase64, "img has base64 src");
     });
 
+    QUnit.test("share should get sharing url and text", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/?url={url}&text={text}"
+        };
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            text: "testtext",
+            shares: ["testshare"]
+        });
+
+        var $shareLink = $element.find(".jssocials-share-link");
+        assert.equal($shareLink.attr("href"), "http://test.com/share/?url=testurl&text=testtext", "share link href contains sharing url and text");
+    });
+
 }(jQuery, window.jsSocials));

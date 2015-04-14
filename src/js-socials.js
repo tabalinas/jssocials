@@ -29,6 +29,8 @@
 
     Socials.prototype = {
 
+        url: "",
+        text: "",
         logoSize: 24,
 
         elementClass: "jssocials",
@@ -40,13 +42,18 @@
         shareLabelClass: "jssocials-share-label",
 
         _init: function(config) {
+            this._initDefaults();
             $.extend(this, config);
             this._initShares();
         },
 
+        _initDefaults: function() {
+            this.url = window.location.href;
+            this.text = $("meta[name=description]").attr("content") || $("title").text();
+        },
+
         _initShares: function() {
-            var self = this;
-            self.shares = $.map(self.shares, function(shareConfig) {
+            this.shares = $.map(this.shares, $.proxy(function(shareConfig) {
                 if(typeof(shareConfig) === "string") {
                     shareConfig = { share: shareConfig };
                 }
@@ -57,8 +64,8 @@
                     throw Error("Share '" + shareConfig.share + "' is not found");
                 }
 
-                return $.extend({}, share, shareConfig);
-            });
+                return $.extend({ url: this.url, text: this.text }, share, shareConfig);
+            }, this));
         },
 
         _render: function() {

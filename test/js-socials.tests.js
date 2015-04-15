@@ -247,7 +247,7 @@
         var $element = $("#share").jsSocials({
             url: "testurl",
             showCount: true,
-            shares: [{ share: "testshare" }]
+            shares: ["testshare"]
         });
 
         var instance = $element.data(JSSOCIALS_DATA_KEY);
@@ -260,6 +260,30 @@
         var $shareCount = $shareCountBox.find("." + instance.shareCountClass);
         assert.equal($shareCount.length, 1, "share count rendered");
         assert.equal($shareCount.text(), "10", "share count value rendered");
+    });
+
+    QUnit.test("getCount should be called to retrieve count", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/",
+            countUrl: "http://test.com/count?url={url}",
+            getCount: function(data) {
+                return data.count;
+            }
+        };
+
+        this.countUrl = "testurl";
+        this.countResult = { count: 10 };
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            showCount: true,
+            shares: ["testshare"]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        var $shareCount = $element.find("." + instance.shareCountClass);
+        assert.equal($shareCount.text(), "10", "share count value retrieved");
     });
 
 }(jQuery, window.jsSocials));

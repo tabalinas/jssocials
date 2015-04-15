@@ -167,7 +167,7 @@
 
             var countUrl = this._getCountUrl(share);
             $.getJSON(countUrl).done(function(count) {
-                $count.text(count);
+                $count.text($.isFunction(share.getCount) ? share.getCount(count) : count);
             }).fail(function() {
                 $result.hide();
             });

@@ -89,7 +89,10 @@
 
 
     QUnit.module("share rendering", {
-        afterEach: function() {
+        setup: function() {
+            jsSocials.Socials.prototype.showCount = false;
+        },
+        teardown: function() {
             delete jsSocials.shares.testshare;
         }
     });
@@ -213,5 +216,50 @@
         assert.equal($shareLink.attr("href"), "http://test.com/share/?url=testurl&text=testtext", "custom param removed from shareUrl");
     });
 
+
+    QUnit.module("share counter", {
+        setup: function() {
+            this.originalJQueryGetJSON = $.getJSON;
+
+            var self = this;
+            $.getJSON = function(url) {
+                if(url === "http://test.com/count?url=" + self.countUrl)
+                    return $.Deferred().resolve(self.countResult).promise();
+                else
+                    return $.Deferred().reject().promise();
+            };
+        },
+        teardown: function() {
+            $.getJSON = this.originalJQueryGetJSON
+            delete jsSocials.shares.testshare;
+        }
+    });
+
+    QUnit.test("share count structure", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/",
+            countUrl: "http://test.com/count?url={url}"
+        };
+
+        this.countUrl = "testurl";
+        this.countResult = 10;
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            showCount: true,
+            shares: [{ share: "testshare" }]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        var $shareLink = $element.find("." + instance.shareLinkClass);
+
+        var $shareCountBox = $shareLink.find("." + instance.shareCountBoxClass);
+        assert.equal($shareCountBox.length, 1, "share count box rendered");
+
+        var $shareCount = $shareCountBox.find("." + instance.shareCountClass);
+        assert.equal($shareCount.length, 1, "share count rendered");
+        assert.equal($shareCount.text(), "10", "share count value rendered");
+    });
 
 }(jQuery, window.jsSocials));

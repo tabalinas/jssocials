@@ -32,6 +32,7 @@
 
         url: "",
         text: "",
+        showCount: true,
         logoSize: 24,
 
         elementClass: "jssocials",
@@ -41,6 +42,8 @@
         shareLinkClass: "jssocials-share-link",
         shareLogoClass: "jssocials-share-logo",
         shareLabelClass: "jssocials-share-label",
+        shareCountBoxClass: "jssocials-share-count-box",
+        shareCountClass: "jssocials-share-count",
 
         _init: function(config) {
             this._initDefaults();
@@ -115,13 +118,19 @@
         },
 
         _createShareLink: function(share) {
-            return $("<a>").addClass(this.shareLinkClass)
+            var $result = $("<a>").addClass(this.shareLinkClass)
                 .attr({
                     href: this._getShareUrl(share),
                     target: "_blank"
                 })
                 .append(this._createShareLogo(share))
                 .append(this._createShareLabel(share));
+
+            if(this.showCount) {
+                $result.append(this._createShareCount(share));
+            }
+
+            return $result;
         },
 
         _getShareUrl: function(share) {
@@ -149,6 +158,29 @@
         _createShareLabel: function(share) {
             return $("<span>").addClass(this.shareLabelClass)
                 .text(share.label);
+        },
+
+        _createShareCount: function(share) {
+            var $result = $("<div>").addClass(this.shareCountBoxClass);
+            var $count = $("<span>").addClass(this.shareCountClass);
+            $result.append($count);
+
+            var countUrl = this._getCountUrl(share);
+            $.getJSON(countUrl).done(function(count) {
+                $count.text(count);
+            }).fail(function() {
+                $result.hide();
+            });
+
+            return $result;
+        },
+
+        _getCountUrl: function(share) {
+            var countUrl = getOrApply(share.countUrl, share);
+            return countUrl.replace(URL_PARAMS_REGEX, function(match, key, field) {
+                var value = share[field] || "";
+                return value ? (key + window.encodeURIComponent(value)) : "";
+            });
         },
 
         _clear: function() {

@@ -11,6 +11,7 @@
     };
 
     var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp)$|^data:image\/(jpeg|png|gif|bmp);base64)/i;
+    var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)\{([a-zA-Z0-9]+)\}/g;
 
     var shares = [];
 
@@ -126,7 +127,7 @@
         _getShareUrl: function(share) {
             var shareUrl = getOrApply(share.shareUrl, share);
 
-            return shareUrl.replace(/(&?[a-zA-Z0-9]+=)\{([a-zA-Z0-9]+)\}/g, function(match, key, field) {
+            return shareUrl.replace(URL_PARAMS_REGEX, function(match, key, field) {
                 var value = share[field] || "";
                 return value ? (key + window.encodeURIComponent(value)) : "";
             });

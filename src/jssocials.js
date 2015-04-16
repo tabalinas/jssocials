@@ -129,6 +129,10 @@
 
             $result.append($shareButton);
 
+            if(this.showCount) {
+                $result.append(this._createShareCount(share));
+            }
+
             return $result;
         },
 
@@ -139,10 +143,6 @@
 
             if(this.showLabel) {
                 $result.append(this._createShareLabel(share));
-            }
-
-            if(this.showCount) {
-                $result.append(this._createShareCount(share));
             }
 
             return $result;

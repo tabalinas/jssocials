@@ -282,9 +282,9 @@
 
         var instance = $element.data(JSSOCIALS_DATA_KEY);
 
-        var $shareLink = $element.find("." + instance.shareLinkClass);
+        var $share = $element.find("." + instance.shareClass);
 
-        var $shareCountBox = $shareLink.find("." + instance.shareCountBoxClass);
+        var $shareCountBox = $share.find("." + instance.shareCountBoxClass);
         assert.equal($shareCountBox.length, 1, "share count box rendered");
 
         var $shareCount = $shareCountBox.find("." + instance.shareCountClass);

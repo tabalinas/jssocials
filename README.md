@@ -8,7 +8,7 @@
 Download the [production version][min] or the [development version][max].
 
 [min]: https://raw.githubusercontent.com/tabalinas/jquery-js-socials/master/dist/jquery.js-socials.min.js
-[max]: https://raw.githubusercontent.com/tabalinas/jquery-js-socials/master/dist/jquery.js-socials.js
+[max]: https://raw.githubusercontent.com/tabalinas/jquery-js-socials/master/dist/jquery.jssocials.js
 
 In your web page:
 

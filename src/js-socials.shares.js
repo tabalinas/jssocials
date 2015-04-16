@@ -42,6 +42,16 @@
             getCount: function(data) {
                 return data.count;
             }
+        },
+
+        pinterest: {
+            label: "Share",
+            logo: "fa fa-pinterest",
+            shareUrl: "https://pinterest.com/pin/create/bookmarklet/?media={media}&url={url}&description={text}",
+            countUrl: "https://api.pinterest.com/v1/urls/count.json?&url={url}&callback=?",
+            getCount: function(data) {
+                return data.count;
+            }
         }
 
     });

@@ -262,7 +262,7 @@
         assert.equal($shareCount.text(), "10", "share count value rendered");
     });
 
-    QUnit.test("getCount should be called to retrieve count", function(assert) {
+    QUnit.test("getCount should be called to retrieve count from responce", function(assert) {
         jsSocials.shares.testshare = {
             shareUrl: "http://test.com/share/",
             countUrl: "http://test.com/count?url={url}",
@@ -284,6 +284,49 @@
 
         var $shareCount = $element.find("." + instance.shareCountClass);
         assert.equal($shareCount.text(), "10", "share count value retrieved");
+    });
+
+    QUnit.test("count should be hidden when it's 0", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/",
+            countUrl: "http://test.com/count?url={url}"
+        };
+
+        this.countUrl = "testurl";
+        this.countResult = 0;
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            showCount: true,
+            shares: ["testshare"]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        var $shareCountBox = $element.find("." + instance.shareCountBoxClass);
+        assert.ok($shareCountBox.is(":hidden"), "share count is hidden");
+    });
+
+    QUnit.test("count should be hidden when fail loading", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/",
+            countUrl: "http://test.com/count?url={url}"
+        };
+
+        $.getJSON = function() {
+            return $.Deferred().reject().promise();
+        };
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            showCount: true,
+            shares: ["testshare"]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        var $shareCountBox = $element.find("." + instance.shareCountBoxClass);
+        assert.ok($shareCountBox.is(":hidden"), "share count is hidden");
     });
 
     var testCountFormatting = function(count, result, message) {

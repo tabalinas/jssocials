@@ -167,15 +167,27 @@
             var $count = $("<span>").addClass(this.shareCountClass);
             $result.append($count);
 
-            var countUrl = this._getCountUrl(share);
+            this._loadCount(share).done($.proxy(function(count) {
+                $count.text(count);
 
-            $.getJSON(countUrl).done($.proxy(function(response) {
-                $count.text(this._getCountValue(response, share));
-            }, this)).fail(function() {
-                $result.hide();
-            });
+                if(!count) {
+                    $result.hide();
+                }
+            }, this));
 
             return $result;
+        },
+
+        _loadCount: function(share) {
+            var deferred = $.Deferred();
+
+            $.getJSON(this._getCountUrl(share)).done($.proxy(function(response) {
+                deferred.resolve(this._getCountValue(response, share));
+            }, this)).fail(function() {
+                deferred.resolve(null);
+            });
+
+            return deferred.promise();
         },
 
         _getCountUrl: function(share) {

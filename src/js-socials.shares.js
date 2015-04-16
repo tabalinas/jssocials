@@ -30,7 +30,7 @@
                 return "http://anyorigin.com/get?url=" + window.encodeURIComponent("https://plusone.google.com/_/+1/fastbutton?url=" + this.url) + "&callback=?";
             },
             getCount: function(data) {
-                return 0; // TODO: implement count data extraction
+                return parseFloat(data.contents.match(/\{c: ([.0-9E]+)/)[1]);
             }
         },
 

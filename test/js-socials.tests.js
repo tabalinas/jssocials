@@ -74,6 +74,19 @@
         var instance = new Socials($element, {});
 
         assert.ok($element.hasClass(instance.elementClass), "element class attached");
+        assert.ok($element.hasClass(instance.themeClassPrefix + "default"), "theme class attached");
+    });
+
+    QUnit.test("theme", function(assert) {
+        var $element = $("#share");
+        var instance = new Socials($element, { theme: "custom" });
+
+        assert.ok($element.hasClass(instance.themeClassPrefix + "custom"), "theme class attached");
+
+        instance.option("theme", "test");
+
+        assert.ok(!$element.hasClass(instance.themeClassPrefix + "custom"), "old theme class detached");
+        assert.ok($element.hasClass(instance.themeClassPrefix + "test"), "new theme class attached");
     });
 
     QUnit.test("destroy", function(assert) {

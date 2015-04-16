@@ -42,6 +42,9 @@
         showLabel: true,
         logoSize: 24,
 
+        theme: "default",
+
+        themeClassPrefix: "jssocials-theme-",
         elementClass: "jssocials",
         sharesClass: "jssocials-shares",
         shareClass: "jssocials-share",
@@ -82,12 +85,17 @@
         _render: function() {
             this._clear();
 
-            this._$element.addClass(this.elementClass);
+            this._$element.addClass(this.elementClass)
+                .addClass(this._themeClass());
 
             this._$shares = $("<div>").addClass(this.sharesClass)
                 .appendTo(this._$element);
 
             this._renderShares();
+        },
+
+        _themeClass: function() {
+            return this.themeClassPrefix + this.theme;
         },
 
         _renderShares: function() {
@@ -220,7 +228,12 @@
         },
 
         _clear: function() {
-            this._$element.empty();
+            var themeClassPrefix = this.themeClassPrefix;
+
+            this._$element.empty()
+                .removeClass(function(_, cls) {
+                    return (cls.match(new RegExp("(?:^|\\s)" + themeClassPrefix + "\\S+")) || [""])[0];
+                });
         },
 
         refresh: function() {

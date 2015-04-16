@@ -370,11 +370,11 @@
     };
 
     testCountFormatting(999, "999", "less than 1K");
-    testCountFormatting(1160, "1.2K", "more than 1K");
+    testCountFormatting(1169, "1.17K", "more than 1K");
     testCountFormatting(999000, "999K", "less than 1M");
-    testCountFormatting(1160000, "1.2M", "more than 1M");
+    testCountFormatting(1169000, "1.17M", "more than 1M");
     testCountFormatting(999000000, "999M", "less than 1G");
-    testCountFormatting(1160000000, "1.2G", "more than 1G");
-    testCountFormatting("1160000000", "1160000000", "string value is not formatted");
+    testCountFormatting(1169000000, "1.17G", "more than 1G");
+    testCountFormatting("1169000000", "1169000000", "string value is not formatted");
 
 }(jQuery, window.jsSocials));

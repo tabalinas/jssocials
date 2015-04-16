@@ -204,7 +204,7 @@
         _formatNumber: function(number) {
             $.each(MEASURES, function(letter, value) {
                 if(number >= value) {
-                    number = parseFloat((number / value).toFixed(1)) + letter;
+                    number = parseFloat((number / value).toFixed(2)) + letter;
                     return false;
                 }
             });

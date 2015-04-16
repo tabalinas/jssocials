@@ -6,7 +6,7 @@
             label: "Tweet",
             logo: "fa fa-twitter",
             shareUrl: "https://twitter.com/share?url={url}&text={text}&via={via}&hashtags={hashtags}",
-            countUrl: "http://cdn.api.twitter.com/1/urls/count.json?url={url}&callback=?",
+            countUrl: "https://cdn.api.twitter.com/1/urls/count.json?url={url}&callback=?",
             getCount: function(data) {
                 return data.count;
             }
@@ -16,9 +16,9 @@
             label: "Share",
             logo: "fa fa-facebook",
             shareUrl: "https://facebook.com/sharer/sharer.php?u={url}",
-            countUrl: "https://api.facebook.com/method/links.getStats?format=json&urls={url}&callback=?",
+            countUrl: "https://graph.facebook.com/?id={url}&callback=?",
             getCount: function(data) {
-                return data[0].share_count;
+                return data.shares;
             }
         },
 

@@ -39,6 +39,7 @@
         url: "",
         text: "",
         showCount: true,
+        showLabel: true,
         logoSize: 24,
 
         elementClass: "jssocials",
@@ -125,12 +126,12 @@
 
         _createShareLink: function(share) {
             var $result = $("<a>").addClass(this.shareLinkClass)
-                .attr({
-                    href: this._getShareUrl(share),
-                    target: "_blank"
-                })
-                .append(this._createShareLogo(share))
-                .append(this._createShareLabel(share));
+                .attr({ href: this._getShareUrl(share), target: "_blank" })
+                .append(this._createShareLogo(share));
+
+            if(this.showLabel) {
+                $result.append(this._createShareLabel(share));
+            }
 
             if(this.showCount) {
                 $result.append(this._createShareCount(share));

@@ -137,6 +137,23 @@
         assert.equal($shareLogo.width(), 36, "share logo width set");
     });
 
+    QUnit.test("showLabel=false should prevent label rendering", function(assert) {
+        jsSocials.shares.testshare = {
+            label: "testLabel",
+            shareUrl: "http://test.com/share/?url={url}&text={text}"
+        };
+
+        var $element = $("#share").jsSocials({
+            showLabel: false,
+            shares: ["testshare"]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        var $shareLabel = $element.find("." + instance.shareLabelClass);
+        assert.equal($shareLabel.length, 0, "share label is not rendered");
+    });
+
     QUnit.test("custom url param", function(assert) {
         jsSocials.shares.testshare = {
             custom: "testcustom",

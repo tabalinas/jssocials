@@ -45,7 +45,7 @@
         },
 
         pinterest: {
-            label: "Share",
+            label: "Pin it",
             logo: "fa fa-pinterest",
             shareUrl: "https://pinterest.com/pin/create/bookmarklet/?media={media}&url={url}&description={text}",
             countUrl: "https://api.pinterest.com/v1/urls/count.json?&url={url}&callback=?",

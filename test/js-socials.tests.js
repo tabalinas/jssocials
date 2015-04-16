@@ -286,4 +286,35 @@
         assert.equal($shareCount.text(), "10", "share count value retrieved");
     });
 
+    var testCountFormatting = function(count, result, message) {
+        QUnit.test(message, function(assert) {
+            jsSocials.shares.testshare = {
+                shareUrl: "http://test.com/share/",
+                countUrl: "http://test.com/count?url={url}"
+            };
+
+            this.countUrl = "testurl";
+            this.countResult = count;
+
+            var $element = $("#share").jsSocials({
+                url: "testurl",
+                showCount: true,
+                shares: ["testshare"]
+            });
+
+            var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+            var $shareCount = $element.find("." + instance.shareCountClass);
+            assert.equal($shareCount.text(), result);
+        });
+    };
+
+    testCountFormatting(999, "999", "less than 1K");
+    testCountFormatting(1160, "1.2K", "more than 1K");
+    testCountFormatting(999000, "999K", "less than 1M");
+    testCountFormatting(1160000, "1.2M", "more than 1M");
+    testCountFormatting(999000000, "999M", "less than 1G");
+    testCountFormatting(1160000000, "1.2G", "more than 1G");
+    testCountFormatting("1160000000", "1160000000", "string value is not formatted");
+
 }(jQuery, window.jsSocials));

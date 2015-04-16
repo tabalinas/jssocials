@@ -13,6 +13,12 @@
     var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp)$|^data:image\/(jpeg|png|gif|bmp);base64)/i;
     var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)\{([a-zA-Z0-9]+)\}/g;
 
+    var MEASURES = {
+        "G": 1000000000,
+        "M": 1000000,
+        "K": 1000
+    };
+
     var shares = [];
 
     function Socials(element, config) {
@@ -135,11 +141,7 @@
 
         _getShareUrl: function(share) {
             var shareUrl = getOrApply(share.shareUrl, share);
-
-            return shareUrl.replace(URL_PARAMS_REGEX, function(match, key, field) {
-                var value = share[field] || "";
-                return value ? (key + window.encodeURIComponent(value)) : "";
-            });
+            return this._formatShareUrl(shareUrl, share);
         },
 
         _createShareLogo: function(share) {
@@ -166,9 +168,10 @@
             $result.append($count);
 
             var countUrl = this._getCountUrl(share);
-            $.getJSON(countUrl).done(function(count) {
-                $count.text($.isFunction(share.getCount) ? share.getCount(count) : count);
-            }).fail(function() {
+
+            $.getJSON(countUrl).done($.proxy(function(response) {
+                $count.text(this._getCountValue(response, share));
+            }, this)).fail(function() {
                 $result.hide();
             });
 
@@ -177,7 +180,27 @@
 
         _getCountUrl: function(share) {
             var countUrl = getOrApply(share.countUrl, share);
-            return countUrl.replace(URL_PARAMS_REGEX, function(match, key, field) {
+            return this._formatShareUrl(countUrl, share);
+        },
+
+        _getCountValue: function(response, share) {
+            var count = $.isFunction(share.getCount) ? share.getCount(response) : response;
+            return (typeof(count) === "string") ? count : this._formatNumber(count);
+        },
+
+        _formatNumber: function(number) {
+            $.each(MEASURES, function(letter, value) {
+                if(number >= value) {
+                    number = parseFloat((number / value).toFixed(1)) + letter;
+                    return false;
+                }
+            });
+
+            return number;
+        },
+
+        _formatShareUrl: function(url, share) {
+            return url.replace(URL_PARAMS_REGEX, function(match, key, field) {
                 var value = share[field] || "";
                 return value ? (key + window.encodeURIComponent(value)) : "";
             });

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>jsSocials - Demos</title>
+    <link rel="stylesheet" type="text/css" href="demo.css" />
+    <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../dist/jssocials.css" />
+    <link rel="stylesheet" type="text/css" href="../dist/jssocials-theme.css" />
+
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../dist/jssocials.js"></script>
+</head>
+<body>
+<h2>Icons Only</h2>
+<div id="shareIcons"></div>
+
+<h2>Button with Label</h2>
+<div id="shareButtonLabel"></div>
+
+<h2>Icons with Counter</h2>
+<div id="shareIconsCounter"></div>
+
+<h2>Button with Label and Counter</h2>
+<div id="shareButtonLabelCounter"></div>
+
+<script>
+    $(function() {
+
+        $("#shareIcons").jsSocials({
+            url: "http://google.com",
+            text: "Some text to share",
+            showLabel: false,
+            showCount: false,
+            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
+        });
+
+        $("#shareButtonLabel").jsSocials({
+            url: "http://google.com",
+            text: "Some text to share",
+            showCount: false,
+            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
+        });
+
+        $("#shareIconsCounter").jsSocials({
+            url: "http://google.com",
+            text: "Some text to share",
+            showLabel: false,
+            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
+        });
+
+        $("#shareButtonLabelCounter").jsSocials({
+            url: "http://google.com",
+            text: "Some text to share",
+            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
+        });
+
+    });
+</script>
+</body>
+</html>

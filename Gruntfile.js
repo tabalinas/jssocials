@@ -24,8 +24,16 @@ module.exports = function(grunt) {
                 stripBanners: true
             },
             dist: {
-                src: ["src/<%= pkg.name %>.js"],
+                src: ["src/<%= pkg.name %>.js", "src/<%= pkg.name %>.shares.js"],
                 dest: "dist/<%= pkg.name %>.js"
+            }
+        },
+        sass: {
+            dist: {
+                files: {
+                    "dist/<%= pkg.name %>.css": "styles/<%= pkg.name %>.scss",
+                    "dist/<%= pkg.name %>-theme.css": "styles/<%= pkg.name %>-theme.scss"
+                }
             }
         },
         uglify: {
@@ -92,7 +100,7 @@ module.exports = function(grunt) {
     });
 
     // Default task.
-    grunt.registerTask("default", ["jshint", "connect", "qunit", "clean", "concat", "uglify"]);
+    grunt.registerTask("default", ["jshint", "connect", "qunit", "clean", "sass", "concat", "uglify"]);
     grunt.registerTask("server", function() {
         grunt.log.warn("The `server` task has been deprecated. Use `grunt serve` to start a server.");
         grunt.task.run(["serve"]);

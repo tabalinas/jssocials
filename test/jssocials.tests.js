@@ -113,7 +113,6 @@
     QUnit.test("share structure", function(assert) {
         jsSocials.shares.testshare = {
             logo: "test.png",
-            logoSize: 36,
             label: "testLabel",
             shareUrl: "http://test.com/share/?url={url}&text={text}"
         };
@@ -146,8 +145,6 @@
         var $shareLogo = $shareLink.find("." + instance.shareLogoClass);
         assert.equal($shareLogo.length, 1, "share logo rendered");
         assert.equal($shareLogo.attr("src"), "test.png", "share logo src set");
-        assert.equal($shareLogo.height(), 36, "share logo height set");
-        assert.equal($shareLogo.width(), 36, "share logo width set");
     });
 
     QUnit.test("showLabel=false should prevent label rendering", function(assert) {
@@ -188,7 +185,6 @@
         };
 
         var $element = $("#share").jsSocials({
-            logoSize: 24,
             shares: ["testshare"]
         });
 
@@ -196,7 +192,6 @@
         assert.equal($shareLogo.get(0).tagName, "I", "<i> used instead of <img>");
         assert.ok($shareLogo.hasClass("fa"), "fa css class attached");
         assert.ok($shareLogo.hasClass("fa-user"), "fa css class attached");
-        assert.equal($shareLogo.css("font-size"), "24px", "logoSize ");
     });
 
     QUnit.test("logo as base64 image", function(assert) {
@@ -253,14 +248,15 @@
 
             var self = this;
             $.getJSON = function(url) {
-                if(url === "http://test.com/count?url=" + self.countUrl)
+                if(url === "http://test.com/count?url=" + self.countUrl) {
                     return $.Deferred().resolve(self.countResult).promise();
-                else
+                } else {
                     return $.Deferred().reject().promise();
+                }
             };
         },
         teardown: function() {
-            $.getJSON = this.originalJQueryGetJSON
+            $.getJSON = this.originalJQueryGetJSON;
             delete jsSocials.shares.testshare;
         }
     });

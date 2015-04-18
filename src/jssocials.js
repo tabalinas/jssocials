@@ -40,7 +40,6 @@
         text: "",
         showCount: true,
         showLabel: true,
-        logoSize: 24,
 
         theme: "default",
 
@@ -154,12 +153,11 @@
         },
 
         _createShareLogo: function(share) {
-            var logoSize = share.logoSize || this.logoSize;
             var logo = share.logo;
 
-            var $result = IMG_SRC_REGEX.test(logo)
-                ? $("<img>").css({ height: logoSize, width: logoSize }).attr("src", share.logo)
-                : $("<i>").addClass(logo).css("font-size", logoSize + "px");
+            var $result = IMG_SRC_REGEX.test(logo) ?
+                $("<img>").attr("src", share.logo) :
+                $("<i>").addClass(logo);
 
             $result.addClass(this.shareLogoClass);
 

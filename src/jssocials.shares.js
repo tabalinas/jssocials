@@ -13,7 +13,7 @@
         },
 
         facebook: {
-            label: "Share",
+            label: "Like",
             logo: "fa fa-facebook",
             shareUrl: "https://facebook.com/sharer/sharer.php?u={url}",
             countUrl: "https://graph.facebook.com/?id={url}&callback=?",
@@ -23,7 +23,7 @@
         },
 
         googleplus: {
-            label: "Share",
+            label: "+1",
             logo: "fa fa-google-plus",
             shareUrl: "https://plus.google.com/share?url={url}",
             countUrl: function() {
@@ -56,4 +56,4 @@
 
     });
 
-}(window, jQuery, jsSocials));
+}(window, jQuery, window.jsSocials));

@@ -6,27 +6,23 @@ $count-arrow-size: .4em;
 $count-arrow-offset: $count-arrow-size - .1em;
 $transition: all 200ms ease-in-out;
 
-@mixin share-link($social, $background) {
+@for $i from 0 to length($share-names) {
+    $social: nth($share-names, $i + 1);
+    $background: nth($share-colors, $i + 1);
+
     .jssocials-share-#{$social} .jssocials-share-link {
         background: $background;
-        transition: $transition;
 
         &:hover {
-            transition: $transition;
             background: darken($background, 10%);
         }
     }
 }
 
-@include share-link("twitter", $twitter);
-@include share-link("facebook", $facebook);
-@include share-link("googleplus", $googleplus);
-@include share-link("linkedin", $linkedin);
-@include share-link("pinterest", $pinterest);
-
 .jssocials-share-link {
     padding: .5em .6em;
     color: #fff;
+    transition: $transition;
 }
 
 .jssocials-share-count {
@@ -43,26 +39,24 @@ $transition: all 200ms ease-in-out;
     transition: $transition;
 
     &:hover {
-        transition: $transition;
         background: darken($count-box-bg, 10%);
 
         &:after {
-            transition: $transition;
             border-color: transparent darken($count-box-bg, 10%) transparent transparent;
         }
     }
 
     &:after {
+        content: "";
+        display: block;
+        position: absolute;
         top: 1.25em - $count-arrow-size;
         left: -$count-arrow-offset;
-        content: "";
-        position: absolute;
+        width: 0;
+        height: 0;
         border-width: $count-arrow-size $count-arrow-size $count-arrow-size 0;
         border-style: solid;
         border-color: transparent $count-box-bg transparent transparent;
-        display: block;
-        width: 0;
-        height: 0;
         transform: rotate(360deg);
         transition: $transition;
     }

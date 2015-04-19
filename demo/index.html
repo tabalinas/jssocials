@@ -6,12 +6,21 @@
     <link rel="stylesheet" type="text/css" href="demo.css" />
     <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="../dist/jssocials.css" />
-    <link rel="stylesheet" type="text/css" href="../dist/jssocials-theme-minima.css" />
+    <link rel="stylesheet" type="text/css" href="../dist/jssocials-theme-flat.css" />
 
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../dist/jssocials.js"></script>
 </head>
 <body>
+<h1>jsSocials Demo</h1>
+<div>
+    Select Theme:
+    <select id="themeSelector">
+        <option>flat</option>
+        <option>minima</option>
+    </select>
+</div>
+
 <h2>Icons Only</h2>
 <div id="shareIcons"></div>
 
@@ -54,6 +63,19 @@
             text: "Some text to share",
             shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
         });
+
+
+        var currentTheme = "flat";
+
+        var switchTheme = function() {
+            var newTheme = $("#themeSelector").val();
+            var $cssLink = $("link[href$='" + currentTheme + ".css']");
+            var cssPath = $cssLink.attr("href");
+            $cssLink.attr("href", cssPath.replace(currentTheme, newTheme));
+            currentTheme = newTheme;
+        }
+
+        $("#themeSelector").on("change", switchTheme);
 
     });
 </script>

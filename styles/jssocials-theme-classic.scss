@@ -1,0 +1,77 @@
+@import "shares";
+
+$count-border-color: #dcdcdc;
+$count-color: #444;
+$count-arrow-size: 6px;
+$round-size: .3em;
+$transition: all 200ms ease-in-out;
+
+@mixin share-link($social, $background) {
+    .jssocials-share-#{$social} .jssocials-share-link {
+        background: $background;
+        transition: $transition;
+        box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.3), 0 1px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.15);
+        border: 1px solid darken($background, 5%);
+
+        &:hover {
+            transition: $transition;
+            background: darken($background, 10%);
+        }
+    }
+}
+
+@include share-link("twitter", $twitter);
+@include share-link("facebook", $facebook);
+@include share-link("googleplus", $googleplus);
+@include share-link("linkedin", $linkedin);
+@include share-link("pinterest", $pinterest);
+
+.jssocials-share-link {
+    padding: .5em .6em;
+    color: #fff;
+    border-radius: $round-size;
+}
+
+.jssocials-share-count {
+    line-height: 2.5em;
+    color: $count-color;
+    font-size: .9em;
+}
+
+.jssocials-share-count-box {
+    position: relative;
+    height: 2.5em;
+    padding: 0 .3em;
+    margin-left: $count-arrow-size;
+    border-radius: $round-size;
+    border: 1px solid $count-border-color;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 1em;
+        left: -$count-arrow-size - 3px;
+        border-style: solid;
+        border-width: $count-arrow-size $count-arrow-size 0;
+        border-color: $count-border-color transparent;
+        display: block;
+        width: 0;
+        z-index: 0;
+        transform: rotate(90deg);
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 1em;
+        left: -$count-arrow-size - 1px;
+        border-style: solid;
+        border-width: ($count-arrow-size - 1px) ($count-arrow-size - 1px) 0;
+        border-color: #FFFFFF transparent;
+        display: block;
+        width: 0;
+        z-index: 1;
+        transform: rotate(90deg);
+    }
+}

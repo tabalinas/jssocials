@@ -18,6 +18,19 @@
     <select id="themeSelector">
         <option>flat</option>
         <option>minima</option>
+        <option>classic</option>
+    </select>
+
+    and font-size:
+    <select id="fontSizeSelector">
+        <option>8</option>
+        <option>10</option>
+        <option>12</option>
+        <option>14</option>
+        <option selected>16</option>
+        <option>18</option>
+        <option>20</option>
+        <option>24</option>
     </select>
 </div>
 
@@ -73,9 +86,15 @@
             var cssPath = $cssLink.attr("href");
             $cssLink.attr("href", cssPath.replace(currentTheme, newTheme));
             currentTheme = newTheme;
-        }
+        };
+
+        var switchFontSize = function() {
+            var fontSize = parseInt($("#fontSizeSelector").val(), 10);
+            $("body").css("fontSize", fontSize);
+        };
 
         $("#themeSelector").on("change", switchTheme);
+        $("#fontSizeSelector").on("change", switchFontSize);
 
     });
 </script>

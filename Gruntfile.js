@@ -30,10 +30,13 @@ module.exports = function(grunt) {
         },
         sass: {
             dist: {
-                files: {
-                    "dist/<%= pkg.name %>.css": "styles/<%= pkg.name %>.scss",
-                    "dist/<%= pkg.name %>-theme.css": "styles/<%= pkg.name %>-theme.scss"
-                }
+                files:[{
+                    expand: true,
+                    cwd: "styles",
+                    src: ["*.scss"],
+                    dest: "dist",
+                    ext: ".css"
+                }]
             }
         },
         uglify: {

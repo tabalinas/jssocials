@@ -1,0 +1,46 @@
+@import "shares";
+
+$text-color: #444;
+$text-size: .8em;
+$count-indent: .3em;
+$count-border-color: #efefef;
+$count-border-radius: $count-indent;
+$transition: color 200ms ease-in-out;
+
+@mixin share-link($social, $color) {
+    .jssocials-share-#{$social} .jssocials-share-link {
+        color: $color;
+        transition: $transition;
+
+        &:hover {
+            color: darken($color, 10%);
+
+            .jssocials-share-label {
+                color: darken($color, 10%);
+                transition: $transition;
+            }
+        }
+
+        .jssocials-share-label {
+            color: $color;
+            transition: $transition;
+        }
+    }
+}
+
+@include share-link("twitter", $twitter);
+@include share-link("facebook", $facebook);
+@include share-link("googleplus", $googleplus);
+@include share-link("linkedin", $linkedin);
+@include share-link("pinterest", $pinterest);
+
+.jssocials-share-label, .jssocials-share-count {
+    font-size: $text-size;
+    color: $text-color;
+}
+
+.jssocials-share-count-box {
+    margin-left: $count-indent;
+    border: 1px solid $count-border-color;
+    border-radius: $count-border-radius;
+}

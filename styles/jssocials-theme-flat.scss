@@ -1,0 +1,69 @@
+@import "shares";
+
+$count-box-bg: #f5f5f5;
+$count-color: #444;
+$count-arrow-size: .4em;
+$count-arrow-offset: $count-arrow-size - .1em;
+$transition: all 200ms ease-in-out;
+
+@mixin share-link($social, $background) {
+    .jssocials-share-#{$social} .jssocials-share-link {
+        background: $background;
+        transition: $transition;
+
+        &:hover {
+            transition: $transition;
+            background: darken($background, 10%);
+        }
+    }
+}
+
+@include share-link("twitter", $twitter);
+@include share-link("facebook", $facebook);
+@include share-link("googleplus", $googleplus);
+@include share-link("linkedin", $linkedin);
+@include share-link("pinterest", $pinterest);
+
+.jssocials-share-link {
+    padding: .5em .6em;
+    color: #fff;
+}
+
+.jssocials-share-count {
+    line-height: 2.5em;
+    color: $count-color;
+}
+
+.jssocials-share-count-box {
+    position: relative;
+    height: 2.5em;
+    padding: 0 .3em;
+    margin-left: $count-arrow-offset;
+    background: $count-box-bg;
+    transition: $transition;
+
+    &:hover {
+        transition: $transition;
+        background: darken($count-box-bg, 10%);
+
+        &:after {
+            transition: $transition;
+            border-color: transparent darken($count-box-bg, 10%) transparent transparent;
+        }
+    }
+
+    &:after {
+        top: 1.25em - $count-arrow-size;
+        left: -$count-arrow-offset;
+        content: "";
+        position: absolute;
+        border-width: $count-arrow-size $count-arrow-size $count-arrow-size 0;
+        border-style: solid;
+        border-color: transparent $count-box-bg transparent transparent;
+        display: block;
+        width: 0;
+        height: 0;
+        transform: rotate(360deg);
+        transition: $transition;
+    }
+}

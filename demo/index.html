@@ -10,6 +10,12 @@
 
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../dist/jssocials.js"></script>
+
+    <style>
+        .round-shares .jssocials-share-link {
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
 <h1>jsSocials Demo</h1>
@@ -17,8 +23,8 @@
     Select Theme:
     <select id="themeSelector">
         <option>flat</option>
-        <option>minima</option>
         <option>classic</option>
+        <option>minima</option>
     </select>
 
     and any font-size:
@@ -37,6 +43,9 @@
 <h2>Icons Only</h2>
 <div id="shareIcons"></div>
 
+<h2>Round Icons</h2>
+<div id="shareIconsCircled" class="round-shares"></div>
+
 <h2>Button with Label</h2>
 <div id="shareButtonLabel"></div>
 
@@ -50,6 +59,14 @@
     $(function() {
 
         $("#shareIcons").jsSocials({
+            url: "http://google.com",
+            text: "Some text to share",
+            showLabel: false,
+            showCount: false,
+            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
+        });
+
+        $("#shareIconsCircled").jsSocials({
             url: "http://google.com",
             text: "Some text to share",
             showLabel: false,

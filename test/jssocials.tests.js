@@ -87,6 +87,41 @@
         assert.strictEqual($element.data(JSSOCIALS_DATA_KEY), undefined, "jQuery data removed");
     });
 
+    QUnit.test("set default options with setDefaults", function(assert) {
+        jsSocials.setDefaults({
+            defaultOption: "test"
+        });
+
+        var $element = $("#share").jsSocials({});
+
+        assert.equal($element.jsSocials("option", "defaultOption"), "test", "default option set");
+    });
+
+    QUnit.test("set default share options with setDefaults", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com"
+        };
+
+        try {
+            jsSocials.setDefaults("testshare", {
+                shareUrl: "http://another.test.com/"
+            });
+
+            var $element = $("#share").jsSocials({
+                showCount: false,
+                shares: ["testshare"]
+            });
+
+            var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+            var $shareLink = $element.find("." + instance.shareLinkClass);
+            assert.equal($shareLink.attr("href"), "http://another.test.com/", "default options is passed");
+
+        } finally {
+            delete jsSocials.shares.testshare;
+        }
+    });
+
 
     QUnit.module("share rendering", {
         setup: function() {

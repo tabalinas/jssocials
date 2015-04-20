@@ -271,9 +271,23 @@
         return result;
     };
 
+    var setDefaults = function(config) {
+        var component;
+
+        if($.isPlainObject(config)) {
+            component = Socials.prototype;
+        } else {
+            component = shares[config];
+            config = arguments[1] || {};
+        }
+
+        $.extend(component, config);
+    };
+
     window.jsSocials = {
         Socials: Socials,
-        shares: shares
+        shares: shares,
+        setDefaults: setDefaults
     };
 
 }(window, jQuery));

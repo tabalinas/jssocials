@@ -116,10 +116,7 @@
 
             var $shareLink = this._createShareLink(share);
 
-            var $shareButton = $("<div>").addClass(this.shareButtonClass)
-                .append($shareLink);
-
-            $result.append($shareButton);
+            $result.append($shareLink);
 
             if(this.showCount) {
                 (this.showCount === "inside" ? $shareLink : $result).append(this._createShareCount(share));

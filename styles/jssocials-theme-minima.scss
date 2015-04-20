@@ -38,13 +38,13 @@ $transition: color 200ms ease-in-out;
     transition: $transition;
 }
 
-.jssocials-share-count {
-    font-size: $text-size;
-    color: $text-color;
-}
-
 .jssocials-share-count-box {
     margin-left: $count-indent;
     border: 1px solid $count-border-color;
     border-radius: $count-border-radius;
+
+    .jssocials-share-count {
+        font-size: $text-size;
+        color: $text-color;
+    }
 }

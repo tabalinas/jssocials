@@ -118,10 +118,7 @@
         assert.ok($share.hasClass("jssocials-share-testshare"), "share class attached");
         assert.ok($share.hasClass("custom-class"), "share custom class attached");
 
-        var $shareButton = $share.find("." + instance.shareButtonClass);
-        assert.equal($shareButton.length, 1, "share button rendered");
-
-        var $shareLink = $shareButton.find("." + instance.shareLinkClass);
+        var $shareLink = $share.find("." + instance.shareLinkClass);
         assert.equal($shareLink.length, 1, "share link rendered");
         assert.equal($shareLink.attr("href"), "http://test.com/share/?url=testurl&text=testtext", "share href correct");
 

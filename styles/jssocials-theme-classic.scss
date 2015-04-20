@@ -28,12 +28,6 @@ $transition: all 200ms ease-in-out;
     transition: $transition;
 }
 
-.jssocials-share-count {
-    line-height: 2.5em;
-    color: $count-color;
-    font-size: .9em;
-}
-
 .jssocials-share-count-box {
     position: relative;
     height: 2.5em;
@@ -69,5 +63,11 @@ $transition: all 200ms ease-in-out;
         border-width: ($count-arrow-size - 1px) ($count-arrow-size - 1px) 0;
         border-color: #FFFFFF transparent;
         transform: rotate(90deg);
+    }
+
+    .jssocials-share-count {
+        line-height: 2.5em;
+        color: $count-color;
+        font-size: .9em;
     }
 }

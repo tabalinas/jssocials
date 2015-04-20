@@ -50,6 +50,7 @@
         shareLabelClass: "jssocials-share-label",
         shareCountBoxClass: "jssocials-share-count-box",
         shareCountClass: "jssocials-share-count",
+        shareLinkCountClass: "jssocials-share-link-count",
 
         _init: function(config) {
             this._initDefaults();
@@ -121,7 +122,7 @@
             $result.append($shareButton);
 
             if(this.showCount) {
-                $result.append(this._createShareCount(share));
+                (this.showCount === "inside" ? $shareLink : $result).append(this._createShareCount(share));
             }
 
             return $result;
@@ -162,7 +163,7 @@
         },
 
         _createShareCount: function(share) {
-            var $result = $("<div>").addClass(this.shareCountBoxClass);
+            var $result = $("<div>").addClass(this.showCount === "inside" ? this.shareLinkCountClass : this.shareCountBoxClass);
             var $count = $("<span>").addClass(this.shareCountClass);
             $result.append($count);
 

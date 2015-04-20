@@ -248,7 +248,33 @@
         }
     });
 
-    QUnit.test("share count structure", function(assert) {
+    QUnit.test("share inside count structure", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/",
+            countUrl: "http://test.com/count?url={url}"
+        };
+
+        this.countUrl = "testurl";
+        this.countResult = 10;
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            showCount: "inside",
+            shares: ["testshare"]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        var $shareLink = $element.find("." + instance.shareLinkClass);
+        var $shareLinkCount = $shareLink.find("." + instance.shareLinkCountClass);
+        assert.equal($shareLinkCount.length, 1, "share count box rendered inside link");
+
+        var $shareCount = $shareLinkCount.find("." + instance.shareCountClass);
+        assert.equal($shareCount.length, 1, "share count rendered");
+        assert.equal($shareCount.text(), "10", "share count value rendered");
+    });
+
+    QUnit.test("count outside share link", function(assert) {
         jsSocials.shares.testshare = {
             shareUrl: "http://test.com/share/",
             countUrl: "http://test.com/count?url={url}"
@@ -266,6 +292,10 @@
         var instance = $element.data(JSSOCIALS_DATA_KEY);
 
         var $share = $element.find("." + instance.shareClass);
+
+        var $shareLink = $element.find("." + instance.shareLinkClass);
+        var $shareLinkCount = $shareLink.find("." + instance.shareLinkCountClass);
+        assert.equal($shareLinkCount.length, 0, "no share count box inside link");
 
         var $shareCountBox = $share.find("." + instance.shareCountBoxClass);
         assert.equal($shareCountBox.length, 1, "share count box rendered");

@@ -48,9 +48,10 @@
         shareLinkClass: "jssocials-share-link",
         shareLogoClass: "jssocials-share-logo",
         shareLabelClass: "jssocials-share-label",
+        shareLinkCountClass: "jssocials-share-link-count",
         shareCountBoxClass: "jssocials-share-count-box",
         shareCountClass: "jssocials-share-count",
-        shareLinkCountClass: "jssocials-share-link-count",
+        shareZeroCountClass: "jssocials-share-no-count",
 
         _init: function(config) {
             this._initDefaults();
@@ -113,13 +114,13 @@
 
         _createShare: function(share) {
             var $result = $("<div>");
-
-            var $shareLink = this._createShareLink(share);
-
-            $result.append($shareLink);
+            var $shareLink = this._createShareLink(share).appendTo($result);
 
             if(this.showCount) {
-                (this.showCount === "inside" ? $shareLink : $result).append(this._createShareCount(share));
+                var isInsideCount = (this.showCount === "inside");
+                var $countContainer = isInsideCount ? $shareLink : $("<div>").addClass(this.shareCountBoxClass).appendTo($result);
+                $countContainer.addClass(isInsideCount ? this.shareLinkCountClass : this.shareCountBoxClass);
+                this._renderShareCount(share, $countContainer);
             }
 
             return $result;
@@ -159,20 +160,17 @@
                 .text(share.label);
         },
 
-        _createShareCount: function(share) {
-            var $result = $("<div>").addClass(this.showCount === "inside" ? this.shareLinkCountClass : this.shareCountBoxClass);
-            var $count = $("<span>").addClass(this.shareCountClass);
-            $result.append($count);
+        _renderShareCount: function(share, $container) {
+            var $count = $("<span>").addClass(this.shareCountClass)
+                .appendTo($container);
 
             this._loadCount(share).done($.proxy(function(count) {
-                $count.text(count);
-
-                if(!count) {
-                    $result.hide();
+                if(count) {
+                    $count.text(count);
+                } else {
+                    $container.addClass(this.shareZeroCountClass);
                 }
             }, this));
-
-            return $result;
         },
 
         _loadCount: function(share) {
@@ -181,7 +179,7 @@
             $.getJSON(this._getCountUrl(share)).done($.proxy(function(response) {
                 deferred.resolve(this._getCountValue(response, share));
             }, this)).fail(function() {
-                deferred.resolve(null);
+                deferred.resolve(0);
             });
 
             return deferred.promise();
@@ -193,7 +191,7 @@
         },
 
         _getCountValue: function(response, share) {
-            var count = $.isFunction(share.getCount) ? share.getCount(response) : response;
+            var count = ($.isFunction(share.getCount) ? share.getCount(response) : response) || 0;
             return (typeof(count) === "string") ? count : this._formatNumber(count);
         },
 

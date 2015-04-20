@@ -30,6 +30,12 @@ $transition: color 200ms ease-in-out;
 
 .jssocials-share-link {
     transition: $transition;
+
+    &.jssocials-share-link-count {
+        .jssocials-share-count {
+            font-size: .5em;
+        }
+    }
 }
 
 .jssocials-share-label {

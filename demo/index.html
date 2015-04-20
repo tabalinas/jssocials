@@ -44,10 +44,16 @@
 <div id="shareIcons"></div>
 
 <h2>Round Icons</h2>
-<div id="shareIconsCircled" class="round-shares"></div>
+<div id="shareRoundIcons" class="round-shares"></div>
+
+<h2>Icons with Count Inside</h2>
+<div id="shareIconsCounterInside"></div>
 
 <h2>Button with Label</h2>
 <div id="shareButtonLabel"></div>
+
+<h2>Button with Label and Count Inside</h2>
+<div id="shareButtonLabelCountInside"></div>
 
 <h2>Icons with Counter</h2>
 <div id="shareIconsCounter"></div>
@@ -58,39 +64,57 @@
 <script>
     $(function() {
 
+        var url = "http://google.com";
+        var text = "Some text to share";
+
         $("#shareIcons").jsSocials({
-            url: "http://google.com",
-            text: "Some text to share",
+            url: url,
+            text: text,
             showLabel: false,
             showCount: false,
             shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
         });
 
-        $("#shareIconsCircled").jsSocials({
-            url: "http://google.com",
-            text: "Some text to share",
+        $("#shareIconsCounterInside").jsSocials({
+            url: url,
+            text: text,
+            showLabel: false,
+            showCount: "inside",
+            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
+        });
+
+        $("#shareRoundIcons").jsSocials({
+            url: url,
+            text: text,
             showLabel: false,
             showCount: false,
             shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
         });
 
         $("#shareButtonLabel").jsSocials({
-            url: "http://google.com",
-            text: "Some text to share",
+            url: url,
+            text: text,
             showCount: false,
             shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
         });
 
+        $("#shareButtonLabelCountInside").jsSocials({
+            url: url,
+            text: text,
+            showCount: "inside",
+            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
+        });
+
         $("#shareIconsCounter").jsSocials({
-            url: "http://google.com",
-            text: "Some text to share",
+            url: url,
+            text: text,
             showLabel: false,
             shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
         });
 
         $("#shareButtonLabelCounter").jsSocials({
-            url: "http://google.com",
-            text: "Some text to share",
+            url: url,
+            text: text,
             shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
         });
 

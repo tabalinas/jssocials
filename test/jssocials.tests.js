@@ -263,10 +263,9 @@
         var instance = $element.data(JSSOCIALS_DATA_KEY);
 
         var $shareLink = $element.find("." + instance.shareLinkClass);
-        var $shareLinkCount = $shareLink.find("." + instance.shareLinkCountClass);
-        assert.equal($shareLinkCount.length, 1, "share count box rendered inside link");
+        assert.ok($shareLink.hasClass(instance.shareLinkCountClass), "link count class attached");
 
-        var $shareCount = $shareLinkCount.find("." + instance.shareCountClass);
+        var $shareCount = $shareLink.find("." + instance.shareCountClass);
         assert.equal($shareCount.length, 1, "share count rendered");
         assert.equal($shareCount.text(), "10", "share count value rendered");
     });
@@ -291,8 +290,7 @@
         var $share = $element.find("." + instance.shareClass);
 
         var $shareLink = $element.find("." + instance.shareLinkClass);
-        var $shareLinkCount = $shareLink.find("." + instance.shareLinkCountClass);
-        assert.equal($shareLinkCount.length, 0, "no share count box inside link");
+        assert.ok(!$shareLink.hasClass(instance.shareLinkCountClass), "link count class not attached");
 
         var $shareCountBox = $share.find("." + instance.shareCountBoxClass);
         assert.equal($shareCountBox.length, 1, "share count box rendered");
@@ -326,7 +324,7 @@
         assert.equal($shareCount.text(), "10", "share count value retrieved");
     });
 
-    QUnit.test("count should be hidden when it's 0", function(assert) {
+    QUnit.test("zero count class should be attached when count is zero", function(assert) {
         jsSocials.shares.testshare = {
             shareUrl: "http://test.com/share/",
             countUrl: "http://test.com/count?url={url}"
@@ -344,10 +342,31 @@
         var instance = $element.data(JSSOCIALS_DATA_KEY);
 
         var $shareCountBox = $element.find("." + instance.shareCountBoxClass);
-        assert.ok($shareCountBox.is(":hidden"), "share count is hidden");
+        assert.ok($shareCountBox.hasClass(instance.shareZeroCountClass), "zero count class attached");
     });
 
-    QUnit.test("count should be hidden when fail loading", function(assert) {
+    QUnit.test("zero count class should be attached to link when count is zero and showCount is inside", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/",
+            countUrl: "http://test.com/count?url={url}"
+        };
+
+        this.countUrl = "testurl";
+        this.countResult = 0;
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            showCount: "inside",
+            shares: ["testshare"]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        var $shareLink = $element.find("." + instance.shareLinkCountClass);
+        assert.ok($shareLink.hasClass(instance.shareZeroCountClass), "zero count class attached");
+    });
+
+    QUnit.test("zero count class should be attached when fail loading", function(assert) {
         jsSocials.shares.testshare = {
             shareUrl: "http://test.com/share/",
             countUrl: "http://test.com/count?url={url}"
@@ -366,7 +385,7 @@
         var instance = $element.data(JSSOCIALS_DATA_KEY);
 
         var $shareCountBox = $element.find("." + instance.shareCountBoxClass);
-        assert.ok($shareCountBox.is(":hidden"), "share count is hidden");
+        assert.ok($shareCountBox.hasClass(instance.shareZeroCountClass), "zero count class attached");
     });
 
     var testCountFormatting = function(count, result, message) {

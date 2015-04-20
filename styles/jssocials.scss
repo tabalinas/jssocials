@@ -12,6 +12,7 @@ $external-margin: .2em 0;
 
 .jssocials-share {
     display: inline-block;
+    vertical-align: top;
     margin: $base-padding;
 }
 
@@ -34,6 +35,24 @@ $external-margin: .2em 0;
     display: inline-block;
     text-align: center;
     text-decoration: none;
+
+    &.jssocials-share-link-count {
+        padding-top: .2em;
+
+        .jssocials-share-count {
+            display: block;
+            font-size: .6em;
+            margin: 0 -.5em -.8em -.5em;
+        }
+    }
+
+    &.jssocials-share-no-count {
+        padding-top: .5em;
+
+        .jssocials-share-count {
+            height: 1em;
+        }
+    }
 }
 
 .jssocials-share-label {
@@ -47,6 +66,10 @@ $external-margin: .2em 0;
     padding: 0 $base-padding;
     vertical-align: middle;
     cursor: default;
+
+    &.jssocials-share-no-count {
+        display: none;
+    }
 }
 
 .jssocials-share-count {

@@ -72,7 +72,7 @@
 
                 var share = (shareConfig.share && shares[shareConfig.share]);
 
-                if(!share) {
+                if(!share && !shareConfig.renderer) {
                     throw Error("Share '" + shareConfig.share + "' is not found");
                 }
 

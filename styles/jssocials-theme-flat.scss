@@ -4,7 +4,7 @@ $count-box-bg: #f5f5f5;
 $count-color: #444;
 $count-arrow-size: .4em;
 $count-arrow-offset: $count-arrow-size - .1em;
-$transition: all 200ms ease-in-out;
+$transition: background 200ms ease-in-out, border-color 200ms ease-in-out;
 
 @for $i from 0 to length($share-names) {
     $social: nth($share-names, $i + 1);

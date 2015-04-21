@@ -423,6 +423,34 @@
         assert.ok($shareCountBox.hasClass(instance.shareZeroCountClass), "zero count class attached");
     });
 
+    QUnit.test("zero count class should be attached before count loading is complete", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/",
+            countUrl: "http://test.com/count?url={url}"
+        };
+
+        var deferred = $.Deferred();
+
+        $.getJSON = function() {
+            return deferred.promise();
+        };
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            showCount: true,
+            shares: ["testshare"]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        var $shareCountBox = $element.find("." + instance.shareCountBoxClass);
+        assert.ok($shareCountBox.hasClass(instance.shareZeroCountClass), "zero count class attached");
+
+        deferred.resolve(10);
+
+        assert.ok(!$shareCountBox.hasClass(instance.shareZeroCountClass), "zero count class detached");
+    });
+
     var testCountFormatting = function(count, result, message) {
         QUnit.test(message, function(assert) {
             jsSocials.shares.testshare = {

@@ -161,14 +161,15 @@
         },
 
         _renderShareCount: function(share, $container) {
-            var $count = $("<span>").addClass(this.shareCountClass)
-                .appendTo($container);
+            var $count = $("<span>").addClass(this.shareCountClass);
+
+            $container.addClass(this.shareZeroCountClass)
+                .append($count);
 
             this._loadCount(share).done($.proxy(function(count) {
                 if(count) {
+                    $container.removeClass(this.shareZeroCountClass);
                     $count.text(count);
-                } else {
-                    $container.addClass(this.shareZeroCountClass);
                 }
             }, this));
         },

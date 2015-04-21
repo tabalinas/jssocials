@@ -531,6 +531,29 @@
         assert.equal(instance._showLabel, true, "showLabel=true on large screen");
     });
 
+    QUnit.test("adaptive config when showCount=false", function(assert) {
+        var $element = $("#share").jsSocials({
+            showCount: false
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        // small screen
+        this.windowWidth = 639;
+        instance.refresh();
+        assert.equal(instance._showLabel, false, "showLabel=false on small screen");
+
+        // medium screen
+        this.windowWidth = 1000;
+        instance.refresh();
+        assert.equal(instance._showLabel, true, "showLabel=true on medium screen");
+
+        // large screen
+        this.windowWidth = 1025;
+        instance.refresh();
+        assert.equal(instance._showLabel, true, "showLabel=true on large screen");
+    });
+
 
 
 }(jQuery, window.jsSocials));

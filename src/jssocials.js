@@ -39,7 +39,9 @@
         text: "",
 
         showLabel: function(screenWidth) {
-            return (screenWidth >= this.largeScreenWidth);
+            return (this.showCount === false) ?
+                (screenWidth > this.smallScreenWidth) :
+                (screenWidth >= this.largeScreenWidth);
         },
 
         showCount: function(screenWidth) {

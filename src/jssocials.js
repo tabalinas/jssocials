@@ -35,11 +35,21 @@
     }
 
     Socials.prototype = {
-
         url: "",
         text: "",
-        showCount: true,
-        showLabel: true,
+
+        showLabel: function(screenWidth) {
+            return (screenWidth >= this.largeScreenWidth);
+        },
+
+        showCount: function(screenWidth) {
+            return (screenWidth <= this.smallScreenWidth) ? "inside" : true;
+        },
+
+        smallScreenWidth: 640,
+        largeScreenWidth: 1024,
+
+        resizeTimeout: 200,
 
         elementClass: "jssocials",
         sharesClass: "jssocials-shares",
@@ -57,6 +67,7 @@
             this._initDefaults();
             $.extend(this, config);
             this._initShares();
+            this._attachWindowResizeCallback();
         },
 
         _initDefaults: function() {
@@ -80,8 +91,25 @@
             }, this));
         },
 
+        _attachWindowResizeCallback: function() {
+            $(window).on("resize", $.proxy(this._windowResizeHandler, this));
+        },
+
+        _detachWindowResizeCallback: function() {
+            $(window).off("resize", this._windowResizeHandler);
+        },
+
+        _windowResizeHandler: function() {
+            if($.isFunction(this.showLabel) || $.isFunction(this.showCount)) {
+                window.clearTimeout(this._resizeTimer);
+                this._resizeTimer = setTimeout($.proxy(this.refresh, this), this.resizeTimeout);
+            }
+        },
+
         _render: function() {
             this._clear();
+
+            this._defineOptionsByScreen();
 
             this._$element.addClass(this.elementClass);
 
@@ -89,6 +117,12 @@
                 .appendTo(this._$element);
 
             this._renderShares();
+        },
+
+        _defineOptionsByScreen: function() {
+            this._screenWidth = $(window).width();
+            this._showLabel = getOrApply(this.showLabel, this, this._screenWidth);
+            this._showCount = getOrApply(this.showCount, this, this._screenWidth);
         },
 
         _renderShares: function() {
@@ -116,8 +150,8 @@
             var $result = $("<div>");
             var $shareLink = this._createShareLink(share).appendTo($result);
 
-            if(this.showCount) {
-                var isInsideCount = (this.showCount === "inside");
+            if(this._showCount) {
+                var isInsideCount = (this._showCount === "inside");
                 var $countContainer = isInsideCount ? $shareLink : $("<div>").addClass(this.shareCountBoxClass).appendTo($result);
                 $countContainer.addClass(isInsideCount ? this.shareLinkCountClass : this.shareCountBoxClass);
                 this._renderShareCount(share, $countContainer);
@@ -131,7 +165,7 @@
                 .attr({ href: this._getShareUrl(share), target: "_blank" })
                 .append(this._createShareLogo(share));
 
-            if(this.showLabel) {
+            if(this._showLabel) {
                 $result.append(this._createShareLabel(share));
             }
 
@@ -215,16 +249,17 @@
         },
 
         _clear: function() {
+            window.clearTimeout(this._resizeTimer);
             this._$element.empty();
         },
 
         refresh: function() {
-            this._clear();
             this._render();
         },
 
         destroy: function() {
             this._clear();
+            this._detachWindowResizeCallback();
 
             this._$element
                 .removeClass(this.elementClass)
@@ -261,6 +296,7 @@
                         return false;
                     }
                 } else {
+                    instance._detachWindowResizeCallback();
                     instance._init(config);
                     instance._render();
                 }

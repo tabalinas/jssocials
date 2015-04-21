@@ -109,6 +109,7 @@
 
             var $element = $("#share").jsSocials({
                 showCount: false,
+                showLabel: true,
                 shares: ["testshare"]
             });
 
@@ -125,9 +126,14 @@
 
     QUnit.module("share rendering", {
         setup: function() {
+            this.originalShowCount = jsSocials.Socials.prototype.showCount;
+            this.originalShowLabel = jsSocials.Socials.prototype.showLabel;
             jsSocials.Socials.prototype.showCount = false;
+            jsSocials.Socials.prototype.showLabel = true;
         },
         teardown: function() {
+            jsSocials.Socials.prototype.showCount = this.originalShowCount;
+            jsSocials.Socials.prototype.showLabel = this.originalShowLabel;
             delete jsSocials.shares.testshare;
         }
     });
@@ -481,5 +487,50 @@
     testCountFormatting(999000000, "999M", "less than 1G");
     testCountFormatting(1169000000, "1.17G", "more than 1G");
     testCountFormatting("1169000000", "1169000000", "string value is not formatted");
+
+
+    QUnit.module("adaptive", {
+        setup: function() {
+            var self = this;
+            self.originalJQueryWidth = $.fn.width;
+            self.windowWidth = 0;
+
+            $.fn.width = function() {
+                if(this[0] === window) {
+                    return self.windowWidth;
+                }
+                self.originalJQueryWidth.apply(this, arguments);
+            };
+        },
+        teardown: function() {
+            $.fn.width = this.originalJQueryWidth;
+        }
+    });
+
+    QUnit.test("change config according to current screen size", function(assert) {
+        var $element = $("#share").jsSocials({});
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        // small screen
+        this.windowWidth = 639;
+        instance.refresh();
+        assert.equal(instance._showCount, "inside", "showCount='inside' on small screen");
+        assert.equal(instance._showLabel, false, "showLabel=false on small screen");
+
+        // medium screen
+        this.windowWidth = 1000;
+        instance.refresh();
+        assert.equal(instance._showCount, true, "showCount=true on medium screen");
+        assert.equal(instance._showLabel, false, "showLabel=false on medium screen");
+
+        // large screen
+        this.windowWidth = 1025;
+        instance.refresh();
+        assert.equal(instance._showCount, true, "showCount=true on large screen");
+        assert.equal(instance._showLabel, true, "showLabel=true on large screen");
+    });
+
+
 
 }(jQuery, window.jsSocials));

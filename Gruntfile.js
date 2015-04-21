@@ -39,6 +39,14 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        autoprefixer:{
+            dist: {
+                files: [{
+                    expand: true,
+                    src: "dist/*.css"
+                }]
+            }
+        },
         uglify: {
             options: {
                 banner: "<%= banner %>"
@@ -87,6 +95,10 @@ module.exports = function(grunt) {
                 files: "<%= jshint.src.src %>",
                 tasks: ["jshint:src", "qunit"]
             },
+            css: {
+                files: "styles/*.scss",
+                tasks: ["sass", "autoprefixer"]
+            },
             test: {
                 files: "<%= jshint.test.src %>",
                 tasks: ["jshint:test", "qunit"]
@@ -103,7 +115,7 @@ module.exports = function(grunt) {
     });
 
     // Default task.
-    grunt.registerTask("default", ["jshint", "connect", "qunit", "clean", "sass", "concat", "uglify"]);
+    grunt.registerTask("default", ["jshint", "connect", "qunit", "clean", "sass", "autoprefixer", "concat", "uglify"]);
     grunt.registerTask("server", function() {
         grunt.log.warn("The `server` task has been deprecated. Use `grunt serve` to start a server.");
         grunt.task.run(["serve"]);

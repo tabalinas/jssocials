@@ -79,7 +79,7 @@
 
         _initShares: function() {
             this.shares = $.map(this.shares, $.proxy(function(shareConfig) {
-                if(typeof(shareConfig) === "string") {
+                if(typeof shareConfig === "string") {
                     shareConfig = { share: shareConfig };
                 }
 
@@ -229,7 +229,7 @@
 
         _getCountValue: function(response, share) {
             var count = ($.isFunction(share.getCount) ? share.getCount(response) : response) || 0;
-            return (typeof(count) === "string") ? count : this._formatNumber(count);
+            return (typeof count === "string") ? count : this._formatNumber(count);
         },
 
         _formatNumber: function(number) {

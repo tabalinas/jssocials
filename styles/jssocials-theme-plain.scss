@@ -2,11 +2,11 @@
 
 $color: #acacac;
 $hover-color: darken($color, 10%);
-$count-border-color: lighten($color, 20%);
-$count-color: $color;
-$count-arrow-size: 6px;
+$count-box-bg: #f5f5f5;
+$count-arrow-size: .4em;
+$count-arrow-offset: $count-arrow-size - .1em;
 $round-size: .3em;
-$transition: color 200ms ease-in-out, border-color 200ms ease-in-out;
+$transition: background 200ms ease-in-out, color 200ms ease-in-out, border-color 200ms ease-in-out;
 
 .jssocials-share-link {
     padding: .5em .6em;
@@ -23,40 +23,39 @@ $transition: color 200ms ease-in-out, border-color 200ms ease-in-out;
 
 .jssocials-share-count-box {
     position: relative;
+    height: 1.5em;
     padding: 0 .3em;
-    margin-left: $count-arrow-size - 2px;
+    margin-left: $count-arrow-offset;
+    background: $count-box-bg;
     border-radius: $round-size;
-    border: 2px solid $count-border-color;
+    transition: $transition;
 
-    &:before {
-        content: "";
-        position: absolute;
-        top: .5em;
-        left: -$count-arrow-size - 3px;
-        display: block;
-        width: 0;
-        border-style: solid;
-        border-width: $count-arrow-size $count-arrow-size 0;
-        border-color: $count-border-color transparent;
-        transform: rotate(90deg);
+    &:hover {
+        background: darken($count-box-bg, 5%);
+
+        &:after {
+            border-color: transparent darken($count-box-bg, 5%) transparent transparent;
+        }
     }
 
     &:after {
         content: "";
-        position: absolute;
-        top: .5em;
-        left: -$count-arrow-size;
         display: block;
+        position: absolute;
+        top: .75em - $count-arrow-size;
+        left: -$count-arrow-offset;
         width: 0;
+        height: 0;
+        border-width: $count-arrow-size $count-arrow-size $count-arrow-size 0;
         border-style: solid;
-        border-width: ($count-arrow-size - 1px) ($count-arrow-size - 1px) 0;
-        border-color: #FFFFFF transparent;
-        transform: rotate(90deg);
+        border-color: transparent $count-box-bg transparent transparent;
+        transform: rotate(360deg);
+        transition: $transition;
     }
 
     .jssocials-share-count {
-        line-height: 1em;
-        color: $count-color;
+        line-height: 1.7em;
+        color: $color;
         font-size: .9em;
     }
 }

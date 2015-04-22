@@ -138,6 +138,29 @@
         }
     });
 
+    QUnit.test("throw error on unknown share", function(assert) {
+        assert.throws(
+            function() {
+                var $element = $("#share").jsSocials({
+                    shares: ["unknown"]
+                });
+            },
+            "Share 'unknown' is not found"
+        );
+    });
+
+    QUnit.test("throw error on unknown share", function(assert) {
+        var $element = $("#share").jsSocials({
+            shares: [{
+                renderer: function() {
+                    return $("<div>").text("test");
+                }
+            }]
+        });
+
+        assert.equal($element.text(), "test", "custom renderer called");
+    });
+
     QUnit.test("share structure", function(assert) {
         jsSocials.shares.testshare = {
             logo: "test.png",

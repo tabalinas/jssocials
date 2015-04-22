@@ -81,41 +81,9 @@ module.exports = function(grunt) {
                 },
                 src: ["test/**/*.js"]
             }
-        },
-        watch: {
-            gruntfile: {
-                files: "<%= jshint.gruntfile.src %>",
-                tasks: ["jshint:gruntfile"]
-            },
-            src: {
-                files: "<%= jshint.src.src %>",
-                tasks: ["jshint:src", "qunit"]
-            },
-            css: {
-                files: "styles/*.scss",
-                tasks: ["sass", "autoprefixer"]
-            },
-            test: {
-                files: "<%= jshint.test.src %>",
-                tasks: ["jshint:test", "qunit"]
-            }
-        },
-        connect: {
-            server: {
-                options: {
-                    hostname: "*",
-                    port: 9000
-                }
-            }
         }
     });
 
-    // Default task.
-    grunt.registerTask("default", ["jshint", "connect", "qunit", "clean", "sass", "autoprefixer", "concat", "uglify"]);
-    grunt.registerTask("server", function() {
-        grunt.log.warn("The `server` task has been deprecated. Use `grunt serve` to start a server.");
-        grunt.task.run(["serve"]);
-    });
-    grunt.registerTask("serve", ["connect", "watch"]);
-    grunt.registerTask("test", ["jshint", "qunit"]);
+    grunt.registerTask("default", ["jshint", "qunit", "clean", "sass", "autoprefixer", "concat", "uglify"]);
+    grunt.registerTask("test", ["qunit"]);
 };

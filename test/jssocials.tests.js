@@ -141,7 +141,7 @@
     QUnit.test("throw error on unknown share", function(assert) {
         assert.throws(
             function() {
-                var $element = $("#share").jsSocials({
+                $("#share").jsSocials({
                     shares: ["unknown"]
                 });
             },

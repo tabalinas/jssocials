@@ -1,6 +1,4 @@
-# jsSocials
-
-> Simple social networks sharing jQuery plugin
+# jsSocials - Simple Social Sharing jQuery Plugin
 
 
 ## Getting Started

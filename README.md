@@ -67,7 +67,7 @@ The config object may contain following options:
 }
 ```
 
-#### shares (Array)
+#### shares (`Array`)
 
 An array of shares. 
 
@@ -87,20 +87,20 @@ For instance for twitter the config may look like:
 }
 ```
 
-#### url (String)
+#### url (`String`)
 
 A string specifying url to share. **window.location.href** used by default.
 
-#### text (String)
+#### text (`String`)
 
 A string specifying text to share. The content of **&lt;meta name="description"&gt;** or **&lt;title&gt;** used by default.
 
-#### showLabel (true | false | function(screenWidth))
+#### showLabel (`true | false | function(screenWidth)`)
 
 A boolean specifying whether to show the text on the share button. 
 Also accepts function returning true|false depending on screen width for adaptive rendering. Read more in [Adaptiveness section](#adaptiveness)
 
-#### showCount (true | false | "inside" | function(screenWidth))
+#### showCount (`true | false | "inside" | function(screenWidth)`)
 
 A boolean or "inside" specifying whether and how to show share count. 
 Also accepts function returning true|false|"inside" depending on screen width for adaptive rendering. Read more in [Adaptiveness section](#adaptiveness)

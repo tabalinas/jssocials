@@ -67,13 +67,13 @@ The config object may contain following options:
 }
 ```
 
-#### shares
+#### shares (Array)
 
 An array of shares. 
 
 Each share can be
 
-* string - name of share from regustry `jsSocials.shares` (e.g. `"twitter"`)
+* string - name of share from registry `jsSocials.shares` (e.g. `"twitter"`)
 * config - plain object with `share` as name and custom parameters specific for each share. Read more about share config in [Shares section](#shares).
 
 For instance for twitter the config may look like:
@@ -87,22 +87,23 @@ For instance for twitter the config may look like:
 }
 ```
 
-#### url
+#### url (String)
 
 A string specifying url to share. **window.location.href** used by default.
 
-#### text
+#### text (String)
 
 A string specifying text to share. The content of **&lt;meta name="description"&gt;** or **&lt;title&gt;** used by default.
 
-#### showLabel
+#### showLabel (true|false|function)
 
-A boolean specifying whether to show the text on the share button.
+A boolean specifying whether to show the text on the share button. 
+Also accepts function returning true|false depending on screen width for adaptive rendering. Read more in [Adaptiveness section](#adaptiveness)
 
-#### showCount
+#### showCount (true|false|"inside"|function)
 
 A boolean or "inside" specifying whether and how to show share count. 
-
+Also accepts function returning true|false|"inside" depending on screen width for adaptive rendering. Read more in [Adaptiveness section](#adaptiveness)
 
 ## License
 

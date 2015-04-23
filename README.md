@@ -7,6 +7,8 @@ Project site [js-socials.com](http://js-socials.com/)
 **jsSocials** is a simple social network sharing jQuery plugin. It's flexible and easily extensible. 
 Configure visual appearance. Choose one of several themes provided. Add any yet unsupported social network if needed.
 
+![jsSocials](http://gdurl.com/a653)
+
 
 ## Demos
 

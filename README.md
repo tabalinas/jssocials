@@ -298,7 +298,52 @@ The build-in socials shares have following configuration
 
 ### Custom Share
 
+To register custom share add it to `jsSocials.shares` registry.
+This is how defined twitter share:
 
+```javascript
+
+jsSocials.shares.twitter = {
+    label: "Tweet",
+    logo: "fa fa-twitter",
+    shareUrl: "https://twitter.com/share?url={url}&text={text}&via={via}&hashtags={hashtags}",
+    countUrl: "https://cdn.api.twitter.com/1/urls/count.json?url={url}&callback=?",
+    getCount: function(data) {
+        return data.count;
+    }
+};
+
+```
+
+Each share contains following parameters:
+
+#### label :`String`
+
+The default value of share label to display on the share button.
+
+#### logo :`String`
+
+A default value of share logo. Accepts css class or image url.
+
+#### shareUrl :`String|function()`
+
+A string or a function returning a string specifying the sharing url.
+It can contain any parameters in curly braces `{param}`. This parameter will be taken from share config. 
+The `{url}` and `{text}` params are taken from jsSocials config.
+
+#### countUrl :`String|function()`
+
+A string or a function returning a string specifying the url to request shares count.
+It can contain any parameters in curly braces `{param}`. This parameter will be taken from share config. 
+The `{url}` param is taken from jsSocials config.
+This parameter should be specified only if you going to show share counts.
+
+#### getCount :`function(data)`
+
+A function retrieving count value from response received from countUrl.
+Accepts response data. The response `data` is used as count if function is not specified.
+If `getCount` returns a number, it will be formatted (e.g. 1200 to 1.2K). 
+Return a string value to avoid automatic formatting.
 
 
 ## License

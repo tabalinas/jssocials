@@ -59,7 +59,7 @@ The config object may contain following options:
  
 ```javascript
 {
-    shares: ["twitter"],
+    shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"],
     url: "http://url.to.share",
     text: "text to share",
     showLabel: true,
@@ -93,7 +93,7 @@ A string specifying url to share. **window.location.href** used by default.
 
 #### text
 
-A string specifying text to share. The content of **<meta name="description">** or **<title>** used by default.
+A string specifying text to share. The content of **&lt;meta name="description"&gt;** or **&lt;title&gt;** used by default.
 
 #### showLabel
 

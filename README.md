@@ -95,12 +95,12 @@ A string specifying url to share. **window.location.href** used by default.
 
 A string specifying text to share. The content of **&lt;meta name="description"&gt;** or **&lt;title&gt;** used by default.
 
-#### showLabel (true|false|function)
+#### showLabel (true | false | function(screenWidth))
 
 A boolean specifying whether to show the text on the share button. 
 Also accepts function returning true|false depending on screen width for adaptive rendering. Read more in [Adaptiveness section](#adaptiveness)
 
-#### showCount (true|false|"inside"|function)
+#### showCount (true | false | "inside" | function(screenWidth))
 
 A boolean or "inside" specifying whether and how to show share count. 
 Also accepts function returning true|false|"inside" depending on screen width for adaptive rendering. Read more in [Adaptiveness section](#adaptiveness)

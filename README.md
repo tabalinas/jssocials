@@ -139,6 +139,7 @@ var text = $("#share").jsSocials("option", "text");
 ````
 
 #### refresh()
+
 Refreshes sharing control. 
 
 ```javascript
@@ -146,6 +147,19 @@ Refreshes sharing control.
 $("#share").jsSocials("refresh");
 
 ```
+
+### Themes
+
+To turn on specific theme just link one of stylesheets
+
+* jssocials-theme-flat.css - flat theme
+* jssocials-theme-classic.css - classical theme with raised buttons
+* jssocials-theme-minima.css - minimalistic theme with logos instead of buttons
+* jssocials-theme-plain.css - monochromatic theme
+
+#### flat
+
+![jsSocials - flat theme](https://adfef9eec19058e166f1cd1202add8ac3d019fdf.googledrive.com/secure/AAyT6L_PXrl-a8O3o08VMzz3iIzHYx3XGgytGkj2i5p5fREVsiqBmh1Kb6M8TXGh5lQcB5zu-_QJJ-__3af0eT6DLXPO9dJGcGIGUV8ULVtkCA-3HiVLgf8GWKs-N_volXQtw0ELOKwYFshHBCyq1iN6mfkEIubWnqxaGnbdZyr4BTTWuVP60GvarFxASpk6yB8IBwQ7FGzGbW3cHBUzmAZLR2Kcp4n2_7OVrke4rlYoxJWc1SaEbGoPSaw8vO8NAb3amauDGIa4O4cJYD2ftYH-iTL_BXyoI7_Y24CUEQ-xPKzxud7zaxM6LCOO_4Nmwn6ks386spKgRXu0eDkORCJtoeJQp1sNJtDpCu3lFxT6EQYUxwK4-E_nvpcZuNaRasXqubW4JhdW_zBriekMafHVBKEz0f5JaThGmWw_SbenCHr5EvA8A1Aj2b95q8pQZ9cE626jzgdQD_AIlGpRQ4ugBvc5hF_duRraOgc71HJP1Ink6rph5xn07JeVriA-Q9BdKor_gx7qxnC_dl0SkVHIVNJjuJ0wse4Z_Bs2T5pu1Eo2L4SjQBCIETQlOa4_DUFzllwMYXXxYTTlm9M88w9fEtbx9paNWQ==/host/0BwcJihi374AsfmY5ck9hQmdfZG9oS3dXQUVKenVvXzFyY3gyaDBVLV95SGstTl9GaFc0TnM/flat.png)
 
 
 ## License

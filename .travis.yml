@@ -4,7 +4,6 @@ node_js:
 before_script:
   - 'npm install -g grunt-cli'
   - 'npm install -g bower'
-  - 'bower install jquery'
-  - 'bower install qunit'
+  - 'bower install'
 
 script: grunt test --verbose --force

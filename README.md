@@ -145,7 +145,7 @@ $("#share").jsSocials("destroy");
 
 ````
 
-### option(key, [value])
+#### option(key, [value])
 
 Gets or sets the value of an option.
  
@@ -212,7 +212,7 @@ It accepts following values:
 
 #### renderer :`function()`
 
-A function returning `&lt;div&gt;` with custom share content. 
+A function returning `<div>` with custom share content. 
 The `renderer` is used for custom share scenario, e.g. using standard sharing component for particular network. 
 If `renderer` is specified, then all other share parameters are ignored.
 
@@ -299,7 +299,8 @@ The build-in socials shares have following configuration
 ### Custom Share
 
 To register custom share add it to `jsSocials.shares` registry.
-This is how defined twitter share:
+
+This is how defined the **twitter** share:
 
 ```javascript
 
@@ -312,6 +313,17 @@ jsSocials.shares.twitter = {
         return data.count;
     }
 };
+
+```
+
+If you wish to get your share styling for all supported themes, add its name and color to `_shares.scss` and build css.
+
+Currently `_shares.scss` contains following collections:
+
+```scss
+
+$share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest');
+$share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027);
 
 ```
 
@@ -344,6 +356,57 @@ A function retrieving count value from response received from countUrl.
 Accepts response data. The response `data` is used as count if function is not specified.
 If `getCount` returns a number, it will be formatted (e.g. 1200 to 1.2K). 
 Return a string value to avoid automatic formatting.
+
+
+### Adaptiveness
+
+Options `showLabel` and `showCount` accepts function(screenWidth) that has screen width as input parameter and returns whether to show label and count.
+
+By default `showLabel` function returns following values:
+
+* **true** for all screens wider than 1024px (large screen)
+* **true** for all screens wider than 640px (small screen) when showCount is `false`
+* **false** in all other cases
+
+
+By default `showCount` function returns following values:
+
+* **true** for all screens wider than 640px (small screen)
+* **"inside"** for all screens with width less than 640px (small screen)
+
+These break points are defined with two jsSocials options.
+
+```javascript 
+
+{
+    smallScreenWidth: 640,
+    largeScreenWidth: 1024
+}
+
+```
+
+These breakpoints value can be redefined in jsSocials config.
+
+The adaptive behavior can be easily redefined with custom `showLabel` and `showCount` functions.
+
+In this example we show counter for all screens wider than 1024px and hide count for others, 
+and show label for screens wider 1280px and hide for others:
+
+```javascript
+
+$("#share").jsSocials({
+    showCount: function(screenWidth) {
+        return (screenWidth > 1024);
+    },
+    
+    showLabel: function(screenWidth) {
+        return (screenWidth > 1280);
+    },
+    
+    ...
+});
+
+```
 
 
 ## License

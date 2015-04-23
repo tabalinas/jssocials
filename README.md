@@ -17,7 +17,7 @@ Find demos on the [project site](http://js-socials.com/demos/).
 
 1. Download the package
 2. Add links to `jssocials.css` and chosen theme, e.g. `jssocials-theme-flat.css`
-3. Add link to `font-awesome.css` (used for social network logos by default, since you can replace it with image logo or other font if necessary)
+3. Add link to `font-awesome.css` (it's used for social network logos by default, yet you can replace it with image logo or other font if necessary)
 4. Add link to `jquery.js` and plugin script `jssocials.min.js`
 5. Apply jsSocials to the element on the page `$("#share").jsSocials({ shares: ["twitter"] })`
 
@@ -45,12 +45,39 @@ Find demos on the [project site](http://js-socials.com/demos/).
 
 ## Documentation
 
+* [Themes](#themes)
 * [Configuration](#configuration)
 * [Methods](#methods)
-* [Themes](#themes)
-* [Shares](#shares)
+* [Share](#share)
+* [Build-in Shares](#build-in-shares)
 * [Custom Share](#custom-share)
 * [Adaptiveness](#adaptiveness)
+
+
+### Themes
+
+To turn on specific theme just link one of available stylesheets
+
+* **jssocials-theme-flat.css** - flat theme
+* **jssocials-theme-classic.css** - classical theme with raised buttons
+* **jssocials-theme-minima.css** - minimalistic theme with logos instead of buttons
+* **jssocials-theme-plain.css** - monochromatic theme
+
+#### flat
+
+![jsSocials - flat theme](https://adfef9eec19058e166f1cd1202add8ac3d019fdf.googledrive.com/secure/AAyT6L_PXrl-a8O3o08VMzz3iIzHYx3XGgytGkj2i5p5fREVsiqBmh1Kb6M8TXGh5lQcB5zu-_QJJ-__3af0eT6DLXPO9dJGcGIGUV8ULVtkCA-3HiVLgf8GWKs-N_volXQtw0ELOKwYFshHBCyq1iN6mfkEIubWnqxaGnbdZyr4BTTWuVP60GvarFxASpk6yB8IBwQ7FGzGbW3cHBUzmAZLR2Kcp4n2_7OVrke4rlYoxJWc1SaEbGoPSaw8vO8NAb3amauDGIa4O4cJYD2ftYH-iTL_BXyoI7_Y24CUEQ-xPKzxud7zaxM6LCOO_4Nmwn6ks386spKgRXu0eDkORCJtoeJQp1sNJtDpCu3lFxT6EQYUxwK4-E_nvpcZuNaRasXqubW4JhdW_zBriekMafHVBKEz0f5JaThGmWw_SbenCHr5EvA8A1Aj2b95q8pQZ9cE626jzgdQD_AIlGpRQ4ugBvc5hF_duRraOgc71HJP1Ink6rph5xn07JeVriA-Q9BdKor_gx7qxnC_dl0SkVHIVNJjuJ0wse4Z_Bs2T5pu1Eo2L4SjQBCIETQlOa4_DUFzllwMYXXxYTTlm9M88w9fEtbx9paNWQ==/host/0BwcJihi374AsfmY5ck9hQmdfZG9oS3dXQUVKenVvXzFyY3gyaDBVLV95SGstTl9GaFc0TnM/flat.png)
+
+#### classic
+
+![jsSocials - classic theme](https://adfef9eec19058e166f1cd1202add8ac3d019fdf.googledrive.com/secure/AAyT6L_oFpvo6P_HddrZ7LVOHcRgk_GpBpTgXOU1q_Sxod3UqvOqTKqRDbVC4GXqahu1WHTWPB4rsVkw0aqaLVPJfqKV_dFG-dFcnVeCh62A265qFxf5o9hm6DPhzDfF4oQGLK2AqM7fx_xvxTPv9qfNnEXkVtV77Jcw4ym387mA6e-mirQ1FORwKz1v3am8wVRinRjBu1gzxiPitotDs1RZmPNxbhHonNaZLOmqVSA38pQxns_vj6NY2uQwrXxxwgDaghlhe9vJV7lMuVfX_TdR7ivHqDL90wGObhKBfaNJF30v3dPJawdBXKiYcIfTuvK5a7VkfmMTAT6e6Q_Jm5AqmgaVQuhZSm2J5wrApJOZRRr4isTWjmqsCJzK0LLf1B93OugbzafPTmQqUNptbgycsCQokWMCGDupUAn6grSEXCzu4evBJth-WeDUIfKR1RiyKlQt_Q15Qw_9f3avajqdsECgoPOV9h4MfRmcXzZ7eSi7Z580C7HhburS4-ZlnZ2KugfvF-Wf2XngWI31drvXh3fYq_fAAijrWtUR7y8GcydAt_FJW5bnwDf2o5LrSh898N78UfI0wev1V68DIeq04khMG7Wbug==/host/0BwcJihi374AsfmY5ck9hQmdfZG9oS3dXQUVKenVvXzFyY3gyaDBVLV95SGstTl9GaFc0TnM/classic.png)
+
+#### minima
+
+![jsSocials - minima theme](https://adfef9eec19058e166f1cd1202add8ac3d019fdf.googledrive.com/secure/AAyT6L8hjyFObfHdJN-7fW2mAlTpgte6FtN31_Z1j1vNzJev_R_f-0dO4zHbm90gZB1GhwAyL2tdb9K1J2iNF9Mi3mc1Q6xB3sEcFgY7rArG3kKj5HoTUjje3NpRoe7EqNB_QajQ42WMnOe64MeUk-WbzRauS2Ge4TfEsikffTwFNZMjjVzG039hiD3m2_jcbRmdNw99xSSdyhWlbIT2zwDStFQB9TEqDP0DEQlxqZ80o8MZ2qXU_ZLPT_xrFQ4f0dKUwq77yXtylP0ZSZeLEaM9xpd57l8vXJwjRJ7ajEkNTvYEm83zm-_ddE3PLs_iOTUGbiJxRWYugk-D67qSxTT9nS_xrFfj3esei5wGp5oYI9add_3vMts4xuHGS4Bwwi0R7ddLhXR7KRE-lO3zfCljY9g4dq3JvRVKle8Gg8guGyZ2NPEbYldJCLVvyQudv7nhRf-1VUR-zLZEpS0yJjEJy3hocabmRQYEjJnzWNT8RELp3A-qYdlAJ9krsqd9myRkyTvt2LRwnnxMnIE_H-kE6d1wu9vq01fAvj62gYcUTCajzdA-2zknTVRWEWeHIpLWPoX1melSgdcMsiBsq2RhOEELFvMs8g==/host/0BwcJihi374AsfmY5ck9hQmdfZG9oS3dXQUVKenVvXzFyY3gyaDBVLV95SGstTl9GaFc0TnM/minima.png)
+
+#### plain
+
+![jsSocials - plain theme](https://adfef9eec19058e166f1cd1202add8ac3d019fdf.googledrive.com/secure/AAyT6L_BZIZKK7zcRFtiEMOlxlRSTOuIRjpfpw4MD7Prvc0FlHYsQftwIpMXVHrU8Sx8z0euj2MEZoEjOwj6ge2Wbse7-cZYBVCz2U7l3l_zX-j461vMm2Ux_SPCTZRjSVcMSL4L4xqN_SPfvAjyihH_RRWixUG7QMoQQ6BLX4fhSc8IDTEM_Vvi7IUSIDISAw7VuIIxthNFbrQIifDdAAZgm4XHXpZavcqtjWUJqUoPAA1qHn9jnSxUkuriEUaOALib9lsaT4kQcZrVCjWpsSH8rYzjShR3WmOlQtRiV-eX-evFOOvKm4e17IAUT8h9gE0DHbA0SGwwa485uY7Iu94ra6SfI_V0HoWh56YRvg9cduU6XsiRFrJnRKcctYusGAIjj_yEx6cK3KWBLPR4P-z6SQi0owCNnSgKuN_0OhuHdd_qO6Zl_54Y6DM2TSumUoFCuqB5XoG5TiUKnZQw9H_R5pEKdJdb1kJkKZoFc8kXLTTEbOp2DibeXWmt9qvgtRlzp3p0yybFkbF9z60ikOHtycDHsx7amxLi5TyOcs3qfCNiozplj1GdynbsYtvKrMtRL2YDp0BbPvQgax3xuv33vpcNiI89rA==/host/0BwcJihi374AsfmY5ck9hQmdfZG9oS3dXQUVKenVvXzFyY3gyaDBVLV95SGstTl9GaFc0TnM/plain.png)
 
 
 ### Configuration
@@ -148,30 +175,130 @@ $("#share").jsSocials("refresh");
 
 ```
 
-### Themes
 
-To turn on specific theme just link one of stylesheets
+### Share
 
-* jssocials-theme-flat.css - flat theme
-* jssocials-theme-classic.css - classical theme with raised buttons
-* jssocials-theme-minima.css - minimalistic theme with logos instead of buttons
-* jssocials-theme-plain.css - monochromatic theme
+A share config has few general for all shares parameters. Yet each share can have specific parameters.
+ 
+```javascript 
 
-#### flat theme
+{
+    share: "twitter",
+    label: "Tweet",
+    logo: "fa fa-twitter",
+    renderer: function() { ... }
+}
 
-![jsSocials - flat theme](https://adfef9eec19058e166f1cd1202add8ac3d019fdf.googledrive.com/secure/AAyT6L_PXrl-a8O3o08VMzz3iIzHYx3XGgytGkj2i5p5fREVsiqBmh1Kb6M8TXGh5lQcB5zu-_QJJ-__3af0eT6DLXPO9dJGcGIGUV8ULVtkCA-3HiVLgf8GWKs-N_volXQtw0ELOKwYFshHBCyq1iN6mfkEIubWnqxaGnbdZyr4BTTWuVP60GvarFxASpk6yB8IBwQ7FGzGbW3cHBUzmAZLR2Kcp4n2_7OVrke4rlYoxJWc1SaEbGoPSaw8vO8NAb3amauDGIa4O4cJYD2ftYH-iTL_BXyoI7_Y24CUEQ-xPKzxud7zaxM6LCOO_4Nmwn6ks386spKgRXu0eDkORCJtoeJQp1sNJtDpCu3lFxT6EQYUxwK4-E_nvpcZuNaRasXqubW4JhdW_zBriekMafHVBKEz0f5JaThGmWw_SbenCHr5EvA8A1Aj2b95q8pQZ9cE626jzgdQD_AIlGpRQ4ugBvc5hF_duRraOgc71HJP1Ink6rph5xn07JeVriA-Q9BdKor_gx7qxnC_dl0SkVHIVNJjuJ0wse4Z_Bs2T5pu1Eo2L4SjQBCIETQlOa4_DUFzllwMYXXxYTTlm9M88w9fEtbx9paNWQ==/host/0BwcJihi374AsfmY5ck9hQmdfZG9oS3dXQUVKenVvXzFyY3gyaDBVLV95SGstTl9GaFc0TnM/flat.png)
+```
 
-#### classic theme
+#### share :`String`
 
-![jsSocials - classic theme](https://adfef9eec19058e166f1cd1202add8ac3d019fdf.googledrive.com/secure/AAyT6L_oFpvo6P_HddrZ7LVOHcRgk_GpBpTgXOU1q_Sxod3UqvOqTKqRDbVC4GXqahu1WHTWPB4rsVkw0aqaLVPJfqKV_dFG-dFcnVeCh62A265qFxf5o9hm6DPhzDfF4oQGLK2AqM7fx_xvxTPv9qfNnEXkVtV77Jcw4ym387mA6e-mirQ1FORwKz1v3am8wVRinRjBu1gzxiPitotDs1RZmPNxbhHonNaZLOmqVSA38pQxns_vj6NY2uQwrXxxwgDaghlhe9vJV7lMuVfX_TdR7ivHqDL90wGObhKBfaNJF30v3dPJawdBXKiYcIfTuvK5a7VkfmMTAT6e6Q_Jm5AqmgaVQuhZSm2J5wrApJOZRRr4isTWjmqsCJzK0LLf1B93OugbzafPTmQqUNptbgycsCQokWMCGDupUAn6grSEXCzu4evBJth-WeDUIfKR1RiyKlQt_Q15Qw_9f3avajqdsECgoPOV9h4MfRmcXzZ7eSi7Z580C7HhburS4-ZlnZ2KugfvF-Wf2XngWI31drvXh3fYq_fAAijrWtUR7y8GcydAt_FJW5bnwDf2o5LrSh898N78UfI0wev1V68DIeq04khMG7Wbug==/host/0BwcJihi374AsfmY5ck9hQmdfZG9oS3dXQUVKenVvXzFyY3gyaDBVLV95SGstTl9GaFc0TnM/classic.png)
+A string name of the share.
+jsSocials supports following build-in shares: `"twitter" | "facebook" | "googleplus" | "linkedin" | "pinterest"`
+However adding any new share is simple and described in [Custom Share section](#custom-share).
 
-#### minima theme
+#### label :`String`
 
-![jsSocials - minima theme](https://adfef9eec19058e166f1cd1202add8ac3d019fdf.googledrive.com/secure/AAyT6L8hjyFObfHdJN-7fW2mAlTpgte6FtN31_Z1j1vNzJev_R_f-0dO4zHbm90gZB1GhwAyL2tdb9K1J2iNF9Mi3mc1Q6xB3sEcFgY7rArG3kKj5HoTUjje3NpRoe7EqNB_QajQ42WMnOe64MeUk-WbzRauS2Ge4TfEsikffTwFNZMjjVzG039hiD3m2_jcbRmdNw99xSSdyhWlbIT2zwDStFQB9TEqDP0DEQlxqZ80o8MZ2qXU_ZLPT_xrFQ4f0dKUwq77yXtylP0ZSZeLEaM9xpd57l8vXJwjRJ7ajEkNTvYEm83zm-_ddE3PLs_iOTUGbiJxRWYugk-D67qSxTT9nS_xrFfj3esei5wGp5oYI9add_3vMts4xuHGS4Bwwi0R7ddLhXR7KRE-lO3zfCljY9g4dq3JvRVKle8Gg8guGyZ2NPEbYldJCLVvyQudv7nhRf-1VUR-zLZEpS0yJjEJy3hocabmRQYEjJnzWNT8RELp3A-qYdlAJ9krsqd9myRkyTvt2LRwnnxMnIE_H-kE6d1wu9vq01fAvj62gYcUTCajzdA-2zknTVRWEWeHIpLWPoX1melSgdcMsiBsq2RhOEELFvMs8g==/host/0BwcJihi374AsfmY5ck9hQmdfZG9oS3dXQUVKenVvXzFyY3gyaDBVLV95SGstTl9GaFc0TnM/minima.png)
+A string specifying the text to show on share button.
 
-#### plain theme
+#### logo :`String`
 
-![jsSocials - plain theme](https://adfef9eec19058e166f1cd1202add8ac3d019fdf.googledrive.com/secure/AAyT6L_BZIZKK7zcRFtiEMOlxlRSTOuIRjpfpw4MD7Prvc0FlHYsQftwIpMXVHrU8Sx8z0euj2MEZoEjOwj6ge2Wbse7-cZYBVCz2U7l3l_zX-j461vMm2Ux_SPCTZRjSVcMSL4L4xqN_SPfvAjyihH_RRWixUG7QMoQQ6BLX4fhSc8IDTEM_Vvi7IUSIDISAw7VuIIxthNFbrQIifDdAAZgm4XHXpZavcqtjWUJqUoPAA1qHn9jnSxUkuriEUaOALib9lsaT4kQcZrVCjWpsSH8rYzjShR3WmOlQtRiV-eX-evFOOvKm4e17IAUT8h9gE0DHbA0SGwwa485uY7Iu94ra6SfI_V0HoWh56YRvg9cduU6XsiRFrJnRKcctYusGAIjj_yEx6cK3KWBLPR4P-z6SQi0owCNnSgKuN_0OhuHdd_qO6Zl_54Y6DM2TSumUoFCuqB5XoG5TiUKnZQw9H_R5pEKdJdb1kJkKZoFc8kXLTTEbOp2DibeXWmt9qvgtRlzp3p0yybFkbF9z60ikOHtycDHsx7amxLi5TyOcs3qfCNiozplj1GdynbsYtvKrMtRL2YDp0BbPvQgax3xuv33vpcNiI89rA==/host/0BwcJihi374AsfmY5ck9hQmdfZG9oS3dXQUVKenVvXzFyY3gyaDBVLV95SGstTl9GaFc0TnM/plain.png)
+A string specifying the share logo. 
+It accepts following values:
+
+* **css class** - any non-url string is rendered as `&lt;i class="css class"&gt;&lt;/i&gt;`. Font awesome is used by default, but it can be redefined with any other css class. 
+* **image url** - string of image url format is rendered as `&lt;img src="image url" /&gt;`.
+* **image base64 url** - string of image base64 url format is rendered as `&lt;img src="image base64 url" /&gt;`.
+
+#### renderer :`function()`
+
+A function returning `&lt;div&gt;` with custom share content. 
+The `renderer` is used for custom share scenario, e.g. using standard sharing component for particular network. 
+If `renderer` is specified, then all other share parameters are ignored.
+
+This is how render native google plus share button with `renderer`:
+
+```javascript
+
+$("#share").jsSocials({
+    shares: [{
+        renderer: function() {
+            var $result = $("<div>");
+    
+            var script = document.createElement("script");
+            script.src = "https://apis.google.com/js/platform.js";
+            $result.append(script);
+    
+            $("<div>").addClass("g-plus")
+                .attr({
+                    "data-action": "share",
+                    "data-annotation": "bubble"
+                })
+                .appendTo($result);
+    
+            return $result;
+        }
+    }]
+});
+
+```
+
+### Build-in Shares
+
+The build-in socials share have following configurations
+
+#### twitter
+
+```javascript
+{
+    label: "Tweet",
+    logo: "fa fa-twitter",
+    via: "",                // a Twitter username specifying the source of a Tweet.
+    hashtags: ""            // A comma-separated list of hashtags to be appended Tweet text.
+}
+```
+
+#### facebook
+
+```javascript
+{
+    label: "Like",
+    logo: "fa fa-facebook"
+}
+```
+
+#### googleplus
+
+```javascript
+{
+    label: "+1",
+    logo: "fa fa-google-plus",
+}
+```
+
+#### linkedin
+
+```javascript
+{
+    label: "Share",
+    logo: "fa fa-linkedin",
+}
+```
+
+#### pinterest
+
+```javascript
+{
+    label: "Pin it",
+    logo: "fa fa-pinterest",
+    media: ""               // url of media to share
+}
+```
+
+
+### Custom Share
+
+
 
 
 ## License

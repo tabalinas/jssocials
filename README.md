@@ -58,7 +58,7 @@ Find demos on the [project site](http://js-socials.com/demos/).
 
 ### Themes
 
-To turn on specific theme just link one of available stylesheets
+To turn on a specific theme just link one of available stylesheets
 
 * **jssocials-theme-flat.css** - flat theme
 * **jssocials-theme-classic.css** - classical theme with raised buttons
@@ -100,12 +100,12 @@ The config object may contain following options:
 
 An array of shares. 
 
-Each share can be
+Each share can be a
 
-* string - name of share from registry `jsSocials.shares` (e.g. `"twitter"`)
-* config - plain object with `share` as name and custom parameters specific for each share. Read more about share config in [Shares section](#shares).
+* **string** - name of share from registry `jsSocials.shares` (e.g. `"twitter"`)
+* **config** - plain object with `share` as name and custom parameters specific for each share. Read more about share config in [Share](#share) section.
 
-For instance for twitter the config may look like:
+For instance for twitter the config might look like:
 
 ```javascript
 {
@@ -118,21 +118,21 @@ For instance for twitter the config may look like:
 
 #### url :`String`
 
-A string specifying url to share. **window.location.href** used by default.
+A string specifying url to share. Value of `window.location.href` is used by default.
 
 #### text :`String`
 
-A string specifying text to share. The content of `<meta name="description">` or `<title>` used by default.
+A string specifying text to share. The content of `<meta name="description">` or `<title>` (if first is missing) is used by default.
 
 #### showLabel :`true|false|function(screenWidth)`
 
 A boolean specifying whether to show the text on the share button. 
-Also accepts function returning true|false depending on screen width for adaptive rendering. Read more in [Adaptiveness section](#adaptiveness)
+Also accepts function returning `true|false` depending on the screen width for adaptive rendering. Read more in [Adaptiveness](#adaptiveness) section.
 
 #### showCount :`true|false|"inside"|function(screenWidth)`
 
 A boolean or "inside" specifying whether and how to show share count. 
-Also accepts function returning true|false|"inside" depending on screen width for adaptive rendering. Read more in [Adaptiveness section](#adaptiveness)
+Also accepts function returning `true|false|"inside"` depending on the screen width for adaptive rendering. Read more in [Adaptiveness](#adaptiveness) section.
 
 
 ### Methods
@@ -180,7 +180,7 @@ $("#share").jsSocials("refresh");
 
 ### Share
 
-A share config has few general for all shares parameters. Yet each share can have specific parameters.
+A share config has few applicable for all shares parameters. Yet each share may have specific parameters.
  
 ```javascript 
 
@@ -196,8 +196,9 @@ A share config has few general for all shares parameters. Yet each share can hav
 #### share :`String`
 
 A string name of the share.
-jsSocials supports following build-in shares: `"twitter" | "facebook" | "googleplus" | "linkedin" | "pinterest"`
-However adding any new share is simple and described in [Custom Share section](#custom-share).
+jsSocials supports following build-in shares: `"twitter"|"facebook"|"googleplus"|"linkedin"|"pinterest"`
+
+Adding any new share is simple and described in [Custom Share](#custom-share) section.
 
 #### label :`String`
 
@@ -209,8 +210,8 @@ A string specifying the share logo.
 It accepts following values:
 
 * **css class** - any non-url string is rendered as `<i class="css class"></i>`. Font awesome is used by default, but it can be redefined with any other css class. 
-* **image url** - string of image url format is rendered as `<img src="image url" />`.
-* **image base64 url** - string of image base64 url format is rendered as `<img src="image base64 url" />`.
+* **image url** - string in image url format is rendered as `<img src="image url" />`.
+* **image base64 url** - string in image base64 url format is rendered as `<img src="image base64 url" />`.
 
 #### renderer :`function()`
 
@@ -218,7 +219,7 @@ A function returning `<div>` with custom share content.
 The `renderer` is used for custom share scenario, e.g. using standard sharing component for particular network. 
 If `renderer` is specified, then all other share parameters are ignored.
 
-This is how render native google plus share button with `renderer`:
+This is how to render native google plus share button with `renderer`:
 
 ```javascript
 
@@ -247,7 +248,7 @@ $("#share").jsSocials({
 
 ### Build-in Shares
 
-The build-in socials shares have following configuration
+The build-in social network shares have following configuration
 
 #### twitter
 
@@ -256,7 +257,7 @@ The build-in socials shares have following configuration
     label: "Tweet",
     logo: "fa fa-twitter",
     via: "",                // a Twitter username specifying the source of a Tweet.
-    hashtags: ""            // a comma-separated list of hashtags to be appended Tweet text.
+    hashtags: ""            // a comma-separated list of hashtags to be appended to Tweet text.
 }
 ```
 
@@ -300,9 +301,9 @@ The build-in socials shares have following configuration
 
 ### Custom Share
 
-To register custom share add it to `jsSocials.shares` registry.
+To register a custom share add it to `jsSocials.shares` registry.
 
-This is how defined the **twitter** share:
+This is how the **twitter** share is defined:
 
 ```javascript
 
@@ -329,7 +330,7 @@ $share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027);
 
 ```
 
-Each share contains following parameters:
+Each share has following parameters:
 
 #### label :`String`
 
@@ -342,15 +343,15 @@ A default value of share logo. Accepts css class or image url.
 #### shareUrl :`String|function()`
 
 A string or a function returning a string specifying the sharing url.
-It can contain any parameters in curly braces `{param}`. This parameter will be taken from share config. 
-The `{url}` and `{text}` params are taken from jsSocials config.
+It can contain any parameters in curly braces `{param}`. These parametere will be taken from share config. 
+The `{url}` and `{text}` parameters are taken from jsSocials config.
 
 #### countUrl :`String|function()`
 
 A string or a function returning a string specifying the url to request shares count.
-It can contain any parameters in curly braces `{param}`. This parameter will be taken from share config. 
-The `{url}` param is taken from jsSocials config.
-This parameter should be specified only if you going to show share counts.
+It can contain any parameters in curly braces `{param}`. These parameters will be taken from share config. 
+The `{url}` parameter is taken from jsSocials config.
+The `countUrl` option should be specified only if you are going to show share count (`showCount` is not `false`).
 
 #### getCount :`function(data)`
 
@@ -362,21 +363,21 @@ Return a string value to avoid automatic formatting.
 
 ### Adaptiveness
 
-Options `showLabel` and `showCount` accepts function(screenWidth) that has screen width as input parameter and returns whether to show label and count.
+Options `showLabel` and `showCount` accept `function(screenWidth)` that has screen width as an input parameter and returns whether to show label (or count).
 
 By default `showLabel` function returns following values:
 
-* **true** for all screens wider than 1024px (large screen)
-* **true** for all screens wider than 640px (small screen) when showCount is `false`
-* **false** in all other cases
+* `true` for all screens wider than 1024px (large screen)
+* `true` for all screens wider than 640px (small screen) when `showCount` is `false`
+* `false` in all other cases
 
 
 By default `showCount` function returns following values:
 
-* **true** for all screens wider than 640px (small screen)
-* **"inside"** for all screens with width less than 640px (small screen)
+* `true` for all screens wider than 640px (small screen)
+* `"inside"` for all screens with width less than 640px (small screen)
 
-These break points are defined with two jsSocials options.
+These breakpoints are defined with jsSocials config options:
 
 ```javascript 
 
@@ -387,12 +388,12 @@ These break points are defined with two jsSocials options.
 
 ```
 
-These breakpoints value can be redefined in jsSocials config.
+Thus these breakpoint values can be redefined in jsSocials config.
 
 The adaptive behavior can be easily redefined with custom `showLabel` and `showCount` functions.
 
-In this example we show counter for all screens wider than 1024px and hide count for others, 
-and show label for screens wider 1280px and hide for others:
+In this example we show counter for all screens wider than 1024px hiding count for other screens, 
+and show label for screens wider 1280px hiding for other screens:
 
 ```javascript
 

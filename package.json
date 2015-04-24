@@ -1,7 +1,7 @@
 {
   "name": "jssocials",
   "version": "0.0.1",
-  "description": "jsSocials",
+  "description": "jsSocials - jQuery Social Network Sharing Plugin",
   "homepage": "http://js-socials.com",
   "keywords": [
     "jquery-plugin",
@@ -14,7 +14,7 @@
     "email": "tabalinas@gmail.com",
     "url": "https://github.com/tabalinas"
   },
-  "repository": "tabalinas/js-socials",
+  "repository": "tabalinas/jssocials",
   "license": "MIT",
   "scripts": {
     "test": "grunt"

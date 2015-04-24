@@ -1,6 +1,6 @@
 # jsSocials - Simple Social Sharing
 
-[![Build Status](https://travis-ci.org/tabalinas/js-socials.svg?branch=master)](https://travis-ci.org/tabalinas/js-socials)
+[![Build Status](https://travis-ci.org/tabalinas/jssocials.svg?branch=master)](https://travis-ci.org/tabalinas/jssocials)
 
 Project site [js-socials.com](http://js-socials.com/)
 

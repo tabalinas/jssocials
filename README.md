@@ -1,5 +1,7 @@
 # jsSocials - Simple Social Sharing
 
+[![Build Status](https://travis-ci.org/tabalinas/jssocials.svg?branch=master)](https://travis-ci.org/tabalinas/jssocials)
+
 Project site [js-socials.com](http://js-socials.com/)
 
 **jsSocials** is a simple social network sharing jQuery plugin. It's flexible and easily extensible. 

@@ -1,0 +1,13 @@
+# Site settings
+title: jsSocials
+email: tabalinas@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Social Network Sharing jQuery Plugin
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://js-socials.com" # the base hostname & protocol for your site
+twitter_username: artem_tabalin
+github_username:  tabalinas
+sass:
+  sass_dir: _scss
+# Build settings
+markdown: kramdown

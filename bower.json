@@ -1,9 +1,6 @@
 {
-    "name": "jssocials",
-    "version": "0.0.1",
-    "dependencies": {},
-    "devDependencies": {
-        "qunit": "~1.12.0",
-        "jquery": "~1.11.2"
-    }
+  "name": "jekyll-yeti",
+  "dependencies": {
+    "foundation": "zurb/bower-foundation"
+  }
 }

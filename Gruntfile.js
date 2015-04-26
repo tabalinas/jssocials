@@ -1,89 +1,88 @@
-"use strict";
-module.exports = function(grunt) {
-    // Load all grunt tasks
-    require("load-grunt-tasks")(grunt);
-    // Show elapsed time at the end
-    require("time-grunt")(grunt);
+module.exports = function (grunt) {
 
-    // Project configuration.
-    grunt.initConfig({
-        // Metadata.
-        pkg: grunt.file.readJSON("package.json"),
-        banner: "/*! <%= pkg.name %> - v<%= pkg.version %> - " +
-        "<%= grunt.template.today('yyyy-mm-dd') %>\n" +
-        "<%= pkg.homepage ? '* ' + pkg.homepage + '\\n' : '' %>" +
-        "* Copyright (c) <%= grunt.template.today('yyyy') %> <%= pkg.author.name %>;" +
-        " Licensed MIT */\n",
-        // Task configuration.
-        clean: {
-            files: ["dist"]
-        },
-        concat: {
-            options: {
-                banner: "<%= banner %>",
-                stripBanners: true
-            },
-            dist: {
-                src: ["src/<%= pkg.name %>.js", "src/<%= pkg.name %>.shares.js"],
-                dest: "dist/<%= pkg.name %>.js"
-            }
-        },
-        sass: {
-            dist: {
-                files:[{
-                    expand: true,
-                    cwd: "styles",
-                    src: ["*.scss"],
-                    dest: "dist",
-                    ext: ".css"
-                }]
-            }
-        },
-        autoprefixer:{
-            dist: {
-                files: [{
-                    expand: true,
-                    src: "dist/*.css"
-                }]
-            }
-        },
-        uglify: {
-            options: {
-                banner: "<%= banner %>"
-            },
-            dist: {
-                src: "<%= concat.dist.dest %>",
-                dest: "dist/<%= pkg.name %>.min.js"
-            }
-        },
-        qunit: {
-            files: ["test/<%= pkg.name %>.html"]
-        },
-        jshint: {
-            options: {
-                reporter: require("jshint-stylish")
-            },
-            gruntfile: {
-                options: {
-                    jshintrc: ".jshintrc"
-                },
-                src: "Gruntfile.js"
-            },
-            src: {
-                options: {
-                    jshintrc: "src/.jshintrc"
-                },
-                src: ["src/**/*.js"]
-            },
-            test: {
-                options: {
-                    jshintrc: "test/.jshintrc"
-                },
-                src: ["test/**/*.js"]
-            }
-        }
-    });
+	// Project configuration.
+	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
 
-    grunt.registerTask("default", ["jshint", "qunit", "clean", "sass", "autoprefixer", "concat", "uglify"]);
-    grunt.registerTask("test", ["qunit"]);
+		// leave the .git folder to keep vcs using Github pages
+		clean: {
+			dist: {
+				src: ['dist/*', '!dist/.git', '.tmp/']
+			}
+		},
+		copy: {
+			dist: {
+				files: [{
+					expand: true,
+					cwd: './_site',
+					src: ['*', '**/**', '!js/**', '!css/*', '!bower_components/**'],
+					dest: 'dist/'
+				}]
+			}
+		},
+		useminPrepare: {
+			html: ['./_site/index.html'],
+			options: {
+				dest: 'dist'
+			}
+		},
+
+		usemin: {
+			html: ['dist/**/*.html', '!./bower_components/**'],
+			css: ['dist/css/**/*.css'],
+			options: {
+				dirs: ['dist']
+			}
+		},
+		wiredep: {
+			target: {
+				src: [
+					'./_includes/*.html'
+				],
+				exclude: [
+					'modernizr',
+					'jquery-placeholder',
+					'jquery.cookie',
+					'foundation'
+				]
+			}
+		},
+		shell: {
+			startServer: {
+				command: 'jekyll serve',
+				options: {
+					stderr: false,
+					execOptions: {
+						cwd: '.'
+					}
+				}
+			},
+			buildSite: {
+				command: 'jekyll build',
+				options: {
+					stderr: false,
+					execOptions: {
+						cwd: '.'
+					}
+				}
+			}
+		}
+
+	});
+
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-usemin');
+	grunt.loadNpmTasks('grunt-wiredep');
+	grunt.loadNpmTasks('grunt-shell');
+	// Default task(s).
+	grunt.registerTask('default', ['shell:startServer']);
+	grunt.registerTask('build', ['shell:buildSite']);
+	grunt.registerTask('clear', ['clean']);
+	grunt.registerTask('dist', ['clean:dist', 'useminPrepare', 'copy:dist', 'concat', 'cssmin', 'uglify', 'usemin']);
+	grunt.registerTask('bower', ['wiredep', 'shell:buildSite']);
+
 };

@@ -1,7 +1,7 @@
 {
     "name": "jssocials",
     "description": "Social Network Sharing jQuery Plugin",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "private": true,
     "devDependencies": {
         "grunt": "^0.4.5",

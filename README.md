@@ -1,3 +1,0 @@
-## Change Me
-
-Site description.

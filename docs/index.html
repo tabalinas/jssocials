@@ -4,3 +4,10 @@ title: Documentation
 permalink: /docs/
 weight: 3
 ---
+
+<div class="row">
+    <div class="columns content">
+        {% capture docs %}{% include docs.md %}{% endcapture %}
+        {{ docs | markdownify }}
+    </div>
+</div>

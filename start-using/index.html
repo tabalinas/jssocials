@@ -1,0 +1,24 @@
+---
+layout: default
+title: Start Using
+permalink: /start-using/
+weight: 2
+---
+
+<div class="page-header">
+    <div class="row">
+        <div class="small-12 columns content">
+            <h1>Start Using</h1>
+            <p>Follow 5 simple steps</p>
+        </div>
+    </div>
+</div>
+
+<div class="page-content start-using">
+    <div class="row">
+        <div class="small-12 columns content">
+            {% capture startUsing %}{% include start-using.md %}{% endcapture %}
+            {{ startUsing | markdownify }}
+        </div>
+    </div>
+</div>

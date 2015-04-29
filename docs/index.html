@@ -2,12 +2,24 @@
 layout: default
 title: Docs
 permalink: /docs/
-weight: 3
+weight: 4
 ---
 
-<div class="row">
-    <div class="columns content">
-        {% capture docs %}{% include docs.md %}{% endcapture %}
-        {{ docs | markdownify }}
+<div class="page-header">
+    <div class="row">
+        <div class="small-12 columns content">
+            <h1>Documentation</h1>
+            <p><strong>jsSocials</strong> is a simple social network jQuery plugin. <br />
+                Learn more about themes, configuration, methods, shares and adaptiveness. </p>
+        </div>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="row">
+        <div class="columns content">
+            {% capture docs %}{% include docs.md %}{% endcapture %}
+            {{ docs | markdownify }}
+        </div>
     </div>
 </div>

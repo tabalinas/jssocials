@@ -1,1 +1,72 @@
-// Your custom styles here
+$larger-text: 1.2rem;
+$faded-text-color: #777;
+
+$page-header-bg-color: #eee;
+$page-header-text-color: $faded-text-color;
+$page-header-font-size: 1.3rem;
+
+$page-content-addon-bg-color: #fcfcfc;
+
+$feature-block-icon-color: #3498db;
+
+.hidden {
+  display: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.page-header {
+  background: $page-header-bg-color;
+
+  h1 {
+
+  }
+
+  p {
+    color: $page-header-text-color;
+    font-size: $page-header-font-size;
+  }
+}
+
+.page-content {
+
+}
+
+.page-content-addon {
+  background: $page-content-addon-bg-color;
+}
+
+.content {
+  padding-bottom: 2rem;
+
+  &:first-child {
+    padding-top: 2rem;
+  }
+}
+
+.feature-block {
+
+  height: 170px;
+
+  p {
+    font-size: $larger-text;
+  }
+
+  i {
+    font-size: 2rem;
+    margin-right: .5rem;
+    color: $feature-block-icon-color;
+  }
+}
+
+@media #{$medium-up} {
+  .content {
+    padding-top: 2rem;
+  }
+}
+
+.socials-screenshot {
+
+}

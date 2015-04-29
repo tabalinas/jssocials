@@ -1,9 +1,25 @@
 {
     "name": "jssocials",
-    "version": "0.0.1",
-    "dependencies": {},
+    "version": "0.1.0",
+    "main": "dist/jssocials.js",
+    "ignore": [
+        "demo",
+        "test",
+        ".editorconfig",
+        ".gitignore",
+        ".jshintrc",
+        ".travis.yml",
+        "bower.json",
+        "contributing.md",
+        "Gruntfile.js",
+        "LICENSE",
+        "package.json",
+        "README.md"
+    ],
+    "dependencies": {
+        "jquery": ">=1.10.2"
+    },
     "devDependencies": {
-        "qunit": "~1.12.0",
-        "jquery": "~1.11.2"
+        "qunit": ">=1.12.0"
     }
 }

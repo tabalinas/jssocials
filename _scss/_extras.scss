@@ -76,3 +76,9 @@ $feature-block-icon-color: #3498db;
 .socials-screenshot {
 
 }
+
+.jssocials-share-link {
+  &:hover, &:focus, &:active {
+    color: #fff;
+  }
+}

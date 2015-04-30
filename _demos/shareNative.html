@@ -1,0 +1,92 @@
+---
+id: "shareNative"
+title: "Native Shares"
+note: "Provide `renderer` function to completely customize the sharing. This example shows how to render native sharing buttons."
+weight: 9
+---
+
+$("#shareNative").jsSocials({
+    showLabel: false,
+    showCount: false,
+
+    shares: [{
+        renderer: function() {
+            var $result = $("<div>");
+
+            var script = document.createElement("script");
+            script.text = "(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = \"//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.3\"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));";
+            $result.append(script);
+
+            $("<div>").addClass("fb-share-button")
+                .attr({
+                    "data-href": "https://developers.facebook.com/docs/plugins/",
+                    "data-layout": "button_count"
+                })
+                .appendTo($result);
+
+            return $result;
+        }
+    }, {
+        renderer: function() {
+            var $result = $("<div>");
+
+            var script = document.createElement("script");
+            script.src = "https://apis.google.com/js/platform.js";
+            $result.append(script);
+
+            $("<div>").addClass("g-plus")
+                .attr({
+                    "data-action": "share",
+                    "data-annotation": "bubble"
+                })
+                .appendTo($result);
+
+            return $result;
+        }
+    }, {
+        renderer: function() {
+            var $result = $("<div>");
+
+            var script = document.createElement("script");
+            script.src = "//platform.linkedin.com/in.js";
+            $result.append(script);
+
+            $("<script>").attr({ type: "IN/Share", "data-counter": "right" })
+                .appendTo($result);
+
+            return $result;
+        }
+    }, {
+        renderer: function() {
+            var $result = $("<div>");
+
+            var script = document.createElement("script");
+            script.src = "//assets.pinterest.com/js/pinit.js";
+            $result.append(script);
+
+            $("<img>").attr("src", "//assets.pinterest.com/images/pidgets/pin_it_button.png")
+                .append($("<a>").attr({
+                    "href": "https://www.pinterest.com/pin/create/button/",
+                    "data-pin-do": "buttonPin"
+                }))
+                .appendTo($result);
+
+            return $result;
+        }
+    }, {
+        renderer: function() {
+            var $result = $("<div>");
+
+            var script = document.createElement("script");
+            script.text = "window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src=\"https://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,\"script\",\"twitter-wjs\"));";
+            $result.append(script);
+
+            $("<a>").addClass("twitter-share-button")
+                .text("Tweet")
+                .attr("href", "https://twitter.com/share")
+                .appendTo($result);
+
+            return $result;
+        }
+    }]
+});

@@ -7,4 +7,6 @@ twitter_username: artem_tabalin
 github_username:  tabalinas
 sass:
   sass_dir: _scss
+collections:
+  - demos
 markdown: redcarpet

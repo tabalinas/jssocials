@@ -45,11 +45,8 @@ $feature-block-icon-color: #3498db;
 }
 
 .content {
-  padding-bottom: 2rem;
-
-  &:first-child {
-    padding-top: 2rem;
-  }
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .feature-block {
@@ -64,12 +61,6 @@ $feature-block-icon-color: #3498db;
     font-size: 2rem;
     margin-right: .5rem;
     color: $feature-block-icon-color;
-  }
-}
-
-@media #{$medium-up} {
-  .content {
-    padding-top: 2rem;
   }
 }
 

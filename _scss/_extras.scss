@@ -92,7 +92,15 @@ $note-border-color: #e5e5e5;
   margin-top: 2rem;
 }
 
+.demo-code {
+  margin-top: 1rem;
+}
+
 .alert-box.secondary {
   background-color: $note-bg-color;
   border-color: $note-border-color;
+
+  p {
+    margin-bottom: 0;
+  }
 }

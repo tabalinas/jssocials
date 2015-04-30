@@ -46,7 +46,7 @@ weight: 3
             {% for demo in demos %}
             <div class="demo-item content">
             <h2 class="demo-title">{{ demo.title }}</h2>
-            {% if demo.note %}<div class="alert-box secondary">{{ demo.note }}</div>{% endif %}
+            {% if demo.note %}<div class="alert-box secondary">{{ demo.note | markdownify  }}</div>{% endif %}
             <div id="{{ demo.id }}"></div>
             {% capture demoCode %}```javascript
 {{ demo.content }}
@@ -58,6 +58,11 @@ weight: 3
     </div>
 </div>
 
+<style>
+    #shareRoundIcons .jssocials-share-link {
+        border-radius: 50%;
+    }
+</style>
 <script>
     $(function() {
 

@@ -167,7 +167,6 @@ If `renderer` is specified, then all other share parameters are ignored.
 This is how to render native google plus share button with `renderer`:
 
 ```javascript
-
 $("#share").jsSocials({
     shares: [{
         renderer: function() {

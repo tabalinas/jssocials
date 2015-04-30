@@ -9,6 +9,12 @@ $page-content-addon-bg-color: #fcfcfc;
 
 $feature-block-icon-color: #3498db;
 
+$code-bg-color: #fcfcfc;
+$code-border-color: #e5e5e5;
+
+$note-bg-color: #ffffec;
+$note-border-color: #e5e5e5;
+
 .hidden {
   display: none;
 }
@@ -74,6 +80,19 @@ $feature-block-icon-color: #3498db;
   }
 }
 
+.highlight {
+  font-size: .8rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid $code-border-color;
+  padding: .5rem;
+  background: $code-bg-color;
+}
+
 .demos-settings {
   margin-top: 2rem;
+}
+
+.alert-box.secondary {
+  background-color: $note-bg-color;
+  border-color: $note-border-color;
 }

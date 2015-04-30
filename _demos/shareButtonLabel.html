@@ -1,0 +1,18 @@
+---
+id: "shareButtonLabel"
+title: "Button with Label"
+note: "Specify share `label` option to customize a share button label."
+weight: 5
+---
+
+$("#shareButtonLabel").jsSocials({
+    showCount: false,
+    showLabel: true,
+    shares: [
+        "twitter",
+        "facebook",
+        "googleplus",
+        "linkedin",
+        { share: "pinterest", label: "Pin this" }
+    ]
+});

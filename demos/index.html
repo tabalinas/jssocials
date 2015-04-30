@@ -15,7 +15,7 @@ weight: 3
 </div>
 
 <div class="page-content">
-    <div class="row demos-settings content">
+    <div class="row demos-settings">
         <div class="medium-6 columns">
             Select Theme:
             <select id="themeSelector">
@@ -40,11 +40,13 @@ weight: 3
         </div>
     </div>
 
-    <div id="demosContainer" class="row demos-container content">
+    <div id="demosContainer" class="row demos-container">
         <div class="columns">
-            {% for demo in site.demos %}
-            <div class="demo-item">
+            {% assign demos = site.demos | sort: 'weight' %}
+            {% for demo in demos %}
+            <div class="demo-item content">
             <h2 class="demo-title">{{ demo.title }}</h2>
+            {% if demo.note %}<div class="alert-box secondary">{{ demo.note }}</div>{% endif %}
             <div id="{{ demo.id }}"></div>
             {% capture demoCode %}```javascript
 {{ demo.content }}

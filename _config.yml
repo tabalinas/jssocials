@@ -10,3 +10,4 @@ sass:
 collections:
   - demos
 markdown: redcarpet
+highlighter: pygments

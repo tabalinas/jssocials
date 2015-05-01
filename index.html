@@ -28,7 +28,7 @@ weight: 1
     <div class="row">
         <div class="medium-4 columns feature-block">
             <h3>Tuning</h3>
-            <p><i class="fa fa-sliders"></i> jsSocials allows to easily customize appearance. Define how should look your share controls considering screen width.</p>
+            <p><i class="fa fa-sliders"></i> jsSocials allows to easily customize appearance. Define how your share controls should look considering screen width.</p>
         </div>
         <div class="medium-4 columns feature-block">
             <h3>Themes</h3>
@@ -36,7 +36,7 @@ weight: 1
         </div>
         <div class="medium-4 columns feature-block">
             <h3>Custom Shares</h3>
-            <p><i class="fa fa-cog"></i> jsSocials gives ability to register any custom share with ease.</p>
+            <p><i class="fa fa-cog"></i> jsSocials gives the ability to register any custom share with ease.</p>
         </div>
     </div>
 </div>
@@ -44,19 +44,18 @@ weight: 1
 <div class="page-content-addon">
     <div class="row">
         <div class="small-12 columns content">
-            <p class="larger-text center">Find jsSocials on GitHub.</p>
-            <p class="center"><a href="https://github.com/tabalinas/jssocials" class="button larger">jsSocials on GitHub &nbsp; <i class="fa fa-github-alt"></i></a></p>
+            <div class="feature-header center">
+                <h2>Share with jsSocials</h2>
+            </div>
+            <div class="center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="page-content">
-    <div class="row">
-        <div class="small-12 columns content">
-            <div class="feature-header center">
-                <h2>Look at jsSocials in Action</h2>
-            </div>
-            <p class="socials-screenshot"><a href="/demos" title="See Demos"><img src="http://gdurl.com/a653" alt="jsSocials simple socials sharing plugin"></a></p>
-        </div>
-    </div>
-</div>
+<script>
+    $("#share").jsSocials({
+        shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"]
+    });
+</script>

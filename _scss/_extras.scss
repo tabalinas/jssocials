@@ -5,7 +5,9 @@ $page-header-bg-color: #eee;
 $page-header-text-color: $faded-text-color;
 $page-header-font-size: 1.3rem;
 
-$page-content-addon-bg-color: #fcfcfc;
+$page-content-addon-border-color: #eee;
+
+$footer-border-color: #e5e5e5;
 
 $feature-block-icon-color: #3498db;
 
@@ -41,7 +43,13 @@ $note-border-color: #e5e5e5;
 }
 
 .page-content-addon {
-  background: $page-content-addon-bg-color;
+  margin-bottom: 2rem;
+}
+
+.footer {
+  margin-top: 2rem;
+  border-top: solid 1px $footer-border-color;
+  color: $faded-text-color;
 }
 
 .start-using {
@@ -86,6 +94,10 @@ $note-border-color: #e5e5e5;
   border: 1px solid $code-border-color;
   padding: .5rem;
   background: $code-bg-color;
+}
+
+.footer-nav {
+  display: inline-block !important;
 }
 
 .demos-settings {

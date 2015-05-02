@@ -15,8 +15,10 @@ $code-border-color: #e5e5e5;
 $note-bg-color: #ffffec;
 $note-border-color: #e5e5e5;
 
-img {
-  max-width: 700px;
+@media #{$medium-up} {
+  img {
+    max-width: 700px;
+  }
 }
 
 .hidden {

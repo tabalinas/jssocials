@@ -141,7 +141,7 @@ A share config has few applicable for all shares parameters. Yet each share may 
 #### share :`String`
 
 A string name of the share.
-jsSocials supports following build-in shares: `"twitter"|"facebook"|"googleplus"|"linkedin"|"pinterest"`
+jsSocials supports following build-in shares: `"twitter" | "facebook" | "googleplus" | "linkedin" | "pinterest"`
 
 Adding any new share is simple and described in [Custom Share](#custom-share) section.
 

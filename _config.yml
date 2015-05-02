@@ -3,8 +3,8 @@ email: tabalinas@gmail.com
 description: Simple Social Network Sharing Plugin
 baseurl: ""
 url: "http://js-socials.com"
-twitter_username: artem_tabalin
-github_username:  tabalinas
+twitter: artem_tabalin
+github:  tabalinas
 sass:
   sass_dir: _scss
 collections:

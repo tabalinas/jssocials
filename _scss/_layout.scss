@@ -16,7 +16,7 @@ $note-bg-color: #ffffec;
 $note-border-color: #e5e5e5;
 
 @media #{$small-only} {
-  body {
+  body, p {
     font-weight: 300;
   }
 }

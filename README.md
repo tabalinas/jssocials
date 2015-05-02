@@ -348,7 +348,7 @@ A default value of share logo. Accepts css class or image url.
 #### shareUrl :`String|function()`
 
 A string or a function returning a string specifying the sharing url.
-It can contain any parameters in curly braces `{param}`. These parametere will be taken from share config. 
+It can contain any parameters in curly braces `{param}`. These parameters will be taken from share config. 
 The `{url}` and `{text}` parameters are taken from jsSocials config.
 
 #### countUrl :`String|function()`
@@ -368,7 +368,7 @@ Return a string value to avoid automatic formatting.
 
 ### Adaptiveness
 
-Options `showLabel` and `showCount` accept `function(screenWidth)` that has screen width as an input parameter and returns whether to show label (or count).
+Options `showLabel` and `showCount` accept `function(screenWidth)` that has screen width as an input parameter and returns the value specifying whether to show label (or count).
 
 By default `showLabel` function returns following values:
 

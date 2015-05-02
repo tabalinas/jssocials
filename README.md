@@ -17,7 +17,12 @@ Find demos on the [project site](http://js-socials.com/demos/).
 
 ## Getting Started
 
-1. Download the package
+1. Download the package or install it with bower
+    
+    ```bash
+    $ bower install jssocials
+    ```
+    
 2. Add links to `jssocials.css` and chosen theme, e.g. `jssocials-theme-flat.css`
 3. Add link to `font-awesome.css` (it's used for social network logos by default, yet you can replace it with image logo or other font if necessary)
 4. Add link to `jquery.js` and plugin script `jssocials.min.js`

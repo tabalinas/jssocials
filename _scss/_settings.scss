@@ -87,7 +87,7 @@ $include-html-global-classes: $include-html-classes;
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // We use these to define default font stacks
-// $font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$font-family-sans-serif: "Helvetica Neue", Roboto, sans-serif, Arial;
 // $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
@@ -111,15 +111,15 @@ $font-weight-bold: bold;
 // $steel       : #666666;
 // $charcoal    : #555555;
 // $tuatara     : #444444;
-// $oil         : #333333;
+$oil: #242424;
 // $jet         : #222222;
 // $black       : #000000;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
+$primary-color: #08b4da;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
-// $success-color: #43AC6A;
+$success-color: #08b408; //#43AC6A;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
 
@@ -1404,12 +1404,12 @@ $code-border-size: 0;
 // $topbar-link-color-active-hover: $white;
 // $topbar-link-weight: $font-weight-normal;
 $topbar-link-font-size: rem-calc(16);
-// $topbar-link-hover-lightness: -10%; // Darken by 10%
+$topbar-link-hover-lightness: 0%;
 // $topbar-link-bg: $topbar-bg;
-// $topbar-link-bg-hover: $jet;
-// $topbar-link-bg-color-hover: $charcoal;
-// $topbar-link-bg-active: $primary-color;
-// $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+$topbar-link-bg-hover: $primary-color;
+$topbar-link-bg-color-hover: $primary-color;
+$topbar-link-bg-active: $primary-color;
+$topbar-link-bg-active-hover: $primary-color;
 // $topbar-link-font-family: $body-font-family;
 // $topbar-link-text-transform: none;
 // $topbar-link-padding: ($topbar-height / 3);

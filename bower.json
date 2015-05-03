@@ -1,6 +1,0 @@
-{
-  "name": "jekyll-yeti",
-  "dependencies": {
-    "foundation": "zurb/bower-foundation"
-  }
-}

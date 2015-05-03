@@ -1,34 +1,14 @@
+{% if page.title != "Home" %}
+    {% capture title %}{{ page.title }} - {{ site.title }}{% endcapture %}
+{% else %}
+    {% capture title %}{{ site.title }} - {{ site.description }}{% endcapture %}
+{% endif %}
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    {% if page.title != "Home" %}
-        {% capture title %}{{ page.title }} - {{ site.title }}{% endcapture %}
-    {% else %}
-        {% capture title %}{{ site.title }} - {{ site.description }}{% endcapture %}
-    {% endif %}
-
-    <title>{{ title }}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-
-    <!-- build:css /css/libraries.min.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css /css/main.min.css -->
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="http://cdn.rawgit.com/tabalinas/jssocials/v0.1.0/dist/jssocials.css">
-    <link rel="stylesheet" href="http://cdn.rawgit.com/tabalinas/jssocials/v0.1.0/dist/jssocials-theme-flat.css">
-
-    <!-- endbuild -->
-    <!-- build:js /js/vendor/modernizr.min.js -->
-    <script src="/bower_components/modernizr/modernizr.js"></script>
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="http://cdn.rawgit.com/tabalinas/jssocials/v0.1.0/dist/jssocials.min.js"></script>
-    <!-- endbuild -->
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
     <meta property="og:title" content="{{ title }}"/>
     <meta property="og:site_name" content="{{ site.title }}"/>
@@ -40,4 +20,16 @@
     <meta name="twitter:title" content="{{ title }}">
     <meta name="twitter:description" content="{{ site.description }}">
     <meta name="twitter:image" content="{{ page.imageurl }}">
+
+    <title>{{ title }}</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="http://cdn.rawgit.com/tabalinas/jssocials/v0.1.0/dist/jssocials.css">
+    <link rel="stylesheet" href="http://cdn.rawgit.com/tabalinas/jssocials/v0.1.0/dist/jssocials-theme-flat.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.rawgit.com/tabalinas/jssocials/v0.1.0/dist/jssocials.min.js"></script>
 </head>

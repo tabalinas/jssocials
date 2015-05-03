@@ -1,56 +1,50 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
 ---
 
-@import "../bower_components/foundation/scss/normalize";
-@import "settings";
-@import "../bower_components/font-awesome/scss/font-awesome";
-
-// Make sure the charset is set appropriately
 @charset "UTF-8";
 
-// Behold, here are all the Foundation components.
-@import "../bower_components/foundation/scss/foundation/components/grid";
-@import "../bower_components/foundation/scss/foundation/components/accordion";
-@import "../bower_components/foundation/scss/foundation/components/alert-boxes";
-@import "../bower_components/foundation/scss/foundation/components/block-grid";
-@import "../bower_components/foundation/scss/foundation/components/breadcrumbs";
-@import "../bower_components/foundation/scss/foundation/components/button-groups";
-@import "../bower_components/foundation/scss/foundation/components/buttons";
-@import "../bower_components/foundation/scss/foundation/components/clearing";
-@import "../bower_components/foundation/scss/foundation/components/dropdown";
-@import "../bower_components/foundation/scss/foundation/components/dropdown-buttons";
-@import "../bower_components/foundation/scss/foundation/components/flex-video";
-@import "../bower_components/foundation/scss/foundation/components/forms";
-@import "../bower_components/foundation/scss/foundation/components/icon-bar";
-@import "../bower_components/foundation/scss/foundation/components/inline-lists";
-@import "../bower_components/foundation/scss/foundation/components/joyride";
-@import "../bower_components/foundation/scss/foundation/components/keystrokes";
-@import "../bower_components/foundation/scss/foundation/components/labels";
-@import "../bower_components/foundation/scss/foundation/components/magellan";
-@import "../bower_components/foundation/scss/foundation/components/orbit";
-@import "../bower_components/foundation/scss/foundation/components/pagination";
-@import "../bower_components/foundation/scss/foundation/components/panels";
-@import "../bower_components/foundation/scss/foundation/components/pricing-tables";
-@import "../bower_components/foundation/scss/foundation/components/progress-bars";
-@import "../bower_components/foundation/scss/foundation/components/range-slider";
-@import "../bower_components/foundation/scss/foundation/components/reveal";
-@import "../bower_components/foundation/scss/foundation/components/side-nav";
-@import "../bower_components/foundation/scss/foundation/components/split-buttons";
-@import "../bower_components/foundation/scss/foundation/components/sub-nav";
-@import "../bower_components/foundation/scss/foundation/components/switches";
-@import "../bower_components/foundation/scss/foundation/components/tables";
-@import "../bower_components/foundation/scss/foundation/components/tabs";
-@import "../bower_components/foundation/scss/foundation/components/thumbs";
-@import "../bower_components/foundation/scss/foundation/components/tooltips";
-@import "../bower_components/foundation/scss/foundation/components/top-bar";
-@import "../bower_components/foundation/scss/foundation/components/type";
-@import "../bower_components/foundation/scss/foundation/components/offcanvas";
-@import "../bower_components/foundation/scss/foundation/components/visibility";
+@import "foundation/scss/normalize";
+@import "settings";
+@import "font-awesome/scss/font-awesome";
 
-// Import partials from `scss_dir`
-@import
-"layout",
-"syntax-highlighting",
-"extras"
-;
+@import "foundation/scss/foundation/components/grid";
+@import "foundation/scss/foundation/components/accordion";
+@import "foundation/scss/foundation/components/alert-boxes";
+@import "foundation/scss/foundation/components/block-grid";
+@import "foundation/scss/foundation/components/breadcrumbs";
+@import "foundation/scss/foundation/components/button-groups";
+@import "foundation/scss/foundation/components/buttons";
+@import "foundation/scss/foundation/components/clearing";
+@import "foundation/scss/foundation/components/dropdown";
+@import "foundation/scss/foundation/components/dropdown-buttons";
+@import "foundation/scss/foundation/components/flex-video";
+@import "foundation/scss/foundation/components/forms";
+@import "foundation/scss/foundation/components/icon-bar";
+@import "foundation/scss/foundation/components/inline-lists";
+@import "foundation/scss/foundation/components/joyride";
+@import "foundation/scss/foundation/components/keystrokes";
+@import "foundation/scss/foundation/components/labels";
+@import "foundation/scss/foundation/components/magellan";
+@import "foundation/scss/foundation/components/orbit";
+@import "foundation/scss/foundation/components/pagination";
+@import "foundation/scss/foundation/components/panels";
+@import "foundation/scss/foundation/components/pricing-tables";
+@import "foundation/scss/foundation/components/progress-bars";
+@import "foundation/scss/foundation/components/range-slider";
+@import "foundation/scss/foundation/components/reveal";
+@import "foundation/scss/foundation/components/side-nav";
+@import "foundation/scss/foundation/components/split-buttons";
+@import "foundation/scss/foundation/components/sub-nav";
+@import "foundation/scss/foundation/components/switches";
+@import "foundation/scss/foundation/components/tables";
+@import "foundation/scss/foundation/components/tabs";
+@import "foundation/scss/foundation/components/thumbs";
+@import "foundation/scss/foundation/components/tooltips";
+@import "foundation/scss/foundation/components/top-bar";
+@import "foundation/scss/foundation/components/type";
+@import "foundation/scss/foundation/components/offcanvas";
+@import "foundation/scss/foundation/components/visibility";
+
+@import "layout";
+@import "syntax-highlighting";
+@import "extras";

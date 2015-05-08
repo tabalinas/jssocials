@@ -1,5 +1,6 @@
 @import "shares";
 
+$link-text-color: #fff;
 $count-border-color: #dcdcdc;
 $count-color: #444;
 $count-arrow-size: 6px;
@@ -24,8 +25,12 @@ $transition: background 200ms ease-in-out;
     padding: .5em .6em;
     border-radius: $round-size;
     box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.3), 0 1px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.15);
-    color: #fff;
+    color: $link-text-color;
     transition: $transition;
+
+    &:hover, &:focus, &:active {
+        color: $link-text-color;
+    }
 }
 
 .jssocials-share-count-box {
@@ -59,7 +64,7 @@ $transition: background 200ms ease-in-out;
         width: 0;
         border-style: solid;
         border-width: ($count-arrow-size - 1px) ($count-arrow-size - 1px) 0;
-        border-color: #FFFFFF transparent;
+        border-color: #fff transparent;
         transform: rotate(90deg);
     }
 

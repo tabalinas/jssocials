@@ -18,7 +18,7 @@ $transition: color 200ms ease-in-out;
             color: $color;
         }
 
-        &:hover {
+        &:hover, &:focus, &:active {
             color: darken($color, 10%);
 
             .jssocials-share-label {

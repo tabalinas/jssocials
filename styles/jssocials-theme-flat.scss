@@ -1,5 +1,6 @@
 @import "shares";
 
+$link-text-color: #fff;
 $count-box-bg: #f5f5f5;
 $count-color: #444;
 $count-arrow-size: .4em;
@@ -21,8 +22,12 @@ $transition: background 200ms ease-in-out, border-color 200ms ease-in-out;
 
 .jssocials-share-link {
     padding: .5em .6em;
-    color: #fff;
+    color: $link-text-color;
     transition: $transition;
+
+    &:hover, &:focus, &:active {
+        color: $link-text-color;
+    }
 }
 
 .jssocials-share-count-box {

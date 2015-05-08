@@ -15,7 +15,7 @@ $transition: background 200ms ease-in-out, color 200ms ease-in-out, border-color
     color: $color;
     transition: $transition;
 
-    &:hover {
+    &:hover, &:focus, &:active {
         border: 2px solid $hover-color;
         color: $hover-color
     }

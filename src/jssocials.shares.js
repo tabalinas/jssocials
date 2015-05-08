@@ -2,6 +2,13 @@
 
     $.extend(jsSocials.shares, {
 
+        email: {
+            label: "E-mail",
+            logo: "fa fa-at",
+            shareUrl: "mailto:?subject={text}&body={url}",
+            countUrl: ""
+        },
+
         twitter: {
             label: "Tweet",
             logo: "fa fa-twitter",

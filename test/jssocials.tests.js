@@ -158,6 +158,10 @@
             }]
         });
 
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        var $share = $element.find("." + instance.shareClass);
+        assert.ok(!$share.hasClass("jssocials-share-undefined"), "empty share css class is not attached")
         assert.equal($element.text(), "test", "custom renderer called");
     });
 

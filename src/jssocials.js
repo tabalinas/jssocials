@@ -143,7 +143,7 @@
             }
 
             $share.addClass(this.shareClass)
-                .addClass("jssocials-share-" + share.share)
+                .addClass(share.share ? "jssocials-share-" + share.share : "")
                 .addClass(share.css)
                 .appendTo(this._$shares);
         },

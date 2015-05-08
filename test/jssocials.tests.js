@@ -161,7 +161,7 @@
         var instance = $element.data(JSSOCIALS_DATA_KEY);
 
         var $share = $element.find("." + instance.shareClass);
-        assert.ok(!$share.hasClass("jssocials-share-undefined"), "empty share css class is not attached")
+        assert.ok(!$share.hasClass("jssocials-share-undefined"), "empty share css class is not attached");
         assert.equal($element.text(), "test", "custom renderer called");
     });
 
@@ -344,11 +344,11 @@
             countUrl: ""
         };
 
-        $.getJSON = function(url) {
+        $.getJSON = function() {
             assert.ok("false", "empty countUrl is requested");
         };
 
-        var $element = $("#share").jsSocials({
+        $("#share").jsSocials({
             url: "testurl",
             showCount: true,
             shares: ["testshare"]

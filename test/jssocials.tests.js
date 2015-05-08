@@ -334,6 +334,23 @@
         assert.equal($shareCount.text(), "10", "share count value rendered");
     });
 
+    QUnit.test("should not request empty countUrl", 0, function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/",
+            countUrl: ""
+        };
+
+        $.getJSON = function(url) {
+            assert.ok("false", "empty countUrl is requested");
+        };
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            showCount: true,
+            shares: ["testshare"]
+        });
+    });
+
     QUnit.test("count outside share link", function(assert) {
         jsSocials.shares.testshare = {
             shareUrl: "http://test.com/share/",

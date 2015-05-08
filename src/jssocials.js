@@ -212,8 +212,13 @@
 
         _loadCount: function(share) {
             var deferred = $.Deferred();
+            var countUrl = this._getCountUrl(share);
 
-            $.getJSON(this._getCountUrl(share)).done($.proxy(function(response) {
+            if(!countUrl) {
+                return deferred.resolve(0).promise();
+            }
+
+            $.getJSON(countUrl).done($.proxy(function(response) {
                 deferred.resolve(this._getCountValue(response, share));
             }, this)).fail(function() {
                 deferred.resolve(0);

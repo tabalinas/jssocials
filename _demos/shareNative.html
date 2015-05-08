@@ -18,10 +18,7 @@ $("#shareNative").jsSocials({
             $result.append(script);
 
             $("<div>").addClass("fb-share-button")
-                .attr({
-                    "data-href": "https://developers.facebook.com/docs/plugins/",
-                    "data-layout": "button_count"
-                })
+                .attr("data-layout", "button_count")
                 .appendTo($result);
 
             return $result;

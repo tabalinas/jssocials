@@ -297,9 +297,10 @@
     QUnit.module("share counter", {
         setup: function() {
             this.originalJQueryGetJSON = $.getJSON;
+            this.originalJQueryGet = $.get;
 
             var self = this;
-            $.getJSON = function(url) {
+            $.get = $.getJSON = function(url) {
                 if(url === "http://test.com/count?url=" + self.countUrl) {
                     return $.Deferred().resolve(self.countResult).promise();
                 } else {
@@ -309,6 +310,7 @@
         },
         teardown: function() {
             $.getJSON = this.originalJQueryGetJSON;
+            $.get = this.originalJQueryGet;
             delete jsSocials.shares.testshare;
         }
     });
@@ -385,7 +387,7 @@
         assert.equal($shareCount.text(), "10", "share count value rendered");
     });
 
-    QUnit.test("getCount should be called to retrieve count from responce", function(assert) {
+    QUnit.test("getCount should be called to retrieve count from response", function(assert) {
         jsSocials.shares.testshare = {
             shareUrl: "http://test.com/share/",
             countUrl: "http://test.com/count?url={url}",
@@ -396,6 +398,31 @@
 
         this.countUrl = "testurl";
         this.countResult = { count: 10 };
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            showCount: true,
+            shares: ["testshare"]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        var $shareCount = $element.find("." + instance.shareCountClass);
+        assert.equal($shareCount.text(), "10", "share count value retrieved");
+    });
+
+    QUnit.test("countUrl should be requested as non-json source after fail with $.getJSON", function(assert) {
+        $.getJSON = function() {
+            return $.Deferred().reject().promise();
+        };
+
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/",
+            countUrl: "http://test.com/count?url={url}"
+        };
+
+        this.countUrl = "testurl";
+        this.countResult = 10;
 
         var $element = $("#share").jsSocials({
             url: "testurl",
@@ -457,7 +484,7 @@
             countUrl: "http://test.com/count?url={url}"
         };
 
-        $.getJSON = function() {
+        $.get = $.getJSON = function() {
             return $.Deferred().reject().promise();
         };
 

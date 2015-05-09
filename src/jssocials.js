@@ -218,15 +218,17 @@
                 return deferred.resolve(0).promise();
             }
 
-            var self = this;
-
-            $.getJSON(countUrl).done($.proxy(function(response) {
+            var handleSuccess = $.proxy(function(response) {
                 deferred.resolve(this._getCountValue(response, share));
-            }, this)).fail(function() {
-                $.get(countUrl, function(response) {
-                    deferred.resolve(self._getCountValue(response, share));
+            }, this);
+
+            $.getJSON(countUrl).done(handleSuccess)
+                .fail(function() {
+                    $.get(countUrl).done(handleSuccess)
+                        .fail(function() {
+                            deferred.resolve(0);
+                        });
                 });
-            });
 
             return deferred.promise();
         },

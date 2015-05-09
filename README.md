@@ -146,11 +146,9 @@ Also accepts function returning `true|false|"inside"` depending on the screen wi
 
 Destroys the shares control and brings the Node to its initial state.
 
-````javascript
-
+```javascript
 $("#share").jsSocials("destroy");
-
-````
+```
 
 #### option(key, [value])
 
@@ -162,24 +160,20 @@ Gets or sets the value of an option.
 
 If `value` is not specified, then the value of the option `key` will be returned.
 
-````javascript
-
+```javascript
 // turn off share count
 $("#share").jsSocials("option", "showCount", false);
 
 // get sharing text
 var text = $("#share").jsSocials("option", "text");
-
-````
+```
 
 #### refresh()
 
 Refreshes sharing control. 
 
 ```javascript
-
 $("#share").jsSocials("refresh");
-
 ```
 
 
@@ -187,15 +181,14 @@ $("#share").jsSocials("refresh");
 
 A share config has few applicable for all shares parameters. Yet each share may have specific parameters.
  
-```javascript 
-
+```javascript
 {
     share: "twitter",
     label: "Tweet",
     logo: "fa fa-twitter",
+    css: "custom-class",
     renderer: function() { ... }
 }
-
 ```
 
 #### share :`String`
@@ -218,6 +211,10 @@ It accepts following values:
 * **image url** - string in image url format is rendered as `<img src="image url" />`.
 * **image base64 url** - string in image base64 url format is rendered as `<img src="image base64 url" />`.
 
+#### css: `String`
+
+A string specifying spaces-separated custom css classes to attach to share DOM element. 
+
 #### renderer :`function()`
 
 A function returning `<div>` with custom share content. 
@@ -227,7 +224,6 @@ If `renderer` is specified, then all other share parameters are ignored.
 This is how to render native google plus share button with `renderer`:
 
 ```javascript
-
 $("#share").jsSocials({
     shares: [{
         renderer: function() {
@@ -248,7 +244,6 @@ $("#share").jsSocials({
         }
     }]
 });
-
 ```
 
 ### Build-in Shares
@@ -311,7 +306,6 @@ To register a custom share add it to `jsSocials.shares` registry.
 This is how the **twitter** share is defined:
 
 ```javascript
-
 jsSocials.shares.twitter = {
     label: "Tweet",
     logo: "fa fa-twitter",
@@ -321,7 +315,6 @@ jsSocials.shares.twitter = {
         return data.count;
     }
 };
-
 ```
 
 If you wish to get your share styling for all supported themes, add its name and color to `_shares.scss` and build css.
@@ -329,10 +322,8 @@ If you wish to get your share styling for all supported themes, add its name and
 Currently `_shares.scss` contains following collections:
 
 ```scss
-
 $share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest');
 $share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027);
-
 ```
 
 Each share has following parameters:
@@ -384,13 +375,11 @@ By default `showCount` function returns following values:
 
 These breakpoints are defined with jsSocials config options:
 
-```javascript 
-
+```javascript
 {
     smallScreenWidth: 640,
     largeScreenWidth: 1024
 }
-
 ```
 
 Thus these breakpoint values can be redefined in jsSocials config.
@@ -401,7 +390,6 @@ In this example we show counter for all screens wider than 1024px hiding count f
 and show label for screens wider 1280px hiding for other screens:
 
 ```javascript
-
 $("#share").jsSocials({
     showCount: function(screenWidth) {
         return (screenWidth > 1024);
@@ -413,7 +401,6 @@ $("#share").jsSocials({
     
     ...
 });
-
 ```
 
 

@@ -134,6 +134,7 @@ A share config has few applicable for all shares parameters. Yet each share may 
     share: "twitter",
     label: "Tweet",
     logo: "fa fa-twitter",
+    css: "custom-class",
     renderer: function() { ... }
 }
 ```
@@ -157,6 +158,10 @@ It accepts following values:
 * **css class** - any non-url string is rendered as `<i class="css class"></i>`. Font awesome is used by default, but it can be redefined with any other css class.
 * **image url** - string in image url format is rendered as `<img src="image url" />`.
 * **image base64 url** - string in image base64 url format is rendered as `<img src="image base64 url" />`.
+
+#### css: `String`
+
+A string specifying spaces-separated custom css classes to attach to share DOM element.
 
 #### renderer :`function()`
 

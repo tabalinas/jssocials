@@ -218,10 +218,14 @@
                 return deferred.resolve(0).promise();
             }
 
+            var self = this;
+
             $.getJSON(countUrl).done($.proxy(function(response) {
                 deferred.resolve(this._getCountValue(response, share));
             }, this)).fail(function() {
-                deferred.resolve(0);
+                $.get(countUrl, function(response) {
+                    deferred.resolve(self._getCountValue(response, share));
+                });
             });
 
             return deferred.promise();

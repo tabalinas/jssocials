@@ -2,6 +2,8 @@ $larger-text: 1.2rem;
 $feature-block-icon-color: $primary-color;
 
 .jssocials-share-link {
+  line-height: 1;
+  
   &:hover, &:focus, &:active {
     color: #fff;
   }

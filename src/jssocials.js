@@ -221,7 +221,15 @@
             $.getJSON(countUrl).done($.proxy(function(response) {
                 deferred.resolve(this._getCountValue(response, share));
             }, this)).fail(function() {
-                deferred.resolve(0);
+                var self = this;
+                var url = self._getCountUrl(share);
+                $.getJSON(url).done($.proxy(function(response) {
+                    deferred.resolve(this._getCountValue(response, share));
+                }, this)).fail(function() {
+                    $.get(url, function(response) {
+                        deferred.resolve(self._getCountValue(response, share));
+                    });
+                });
             });
 
             return deferred.promise();

@@ -124,6 +124,28 @@ Refreshes sharing control.
 $("#share").jsSocials("refresh");
 ```
 
+#### jsSocials.setDefaults(config)
+
+Set default options for all jsSocials.
+
+```javascript
+jsSocials.setDefaults({
+    showLabel: false,
+    showCount: "inside"
+});
+```
+
+#### jsSocials.setDefaults(shareName, config)
+
+Set default options of particular share.
+
+```javascript
+jsSocials.setDefaults("twitter", {
+    via: "artem_tabalin",
+    hashtags: "jquery,plugin"
+});
+```
+
 
 ### Share
 

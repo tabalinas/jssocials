@@ -93,7 +93,7 @@ The config object may contain following options:
  
 ```javascript
 {
-    shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest"],
+    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest"],
     url: "http://url.to.share",
     text: "text to share",
     showLabel: true,

@@ -4,13 +4,13 @@
     $ bower install jssocials
     ```
     <div>
-        <a href="https://github.com/tabalinas/jssocials/releases/download/v0.1.0/jssocials-0.1.0.zip" class="button success">
+        <a href="https://github.com/tabalinas/jssocials/releases/download/v0.2.0/jssocials-0.2.0.zip" class="button success">
             Download jsSocials<br /><small>combined</small>
         </a>
-        <a href="https://github.com/tabalinas/jssocials/archive/v0.1.0.zip" class="button">
+        <a href="https://github.com/tabalinas/jssocials/archive/v0.2.0.zip" class="button">
             Download source<br /><small>.zip file</small>
         </a>
-        <a href="https://github.com/tabalinas/jssocials/archive/v0.1.0.tar.gz" class="button">
+        <a href="https://github.com/tabalinas/jssocials/archive/v0.2.0.tar.gz" class="button">
             Download source<br /><small>.tar.gz file</small>
         </a>
     </div>

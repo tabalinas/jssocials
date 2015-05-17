@@ -1,6 +1,6 @@
 {
     "name": "jssocials",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "main": "dist/jssocials.js",
     "description": "jsSocials - jQuery Social Network Sharing Plugin",
     "homepage": "http://js-socials.com",

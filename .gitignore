@@ -1,4 +1,7 @@
 /node_modules/
 /bower_components/
+.idea
+.sass-cache
 dist
 _site
+

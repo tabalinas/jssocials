@@ -1,11 +1,11 @@
 @import "shares";
 
-$text-color: #444;
-$text-size: .8em;
-$count-indent: .3em;
-$count-border-color: #efefef;
-$count-border-radius: $count-indent;
-$transition: color 200ms ease-in-out;
+$text-color: #444 !default;
+$text-size: .8em !default;
+$count-indent: .3em !default;
+$count-border-color: #efefef !default;
+$count-border-radius: $count-indent !default;
+$transition: color 200ms ease-in-out !default;
 
 @for $i from 0 to length($share-names) {
     $social: nth($share-names, $i + 1);

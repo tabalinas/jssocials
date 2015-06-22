@@ -1,12 +1,12 @@
 @import "shares";
 
-$color: #acacac;
-$hover-color: darken($color, 10%);
-$count-box-bg: #f5f5f5;
-$count-arrow-size: .4em;
-$count-arrow-offset: $count-arrow-size - .1em;
-$round-size: .3em;
-$transition: background 200ms ease-in-out, color 200ms ease-in-out, border-color 200ms ease-in-out;
+$color: #acacac !default;
+$hover-color: darken($color, 10%) !default;
+$count-box-bg: #f5f5f5 !default;
+$count-arrow-size: .4em !default;
+$count-arrow-offset: $count-arrow-size - .1em !default;
+$round-size: .3em !default;
+$transition: background 200ms ease-in-out, color 200ms ease-in-out, border-color 200ms ease-in-out !default;
 
 .jssocials-share-link {
     padding: .5em .6em;

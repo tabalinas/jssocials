@@ -1,11 +1,11 @@
 @import "shares";
 
-$link-text-color: #fff;
-$count-box-bg: #f5f5f5;
-$count-color: #444;
-$count-arrow-size: .4em;
-$count-arrow-offset: $count-arrow-size - .1em;
-$transition: background 200ms ease-in-out, border-color 200ms ease-in-out;
+$link-text-color: #fff !default;
+$count-box-bg: #f5f5f5 !default;
+$count-color: #444 !default;
+$count-arrow-size: .4em !default;
+$count-arrow-offset: $count-arrow-size - .1em !default;
+$transition: background 200ms ease-in-out, border-color 200ms ease-in-out !default;
 
 @for $i from 0 to length($share-names) {
     $social: nth($share-names, $i + 1);

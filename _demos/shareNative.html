@@ -58,14 +58,12 @@ $("#shareNative").jsSocials({
             var $result = $("<div>");
 
             var script = document.createElement("script");
-            script.src = "//assets.pinterest.com/js/pinit.js";
+            script.text = "window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src=\"https://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,\"script\",\"twitter-wjs\"));";
             $result.append(script);
 
-            $("<img>").attr("src", "//assets.pinterest.com/images/pidgets/pin_it_button.png")
-                .append($("<a>").attr({
-                    "href": "https://www.pinterest.com/pin/create/button/",
-                    "data-pin-do": "buttonPin"
-                }))
+            $("<a>").addClass("twitter-share-button")
+                .text("Tweet")
+                .attr("href", "https://twitter.com/share")
                 .appendTo($result);
 
             return $result;
@@ -75,13 +73,17 @@ $("#shareNative").jsSocials({
             var $result = $("<div>");
 
             var script = document.createElement("script");
-            script.text = "window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src=\"https://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,\"script\",\"twitter-wjs\"));";
+            script.src = "//assets.pinterest.com/js/pinit.js";
             $result.append(script);
 
-            $("<a>").addClass("twitter-share-button")
-                .text("Tweet")
-                .attr("href", "https://twitter.com/share")
-                .appendTo($result);
+            $("<a>").append($("<img>").attr("//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_20.png"))
+                    .attr({
+                        href: "//www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fjs-socials.com%2Fdemos%2F&media=%26quot%3Bhttp%3A%2F%2Fgdurl.com%2Fa653%26quot%3B&description=Next%20stop%3A%20Pinterest",
+                        "data-pin-do": "buttonPin",
+                        "data-pin-config": "beside",
+                        "data-pin-color":"red"
+                    })
+                    .appendTo($result);
 
             return $result;
         }

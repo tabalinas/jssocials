@@ -74,7 +74,7 @@
 
         _initDefaults: function() {
             this.url = window.location.href;
-            this.text = $("meta[name=description]").attr("content") || $("title").text();
+            this.text = $.trim($("meta[name=description]").attr("content") || $("title").text());
         },
 
         _initShares: function() {

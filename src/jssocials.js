@@ -169,7 +169,7 @@
 
             for (var key in share.on){
                 var bindFunction = share.on[key];
-                if ($.isFunction(bindFunction) {
+                if ($.isFunction(bindFunction)) {
                     $result.on(key, bindFunction);
                 }
             }

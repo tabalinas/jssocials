@@ -167,12 +167,11 @@
                 .attr({ href: this._getShareUrl(share), target: "_blank" })
                 .append(this._createShareLogo(share));
 
-            for (var key in share.on){
-                var bindFunction = share.on[key];
-                if ($.isFunction(bindFunction)) {
-                    $result.on(key, bindFunction);
+            $.each(this.on || {}, function(event, handler) {
+                if($.isFunction(handler)) {
+                    $result.on(event, $.proxy(handler, share));
                 }
-            }
+            });
 
             if(this._showLabel) {
                 $result.append(this._createShareLabel(share));

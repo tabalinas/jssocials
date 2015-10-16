@@ -1,6 +1,6 @@
 {
     "name": "jssocials",
-    "version": "0.2.0",
+    "version": "1.0.0",
     "main": "dist/jssocials.js",
     "ignore": [
         "demo",

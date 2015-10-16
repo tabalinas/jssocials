@@ -1,4 +1,4 @@
-/*! jssocials - v0.2.0 - 2015-05-17
+/*! jssocials - v1.0.0 - 2015-10-16
 * http://js-socials.com
 * Copyright (c) 2015 Artem Tabalin; Licensed MIT */
 (function(window, $, undefined) {
@@ -77,7 +77,7 @@
 
         _initDefaults: function() {
             this.url = window.location.href;
-            this.text = $("meta[name=description]").attr("content") || $("title").text();
+            this.text = $.trim($("meta[name=description]").attr("content") || $("title").text());
         },
 
         _initShares: function() {
@@ -169,6 +169,12 @@
             var $result = $("<a>").addClass(this.shareLinkClass)
                 .attr({ href: this._getShareUrl(share), target: "_blank" })
                 .append(this._createShareLogo(share));
+
+            $.each(this.on || {}, function(event, handler) {
+                if($.isFunction(handler)) {
+                    $result.on(event, $.proxy(handler, share));
+                }
+            });
 
             if(this._showLabel) {
                 $result.append(this._createShareLabel(share));

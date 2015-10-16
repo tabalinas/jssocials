@@ -5,6 +5,7 @@ baseurl: ""
 url: "http://js-socials.com"
 twitter: artem_tabalin
 github:  tabalinas
+version: 0.2.0
 sass:
   sass_dir: _scss
 collections:

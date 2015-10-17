@@ -20,19 +20,19 @@ To turn on a specific theme just link one of available stylesheets
 
 #### flat
 
-![jsSocials - flat theme](http://gdurl.com/OI28)
+![jsSocials - flat theme](/images/flat.png)
 
 #### classic
 
-![jsSocials - classic theme](http://gdurl.com/gGQV)
+![jsSocials - classic theme](/images/classic.png)
 
 #### minima
 
-![jsSocials - minima theme](http://gdurl.com/ULek)
+![jsSocials - minima theme](/images/minima.png)
 
 #### plain
 
-![jsSocials - plain theme](http://gdurl.com/9OmN)
+![jsSocials - plain theme](/images/plain.png)
 
 
 ### Configuration

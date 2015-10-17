@@ -7,7 +7,7 @@ Project site [js-socials.com](http://js-socials.com/)
 **jsSocials** is a simple social network sharing jQuery plugin. It's flexible and easily extensible. 
 Configure visual appearance. Choose one of several themes provided. Add any yet unsupported social network if needed.
 
-![jsSocials](http://gdurl.com/a653)
+![jsSocials](http://js-socials.com/images/main.png)
 
 
 ## Demos
@@ -72,19 +72,19 @@ To turn on a specific theme just link one of available stylesheets
 
 #### flat
 
-![jsSocials - flat theme](http://gdurl.com/OI28)
+![jsSocials - flat theme](http://js-socials.com/images/flat.png)
 
 #### classic
 
-![jsSocials - classic theme](http://gdurl.com/gGQV)
+![jsSocials - classic theme](http://js-socials.com/images/classic.png)
 
 #### minima
 
-![jsSocials - minima theme](http://gdurl.com/ULek)
+![jsSocials - minima theme](http://js-socials.com/images/minima.png)
 
 #### plain
 
-![jsSocials - plain theme](http://gdurl.com/9OmN)
+![jsSocials - plain theme](http://js-socials.com/images/plain.png)
 
 
 ### Configuration

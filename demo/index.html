@@ -136,7 +136,14 @@
             text: text,
             showCount: true,
             showLabel: true,
-            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest"]
+            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest"],
+            on: {
+                click: function(e) {
+                    if(this.share === "twitter") {
+                        console.log("tweet \"" + this.url + "\" at " + e.timeStamp);
+                    }
+                }
+            }
         });
 
         $("#shareCustomLogo").jsSocials({

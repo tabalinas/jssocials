@@ -97,7 +97,13 @@ The config object may contain following options:
     url: "http://url.to.share",
     text: "text to share",
     showLabel: true,
-    showCount: true
+    showCount: true,
+    on: {
+        click: function(e) {},
+        mouseenter: function(e) {},
+        mouseleave: function(e) {},
+        ...
+    }
 }
 ```
 
@@ -138,6 +144,26 @@ Also accepts function returning `true|false` depending on the screen width for a
 
 A boolean or "inside" specifying whether and how to show share count. 
 Also accepts function returning `true|false|"inside"` depending on the screen width for adaptive rendering. Read more in [Adaptiveness](#adaptiveness) section.
+
+#### on :`Object`
+> version added: v1.0
+
+An object specifying the sharing link event handlers. Handlers for all supported by DOMElement events can be specified.
+The handlers will be attached to the share link. The context of handler is the share config. The argument of the handler is a jQuery event.
+
+In the following example once a user clicks twitter sharing link, the sharing url is printed to the browser console 
+
+```javascript
+{
+    on: {
+        click: function(e) {
+            if(this.share === "twitter") {
+                console.log("tweet \"" + this.url + "\" at " + e.timeStamp);
+            }
+        }
+    }
+}
+```
 
 
 ### Methods

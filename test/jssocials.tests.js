@@ -328,6 +328,30 @@
     });
 
 
+    QUnit.module("share option");
+
+    QUnit.test("option url and text should be passed to shares", function(assert) {
+        jsSocials.shares.testshare = {
+            label: "testLabel",
+            shareUrl: "http://test.com/share/?url={url}&text={text}"
+        };
+
+        var $element = $("#share").jsSocials({
+            url: "url",
+            text: "text",
+            showCount: false,
+            shares: ["testshare"]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        instance.option("url", "newurl");
+        instance.option("text", "newtext");
+        assert.equal(instance.shares[0].url, "newurl", "url is passed to share");
+        assert.equal(instance.shares[0].text, "newtext", "text is passed to share");
+    });
+
+
     QUnit.module("share counter", {
         setup: function() {
             this.originalJQueryGetJSON = $.getJSON;

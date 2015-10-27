@@ -272,6 +272,19 @@
             this._$element.empty();
         },
 
+        _passOptionToShares: function(key, value) {
+            var shares = this.shares;
+
+            $.each(["url", "text"], function(_, optionName) {
+                if(optionName !== key)
+                    return;
+
+                $.each(shares, function(_, share) {
+                    share[key] = value;
+                });
+            });
+        },
+
         refresh: function() {
             this._render();
         },
@@ -291,6 +304,9 @@
             }
 
             this[key] = value;
+
+            this._passOptionToShares(key, value);
+
             this.refresh();
         }
 

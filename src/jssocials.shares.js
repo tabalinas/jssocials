@@ -46,7 +46,7 @@
         linkedin: {
             label: "Share",
             logo: "fa fa-linkedin",
-            shareUrl: "https://www.linkedin.com/shareArticle?url={url}",
+            shareUrl: "https://www.linkedin.com/shareArticle?mini=true&url={url}",
             countUrl: "https://www.linkedin.com/countserv/count/share?format=jsonp&url={url}&callback=?",
             getCount: function(data) {
                 return data.count;

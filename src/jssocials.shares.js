@@ -13,10 +13,7 @@
             label: "Tweet",
             logo: "fa fa-twitter",
             shareUrl: "https://twitter.com/share?url={url}&text={text}&via={via}&hashtags={hashtags}",
-            countUrl: "https://cdn.api.twitter.com/1/urls/count.json?url={url}&callback=?",
-            getCount: function(data) {
-                return data.count;
-            }
+            countUrl: ""
         },
 
         facebook: {

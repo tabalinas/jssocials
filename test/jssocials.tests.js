@@ -293,6 +293,21 @@
         assert.equal($shareLink.attr("href"), "http://test.com/share/?url=testurl&text=testtext", "custom param removed from shareUrl");
     });
 
+    QUnit.test("replace template strings after url params replacement", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share/?url={url}&text=some {text}"
+        };
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            text: "testtext",
+            shares: ["testshare"]
+        });
+
+        var $shareLink = $element.find(".jssocials-share-link");
+        assert.equal($shareLink.attr("href"), "http://test.com/share/?url=testurl&text=some testtext", "template strings replaced");
+    });
+
     QUnit.test("set custom handlers with 'on' config option", function(assert) {
         jsSocials.shares.testshare = {
             shareUrl: "http://test.com/share/"

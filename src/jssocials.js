@@ -12,6 +12,7 @@
 
     var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp)$|^data:image\/(jpeg|png|gif|bmp);base64)/i;
     var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)\{([a-zA-Z0-9]+)\}/g;
+    var FIELD_SUBSTITUTION_REGEX = /\{([a-zA-Z0-9]+)\}/g;
 
     var MEASURES = {
         "G": 1000000000,
@@ -261,9 +262,14 @@
         },
 
         _formatShareUrl: function(url, share) {
-            return url.replace(URL_PARAMS_REGEX, function(match, key, field) {
+            url = url.replace(URL_PARAMS_REGEX, function(match, key, field) {
                 var value = share[field] || "";
                 return value ? (key + window.encodeURIComponent(value)) : "";
+            });
+
+            return url.replace(FIELD_SUBSTITUTION_REGEX, function(match, field) {
+                var value = share[field] || "";
+                return value ? window.encodeURIComponent(value) : "";
             });
         },
 

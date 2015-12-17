@@ -2,6 +2,13 @@
 
     $.extend(jsSocials.shares, {
 
+        whatsapp: {
+            label: "WhatsApp",
+            logo: "fa fa-whatsapp",
+            shareUrl: "whatsapp://send?text={url}",
+            countUrl: ""
+        },
+
         email: {
             label: "E-mail",
             logo: "fa fa-at",
@@ -13,10 +20,7 @@
             label: "Tweet",
             logo: "fa fa-twitter",
             shareUrl: "https://twitter.com/share?url={url}&text={text}&via={via}&hashtags={hashtags}",
-            countUrl: "https://cdn.api.twitter.com/1/urls/count.json?url={url}&callback=?",
-            getCount: function(data) {
-                return data.count;
-            }
+            countUrl: ""
         },
 
         facebook: {
@@ -46,7 +50,7 @@
         linkedin: {
             label: "Share",
             logo: "fa fa-linkedin",
-            shareUrl: "https://www.linkedin.com/shareArticle?url={url}",
+            shareUrl: "https://www.linkedin.com/shareArticle?mini=true&url={url}",
             countUrl: "https://www.linkedin.com/countserv/count/share?format=jsonp&url={url}&callback=?",
             getCount: function(data) {
                 return data.count;

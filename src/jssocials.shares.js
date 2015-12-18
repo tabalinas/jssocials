@@ -5,7 +5,7 @@
         whatsapp: {
             label: "WhatsApp",
             logo: "fa fa-whatsapp",
-            shareUrl: "whatsapp://send?text={url}",
+            shareUrl: "whatsapp://send?text={url} {text}",
             countUrl: ""
         },
 

@@ -1,4 +1,4 @@
-/*! jssocials - v1.0.0 - 2015-10-16
+/*! jssocials - v1.1.0 - 2015-12-19
 * http://js-socials.com
 * Copyright (c) 2015 Artem Tabalin; Licensed MIT */
 (function(window, $, undefined) {
@@ -15,6 +15,7 @@
 
     var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp)$|^data:image\/(jpeg|png|gif|bmp);base64)/i;
     var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)\{([a-zA-Z0-9]+)\}/g;
+    var FIELD_SUBSTITUTION_REGEX = /\{([a-zA-Z0-9]+)\}/g;
 
     var MEASURES = {
         "G": 1000000000,
@@ -264,15 +265,47 @@
         },
 
         _formatShareUrl: function(url, share) {
-            return url.replace(URL_PARAMS_REGEX, function(match, key, field) {
+            url = url.replace(URL_PARAMS_REGEX, function(match, key, field) {
                 var value = share[field] || "";
                 return value ? (key + window.encodeURIComponent(value)) : "";
+            });
+
+            return url.replace(FIELD_SUBSTITUTION_REGEX, function(match, field) {
+                var value = share[field] || "";
+                return value ? window.encodeURIComponent(value) : "";
             });
         },
 
         _clear: function() {
             window.clearTimeout(this._resizeTimer);
             this._$element.empty();
+        },
+
+        _passOptionToShares: function(key, value) {
+            var shares = this.shares;
+
+            $.each(["url", "text"], function(_, optionName) {
+                if(optionName !== key)
+                    return;
+
+                $.each(shares, function(_, share) {
+                    share[key] = value;
+                });
+            });
+        },
+
+        _normalizeShare: function(share) {
+            if($.isNumeric(share)) {
+                return this.shares[share];
+            }
+
+            if(typeof share === "string") {
+                return $.grep(this.shares, function(s) {
+                    return s.share === share;
+                })[0];
+            }
+
+            return share;
         },
 
         refresh: function() {
@@ -294,6 +327,20 @@
             }
 
             this[key] = value;
+
+            this._passOptionToShares(key, value);
+
+            this.refresh();
+        },
+
+        shareOption: function(share, key, value) {
+            share = this._normalizeShare(share);
+
+            if(arguments.length === 2) {
+                return share[key];
+            }
+
+            share[key] = value;
             this.refresh();
         }
 
@@ -355,6 +402,13 @@
 
     $.extend(jsSocials.shares, {
 
+        whatsapp: {
+            label: "WhatsApp",
+            logo: "fa fa-whatsapp",
+            shareUrl: "whatsapp://send?text={url} {text}",
+            countUrl: ""
+        },
+
         email: {
             label: "E-mail",
             logo: "fa fa-at",
@@ -366,10 +420,7 @@
             label: "Tweet",
             logo: "fa fa-twitter",
             shareUrl: "https://twitter.com/share?url={url}&text={text}&via={via}&hashtags={hashtags}",
-            countUrl: "https://cdn.api.twitter.com/1/urls/count.json?url={url}&callback=?",
-            getCount: function(data) {
-                return data.count;
-            }
+            countUrl: ""
         },
 
         facebook: {
@@ -399,7 +450,7 @@
         linkedin: {
             label: "Share",
             logo: "fa fa-linkedin",
-            shareUrl: "https://www.linkedin.com/shareArticle?url={url}",
+            shareUrl: "https://www.linkedin.com/shareArticle?mini=true&url={url}",
             countUrl: "https://www.linkedin.com/countserv/count/share?format=jsonp&url={url}&callback=?",
             getCount: function(data) {
                 return data.count;

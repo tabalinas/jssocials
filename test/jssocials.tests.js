@@ -366,6 +366,30 @@
         assert.equal(instance.shares[0].text, "newtext", "text is passed to share");
     });
 
+    QUnit.test("change share option with shareOption method", function(assert) {
+        jsSocials.shares.testshare = {
+            label: "testLabel",
+            shareUrl: "http://test.com/share/?url={url}&text={text}"
+        };
+
+        var $element = $("#share").jsSocials({
+            url: "testurl",
+            text: "testtext",
+            showCount: false,
+            showLabel: true,
+            shares: ["testshare"]
+        });
+
+        var shareOptionValue = $element.jsSocials("shareOption", "testshare", "text");
+        equal(shareOptionValue, "testtext", "read share option");
+
+        $element.jsSocials("shareOption", "testshare", "label", "testLabel1");
+        equal($element.text(), "testLabel1", "set share option by share name");
+
+        $element.jsSocials("shareOption", 0, "label", "testLabel2");
+        equal($element.text(), "testLabel2", "set share option by share index");
+    });
+
 
     QUnit.module("share counter", {
         setup: function() {

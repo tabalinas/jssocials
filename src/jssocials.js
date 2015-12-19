@@ -291,6 +291,20 @@
             });
         },
 
+        _normalizeShare: function(share) {
+            if($.isNumeric(share)) {
+                return this.shares[share];
+            }
+
+            if(typeof share === "string") {
+                return $.grep(this.shares, function(s) {
+                    return s.share === share;
+                })[0];
+            }
+
+            return share;
+        },
+
         refresh: function() {
             this._render();
         },
@@ -313,6 +327,17 @@
 
             this._passOptionToShares(key, value);
 
+            this.refresh();
+        },
+
+        shareOption: function(share, key, value) {
+            share = this._normalizeShare(share);
+
+            if(arguments.length === 2) {
+                return share[key];
+            }
+
+            share[key] = value;
             this.refresh();
         }
 

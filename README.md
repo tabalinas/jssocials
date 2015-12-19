@@ -176,15 +176,15 @@ Destroys the shares control and brings the Node to its initial state.
 $("#share").jsSocials("destroy");
 ```
 
-#### option(key, [value])
+#### option(optionName, [optionValue])
 
 Gets or sets the value of an option.
  
-**key** is the name of the option.
+**optionName** is the name of the option.
 
-**value** is the new option value to set. 
+**optionValue** is the new option value to set. 
 
-If `value` is not specified, then the value of the option `key` will be returned.
+If `optionValue` is not specified, then the value of the option `optionName` will be returned.
 
 ```javascript
 // turn off share count
@@ -200,6 +200,27 @@ Refreshes sharing control.
 
 ```javascript
 $("#share").jsSocials("refresh");
+```
+
+#### shareOption(shareName|shareIndex, optionName, [optionValue])
+> version added: 1.1
+
+Gets or sets the value of a share option.
+ 
+**shareName|shareIndex** is the name or the index of the share to get/set the option value.
+ 
+**optionName** is the name of the share option.
+
+**optionValue** is the new option value to set. 
+
+If `optionValue` is not specified, then the value of the share option `optionName` will be returned.
+
+```javascript
+// change label of twitter share
+$("#share").jsSocials("shareOption", "twitter", "label", "Tweet!");
+
+// get label of the 2nd share
+var secondShareOption = $("#share").jsSocials("shareOption", 1, "label");
 ```
 
 #### jsSocials.setDefaults(config)
@@ -356,6 +377,7 @@ The build-in social network shares have following configuration
 ```
 
 #### whatsapp
+> version added: 1.1
 
 ```javascript
 {

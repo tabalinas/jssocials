@@ -41,7 +41,7 @@ The config object may contain following options:
 
 ```javascript
 {
-    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest"],
+    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp"],
     url: "http://url.to.share",
     text: "text to share",
     showLabel: true,
@@ -124,15 +124,15 @@ Destroys the shares control and brings the Node to its initial state.
 $("#share").jsSocials("destroy");
 ```
 
-#### option(key, [value])
+#### option(optionName, [optionValue])
 
 Gets or sets the value of an option.
 
-**key** is the name of the option.
+**optionName** is the name of the option.
 
-**value** is the new option value to set.
+**optionValue** is the new option value to set.
 
-If `value` is not specified, then the value of the option `key` will be returned.
+If `optionValue` is not specified, then the value of the option `optionName` will be returned.
 
 ```javascript
 // turn off share count
@@ -148,6 +148,27 @@ Refreshes sharing control.
 
 ```javascript
 $("#share").jsSocials("refresh");
+```
+
+#### shareOption(shareName|shareIndex, optionName, [optionValue])
+> version added: 1.1
+
+Gets or sets the value of a share option.
+
+**shareName|shareIndex** is the name or the index of the share to get/set the option value.
+
+**optionName** is the name of the share option.
+
+**optionValue** is the new option value to set.
+
+If `optionValue` is not specified, then the value of the share option `optionName` will be returned.
+
+```javascript
+// change label of twitter share
+$("#share").jsSocials("shareOption", "twitter", "label", "Tweet!");
+
+// get label of the 2nd share
+var secondShareOption = $("#share").jsSocials("shareOption", 1, "label");
 ```
 
 #### jsSocials.setDefaults(config)
@@ -190,7 +211,7 @@ A share config has few applicable for all shares parameters. Yet each share may 
 #### share :`String`
 
 A string name of the share.
-jsSocials supports following build-in shares: `"email" | "twitter" | "facebook" | "googleplus" | "linkedin" | "pinterest"`
+jsSocials supports following build-in shares: `"email" | "twitter" | "facebook" | "googleplus" | "linkedin" | "pinterest" | "whatsapp"`
 
 Adding any new share is simple and described in [Custom Share](#custom-share) section.
 
@@ -303,6 +324,15 @@ The build-in social network shares have following configuration
 }
 ```
 
+#### whatsapp
+> version added: 1.1
+
+```javascript
+{
+    label: "WhatsApp",
+    logo: "fa fa-whatsapp",
+}
+```
 
 ### Custom Share
 
@@ -327,8 +357,8 @@ If you wish to get your share styling for all supported themes, add its name and
 Currently `_shares.scss` contains following collections:
 
 ```scss
-$share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest', 'email');
-$share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027, #3490F3);
+$share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest', 'email', 'whatsapp');
+$share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027, #3490F3, #29a628);
 ```
 
 Each share has following parameters:

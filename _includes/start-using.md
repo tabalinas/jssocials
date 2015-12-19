@@ -34,7 +34,7 @@
     <script src="jssocials.min.js"></script>
     <script>
         $("#share").jsSocials({
-            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest"]
+            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp"]
         });
     </script>
 </body>

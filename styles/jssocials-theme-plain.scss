@@ -3,7 +3,8 @@
 $color: #acacac !default;
 $hover-color: darken($color, 10%) !default;
 $count-box-bg: #f5f5f5 !default;
-$count-arrow-size: .4em !default;
+$count-arrow-size: .5em !default;
+$count-box-height: 2.5em;
 $count-arrow-offset: $count-arrow-size - .1em !default;
 $round-size: .3em !default;
 $transition: background 200ms ease-in-out, color 200ms ease-in-out, border-color 200ms ease-in-out !default;
@@ -23,7 +24,7 @@ $transition: background 200ms ease-in-out, color 200ms ease-in-out, border-color
 
 .jssocials-share-count-box {
     position: relative;
-    height: 1.5em;
+    height: $count-box-height;
     padding: 0 .3em;
     margin-left: $count-arrow-offset;
     background: $count-box-bg;
@@ -42,7 +43,7 @@ $transition: background 200ms ease-in-out, color 200ms ease-in-out, border-color
         content: "";
         display: block;
         position: absolute;
-        top: .75em - $count-arrow-size;
+        top: $count-box-height / 2 - $count-arrow-size;
         left: -$count-arrow-offset;
         width: 0;
         height: 0;
@@ -54,8 +55,7 @@ $transition: background 200ms ease-in-out, color 200ms ease-in-out, border-color
     }
 
     .jssocials-share-count {
-        line-height: 1.7em;
+        line-height: $count-box-height;
         color: $color;
-        font-size: .9em;
     }
 }

@@ -47,11 +47,11 @@
 jsSocials is available on [jsdelivr.com](http://www.jsdelivr.com/projects/jquery.jssocials). Use the following CDN links.
 
 ```html
-&lt;link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials.css" /&gt;
-&lt;link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials-theme-flat.css" /&gt;
-&lt;link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials-theme-classic.css" /&gt;
-&lt;link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials-theme-minima.css" /&gt;
-&lt;link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials-theme-plain.css" /&gt;
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials.css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials-theme-flat.css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials-theme-classic.css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials-theme-minima.css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials-theme-plain.css" />
 
-&lt;script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials.min.js"&gt;&lt;/script&gt;
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/{{ site.version }}/jssocials.min.js"></script>
 ```

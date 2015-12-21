@@ -28,6 +28,11 @@
   .jssocials-share-email .jssocials-share-link:hover {
     background: #0e76e6; }
 
+.jssocials-share-whatsapp .jssocials-share-link {
+  background: #29a628; }
+  .jssocials-share-whatsapp .jssocials-share-link:hover {
+    background: #1f7d1e; }
+
 .jssocials-share-link {
   padding: .5em .6em;
   color: #fff;

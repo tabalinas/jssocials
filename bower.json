@@ -1,7 +1,11 @@
 {
     "name": "jssocials",
-    "version": "1.0.0",
-    "main": "dist/jssocials.js",
+    "version": "1.1.0",
+    "main": [
+        "dist/jssocials.js",
+        "dist/jssocials.css",
+        "dist/jsgrid-theme-flat.css"
+    ],
     "ignore": [
         "demo",
         "test",

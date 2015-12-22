@@ -1,4 +1,4 @@
-/*! jssocials - v1.1.0 - 2015-12-19
+/*! jssocials - v1.1.0 - 2015-12-21
 * http://js-socials.com
 * Copyright (c) 2015 Artem Tabalin; Licensed MIT */
 (function(window, $, undefined) {
@@ -15,7 +15,6 @@
 
     var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp)$|^data:image\/(jpeg|png|gif|bmp);base64)/i;
     var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)\{([a-zA-Z0-9]+)\}/g;
-    var FIELD_SUBSTITUTION_REGEX = /\{([a-zA-Z0-9]+)\}/g;
 
     var MEASURES = {
         "G": 1000000000,
@@ -41,6 +40,7 @@
     Socials.prototype = {
         url: "",
         text: "",
+        popup: false,
 
         showLabel: function(screenWidth) {
             return (this.showCount === false) ?
@@ -79,6 +79,7 @@
         _initDefaults: function() {
             this.url = window.location.href;
             this.text = $.trim($("meta[name=description]").attr("content") || $("title").text());
+            this.popup = false;
         },
 
         _initShares: function() {
@@ -167,9 +168,15 @@
         },
 
         _createShareLink: function(share) {
-            var $result = $("<a>").addClass(this.shareLinkClass)
-                .attr({ href: this._getShareUrl(share), target: "_blank" })
+            var shareUrl = this._getShareUrl(share),
+                a = $("<a>").addClass(this.shareLinkClass)
+                .attr(this.popup ? { href: "#"} : { href: shareUrl, target: "_blank" })
                 .append(this._createShareLogo(share));
+            if(this.popup) {
+               a.data("share-url",shareUrl);
+               a.click(this._renderPopup);
+            }
+            var $result = a;
 
             $.each(this.on || {}, function(event, handler) {
                 if($.isFunction(handler)) {
@@ -265,14 +272,9 @@
         },
 
         _formatShareUrl: function(url, share) {
-            url = url.replace(URL_PARAMS_REGEX, function(match, key, field) {
+            return url.replace(URL_PARAMS_REGEX, function(match, key, field) {
                 var value = share[field] || "";
                 return value ? (key + window.encodeURIComponent(value)) : "";
-            });
-
-            return url.replace(FIELD_SUBSTITUTION_REGEX, function(match, field) {
-                var value = share[field] || "";
-                return value ? window.encodeURIComponent(value) : "";
             });
         },
 
@@ -285,8 +287,9 @@
             var shares = this.shares;
 
             $.each(["url", "text"], function(_, optionName) {
-                if(optionName !== key)
+                if(optionName !== key) {
                     return;
+                }
 
                 $.each(shares, function(_, share) {
                     share[key] = value;
@@ -294,18 +297,9 @@
             });
         },
 
-        _normalizeShare: function(share) {
-            if($.isNumeric(share)) {
-                return this.shares[share];
-            }
-
-            if(typeof share === "string") {
-                return $.grep(this.shares, function(s) {
-                    return s.share === share;
-                })[0];
-            }
-
-            return share;
+        _renderPopup: function() {
+            window.open($(this).data("share-url"),null,"height=500,location=0,menubar=0,resizeable=0,scrollbars=0,status=0,titlebar=0,toolbar=0,width=550");
+            return false;
         },
 
         refresh: function() {
@@ -330,17 +324,6 @@
 
             this._passOptionToShares(key, value);
 
-            this.refresh();
-        },
-
-        shareOption: function(share, key, value) {
-            share = this._normalizeShare(share);
-
-            if(arguments.length === 2) {
-                return share[key];
-            }
-
-            share[key] = value;
             this.refresh();
         }
 

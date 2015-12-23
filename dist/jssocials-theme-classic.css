@@ -1,6 +1,6 @@
 .jssocials-share-twitter .jssocials-share-link {
   background: #00aced;
-  border: 1px solid #0099d3; }
+  border: 1px solid #0099d4; }
   .jssocials-share-twitter .jssocials-share-link:hover {
     background: #0087ba; }
 
@@ -69,7 +69,6 @@
     border-width: 6px 6px 0;
     border-color: #dcdcdc transparent;
     -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
             transform: rotate(90deg); }
   .jssocials-share-count-box:after {
     content: "";
@@ -82,7 +81,6 @@
     border-width: 5px 5px 0;
     border-color: #fff transparent;
     -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
             transform: rotate(90deg); }
   .jssocials-share-count-box .jssocials-share-count {
     line-height: 2.5em;

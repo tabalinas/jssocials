@@ -1,4 +1,4 @@
-/*! jssocials - v1.1.0 - 2015-12-19
+/*! jssocials - v1.1.0 - 2015-12-23
 * http://js-socials.com
 * Copyright (c) 2015 Artem Tabalin; Licensed MIT */
 (function(window, $, undefined) {
@@ -41,6 +41,7 @@
     Socials.prototype = {
         url: "",
         text: "",
+        popup: false,
 
         showLabel: function(screenWidth) {
             return (this.showCount === false) ?
@@ -79,6 +80,7 @@
         _initDefaults: function() {
             this.url = window.location.href;
             this.text = $.trim($("meta[name=description]").attr("content") || $("title").text());
+            this.popup = false;
         },
 
         _initShares: function() {
@@ -167,10 +169,15 @@
         },
 
         _createShareLink: function(share) {
-            var $result = $("<a>").addClass(this.shareLinkClass)
-                .attr({ href: this._getShareUrl(share), target: "_blank" })
+            var shareUrl = this._getShareUrl(share);
+            var a = $("<a>").addClass(this.shareLinkClass)
+                .attr(this.popup ? { href: "#"} : { href: shareUrl, target: "_blank" })
                 .append(this._createShareLogo(share));
-
+            if(this.popup) {
+                a.data("share-url",shareUrl);
+                a.click(this._renderPopup);
+            }
+            var $result = a;
             $.each(this.on || {}, function(event, handler) {
                 if($.isFunction(handler)) {
                     $result.on(event, $.proxy(handler, share));
@@ -218,6 +225,11 @@
                     $count.text(count);
                 }
             }, this));
+        },
+
+        _renderPopup: function() {
+            window.open($(this).data("share-url"),null,"height=500,location=0,menubar=0,resizeable=0,scrollbars=0,status=0,titlebar=0,toolbar=0,width=550");
+            return false;
         },
 
         _loadCount: function(share) {

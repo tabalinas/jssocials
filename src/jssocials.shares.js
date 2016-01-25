@@ -65,6 +65,13 @@
             getCount: function(data) {
                 return data.count;
             }
+        },
+
+        line: {
+            label: "LINE",
+            logo: "fa fa-comment",
+            shareUrl: "http://line.me/R/msg/text/?{text} {url}",
+            countUrl: ""
         }
 
     });

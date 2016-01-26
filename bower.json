@@ -4,7 +4,7 @@
     "main": [
         "dist/jssocials.js",
         "dist/jssocials.css",
-        "dist/jsgrid-theme-flat.css"
+        "dist/jssocials-theme-flat.css"
     ],
     "ignore": [
         "demo",

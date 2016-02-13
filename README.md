@@ -43,7 +43,7 @@ Find demos on the [project site](http://js-socials.com/demos/).
     <script src="jssocials.min.js"></script>
     <script>
         $("#share").jsSocials({
-            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp"]
+            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp", "link", "stumbleupon"]
         });
     </script>
 </body>
@@ -93,7 +93,7 @@ The config object may contain following options:
  
 ```javascript
 {
-    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp"],
+    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp", "link","stumbleupon"],
     url: "http://url.to.share",
     text: "text to share",
     showLabel: true,
@@ -263,7 +263,7 @@ A share config has few applicable for all shares parameters. Yet each share may 
 #### share :`String`
 
 A string name of the share.
-jsSocials supports following build-in shares: `"email" | "twitter" | "facebook" | "googleplus" | "linkedin" | "pinterest" | "whatsapp"`
+jsSocials supports following build-in shares: `"email" | "twitter" | "facebook" | "googleplus" | "linkedin" | "pinterest" | "whatsapp" | "link" | "stumbleupon"`
 
 Adding any new share is simple and described in [Custom Share](#custom-share) section.
 
@@ -386,6 +386,24 @@ The build-in social network shares have following configuration
 }
 ```
 
+#### link
+
+```javascript
+{
+    label: "Link",
+    logo: "fa fa-comment",
+}
+```
+
+#### stumbleupon
+
+```javascript
+{
+    label: "StumbleUpon",
+    logo: "fa fa-stumbleupon",
+}
+```
+
 
 ### Custom Share
 
@@ -410,8 +428,8 @@ If you wish to get your share styling for all supported themes, add its name and
 Currently `_shares.scss` contains following collections:
 
 ```scss
-$share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest', 'email', 'whatsapp');
-$share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027, #3490F3, #29a628);
+$share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest', 'email', 'whatsapp', 'line', 'stumbleupon');
+$share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027, #3490F3, #29a628, #25af00, #eb4823);
 ```
 
 Each share has following parameters:
@@ -495,3 +513,4 @@ $("#share").jsSocials({
 ## License
 
 MIT © Artem Tabalin
+

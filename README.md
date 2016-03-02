@@ -324,7 +324,8 @@ The build-in social network shares have following configuration
 ```javascript
 {
     label: "E-mail",
-    logo: "fa fa-at"
+    logo: "fa fa-at",
+    to: "my.address@test.com"
 }
 ```
 

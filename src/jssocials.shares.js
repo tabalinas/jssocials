@@ -22,7 +22,7 @@
         email: {
             label: "E-mail",
             logo: "fa fa-at",
-            shareUrl: "mailto:?subject={text}&body={url}",
+            shareUrl: "mailto:{to}?subject={text}&body={url}",
             countUrl: ""
         },
 

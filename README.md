@@ -98,6 +98,7 @@ The config object may contain following options:
     text: "text to share",
     showLabel: true,
     showCount: true,
+    popup: true,
     on: {
         click: function(e) {},
         mouseenter: function(e) {},
@@ -144,6 +145,10 @@ Also accepts function returning `true|false` depending on the screen width for a
 
 A boolean or "inside" specifying whether and how to show share count. 
 Also accepts function returning `true|false|"inside"` depending on the screen width for adaptive rendering. Read more in [Adaptiveness](#adaptiveness) section.
+
+#### popup :`true|false`
+
+A boolean specifying whether to show the sharing window in a new browser tab (default: false) or popup window (true).
 
 #### on :`Object`
 > version added: v1.0

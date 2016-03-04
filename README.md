@@ -99,6 +99,7 @@ The config object may contain following options:
     showLabel: true,
     showCount: true,
     popup: true,
+    target: "_blank",
     on: {
         click: function(e) {},
         mouseenter: function(e) {},
@@ -149,6 +150,10 @@ Also accepts function returning `true|false|"inside"` depending on the screen wi
 #### popup :`true|false`
 
 A boolean specifying whether to show the sharing window in a new browser tab (default: false) or popup window (true).
+
+#### target :`_blank|_self`
+
+A string specifying the href target setting. Value of `_blank` is used by default. `_self` needs to be used to correctly trigger mobile app (e.g. WhatsApp.
 
 #### on :`Object`
 > version added: v1.0
@@ -389,6 +394,7 @@ The build-in social network shares have following configuration
 {
     label: "WhatsApp",
     logo: "fa fa-whatsapp",
+    target: "_self",
 }
 ```
 

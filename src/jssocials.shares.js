@@ -16,7 +16,8 @@
             label: "WhatsApp",
             logo: "fa fa-whatsapp",
             shareUrl: "whatsapp://send?text={url} {text}",
-            countUrl: ""
+            countUrl: "",
+            target: "_self"
         },
 
         email: {
@@ -87,3 +88,4 @@
     });
 
 }(window, jQuery, window.jsSocials));
+

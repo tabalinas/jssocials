@@ -38,7 +38,8 @@
     Socials.prototype = {
         url: "",
         text: "",
-	popup: false,
+        popup: false,
+        target: "_blank",
 
         showLabel: function(screenWidth) {
             return (this.showCount === false) ?
@@ -78,6 +79,7 @@
             this.url = window.location.href;
             this.text = $.trim($("meta[name=description]").attr("content") || $("title").text());
             this.popup = false;
+            this.target = "_blank";
         },
 
         _initShares: function() {
@@ -167,8 +169,11 @@
 
         _createShareLink: function(share) {
             var shareUrl = this._getShareUrl(share);
+            if(share.target) {
+            	this.target = share.target;
+            }
             var a = $("<a>").addClass(this.shareLinkClass)
-                .attr(this.popup ? { href: "#"} : { href: shareUrl, target: "_blank" })
+                .attr(this.popup ? { href: "#"} : { href: shareUrl, target: this.target })
                 .append(this._createShareLogo(share));
 
             if(this.popup) {

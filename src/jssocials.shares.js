@@ -24,7 +24,8 @@
             label: "E-mail",
             logo: "fa fa-at",
             shareUrl: "mailto:{to}?subject={text}&body={url}",
-            countUrl: ""
+            countUrl: "",
+            target: "_self"
         },
 
         twitter: {

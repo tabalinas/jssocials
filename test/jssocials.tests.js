@@ -230,6 +230,20 @@
         assert.equal($shareLink.attr("href"), "http://test.com/share/?custom=testcustom", "share link href has custom params");
     });
 
+    QUnit.test("custom url params without key", function(assert) {
+        jsSocials.shares.testshare = {
+            custom: "testcustom",
+            shareUrl: "http://test.com/share/?{custom}"
+        };
+
+        var $element = $("#share").jsSocials({
+            shares: ["testshare"]
+        });
+
+        var $shareLink = $element.find(".jssocials-share-link");
+        assert.equal($shareLink.attr("href"), "http://test.com/share/?testcustom", "share link href has custom params without key");
+    });
+
     QUnit.test("logo as icon class", function(assert) {
         jsSocials.shares.testshare = {
             logo: "fa fa-user",
@@ -291,21 +305,6 @@
 
         var $shareLink = $element.find(".jssocials-share-link");
         assert.equal($shareLink.attr("href"), "http://test.com/share/?url=testurl&text=testtext", "custom param removed from shareUrl");
-    });
-
-    QUnit.test("replace template strings after url params replacement", function(assert) {
-        jsSocials.shares.testshare = {
-            shareUrl: "http://test.com/share/?url={url}&text=some {text}"
-        };
-
-        var $element = $("#share").jsSocials({
-            url: "testurl",
-            text: "testtext",
-            shares: ["testshare"]
-        });
-
-        var $shareLink = $element.find(".jssocials-share-link");
-        assert.equal($shareLink.attr("href"), "http://test.com/share/?url=testurl&text=some testtext", "template strings replaced");
     });
 
     QUnit.test("set custom handlers with 'on' config option", function(assert) {

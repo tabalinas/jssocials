@@ -19,7 +19,7 @@
         "K": 1000
     };
 
-    var shares = [];
+    var shares = {};
 
     function Socials(element, config) {
         var $element = $(element);

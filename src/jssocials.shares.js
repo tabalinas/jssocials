@@ -2,24 +2,6 @@
 
     $.extend(jsSocials.shares, {
 
-         stumbleupon: {
-            label: "Share",
-            logo: "fa fa-stumbleupon",
-            shareUrl: "http://www.stumbleupon.com/submit?url={url}&title={title}",
-            countUrl:  "https://cors-anywhere.herokuapp.com/https://www.stumbleupon.com/services/1.01/badge.getinfo?url={url}",
-            getCount: function(data) {
-                return data.result.views;
-            }
-        },
-
-        whatsapp: {
-            label: "WhatsApp",
-            logo: "fa fa-whatsapp",
-            shareUrl: "whatsapp://send?text={url} {text}",
-            countUrl: "",
-            target: "_self"
-        },
-
         email: {
             label: "E-mail",
             logo: "fa fa-at",
@@ -77,6 +59,24 @@
             getCount: function(data) {
                 return data.count;
             }
+        },
+
+        stumbleupon: {
+            label: "Share",
+            logo: "fa fa-stumbleupon",
+            shareUrl: "http://www.stumbleupon.com/submit?url={url}&title={title}",
+            countUrl:  "https://cors-anywhere.herokuapp.com/https://www.stumbleupon.com/services/1.01/badge.getinfo?url={url}",
+            getCount: function(data) {
+                return data.result.views;
+            }
+        },
+
+        whatsapp: {
+            label: "WhatsApp",
+            logo: "fa fa-whatsapp",
+            shareUrl: "whatsapp://send?text={url} {text}",
+            countUrl: "",
+            target: "_self"
         },
 
         line: {

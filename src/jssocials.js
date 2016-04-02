@@ -37,8 +37,7 @@
     Socials.prototype = {
         url: "",
         text: "",
-        popup: false,
-        target: "_blank",
+        shareIn: "blank",
 
         showLabel: function(screenWidth) {
             return (this.showCount === false) ?
@@ -77,8 +76,6 @@
         _initDefaults: function() {
             this.url = window.location.href;
             this.text = $.trim($("meta[name=description]").attr("content") || $("title").text());
-            this.popup = false;
-            this.target = "_blank";
         },
 
         _initShares: function() {
@@ -167,30 +164,35 @@
         },
 
         _createShareLink: function(share) {
-            var shareUrl = this._getShareUrl(share);
-            if(share.target) {
-            	this.target = share.target;
-            }
-            var a = $("<a>").addClass(this.shareLinkClass)
-                .attr(this.popup ? { href: "#"} : { href: shareUrl, target: this.target })
+            var shareStrategy = this._getShareStrategy(share);
+
+            var $result = shareStrategy({
+                shareUrl: this._getShareUrl(share)
+            });
+
+            $result.addClass(this.shareLinkClass)
                 .append(this._createShareLogo(share));
 
-            if(this.popup) {
-                a.data("share-url",shareUrl);
-                a.click(this._renderPopup);
+            if(this._showLabel) {
+                $result.append(this._createShareLabel(share));
             }
-            var $result = a;
+
             $.each(this.on || {}, function(event, handler) {
                 if($.isFunction(handler)) {
                     $result.on(event, $.proxy(handler, share));
                 }
             });
 
-            if(this._showLabel) {
-                $result.append(this._createShareLabel(share));
-            }
-
             return $result;
+        },
+
+        _getShareStrategy: function(share) {
+            var result = shareStrategies[share.shareIn || this.shareIn];
+
+            if(!result)
+                throw Error("Share strategy '" + this.shareIn + "' not found");
+
+            return result;
         },
 
         _getShareUrl: function(share) {
@@ -227,11 +229,6 @@
                     $count.text(count);
                 }
             }, this));
-        },
-
-        _renderPopup: function() {
-            window.open($(this).data("share-url"),null,"height=500,location=0,menubar=0,resizeable=0,scrollbars=0,status=0,titlebar=0,toolbar=0,width=550");
-            return false;
         },
 
         _loadCount: function(share) {
@@ -352,7 +349,6 @@
             share[key] = value;
             this.refresh();
         }
-
     };
 
 
@@ -399,9 +395,28 @@
         $.extend(component, config);
     };
 
+    var shareStrategies = {
+        popup: function(args) {
+            return $("<a>").attr("href", "#")
+                .on("click", function() {
+                    window.open(args.shareUrl, null, "width=600, height=400, location=0, menubar=0, resizeable=0, scrollbars=0, status=0, titlebar=0, toolbar=0");
+                    return false;
+                });
+        },
+
+        blank: function(args) {
+            return $("<a>").attr({ target: "_blank", href: args.shareUrl });
+        },
+
+        self: function(args) {
+            return $("<a>").attr({ target: "_self", href: args.shareUrl });
+        }
+    };
+
     window.jsSocials = {
         Socials: Socials,
         shares: shares,
+        shareStrategies: shareStrategies,
         setDefaults: setDefaults
     };
 

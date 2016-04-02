@@ -98,8 +98,6 @@ The config object may contain following options:
     text: "text to share",
     showLabel: true,
     showCount: true,
-    popup: true,
-    target: "_blank",
     on: {
         click: function(e) {},
         mouseenter: function(e) {},
@@ -146,14 +144,6 @@ Also accepts function returning `true|false` depending on the screen width for a
 
 A boolean or "inside" specifying whether and how to show share count. 
 Also accepts function returning `true|false|"inside"` depending on the screen width for adaptive rendering. Read more in [Adaptiveness](#adaptiveness) section.
-
-#### popup :`true|false`
-
-A boolean specifying whether to show the sharing window in a new browser tab (default: false) or popup window (true).
-
-#### target :`_blank|_self`
-
-A string specifying the href target setting. Value of `_blank` is used by default. `_self` needs to be used to correctly trigger mobile app (e.g. WhatsApp.
 
 #### on :`Object`
 > version added: v1.0
@@ -364,7 +354,7 @@ The build-in social network shares have following configuration
 ```javascript
 {
     label: "+1",
-    logo: "fa fa-google-plus",
+    logo: "fa fa-google-plus"
 }
 ```
 
@@ -373,7 +363,7 @@ The build-in social network shares have following configuration
 ```javascript
 {
     label: "Share",
-    logo: "fa fa-linkedin",
+    logo: "fa fa-linkedin"
 }
 ```
 
@@ -393,8 +383,7 @@ The build-in social network shares have following configuration
 ```javascript
 {
     label: "WhatsApp",
-    logo: "fa fa-whatsapp",
-    target: "_self",
+    logo: "fa fa-whatsapp"
 }
 ```
 
@@ -403,7 +392,7 @@ The build-in social network shares have following configuration
 ```javascript
 {
     label: "Link",
-    logo: "fa fa-comment",
+    logo: "fa fa-comment"
 }
 ```
 
@@ -412,7 +401,7 @@ The build-in social network shares have following configuration
 ```javascript
 {
     label: "StumbleUpon",
-    logo: "fa fa-stumbleupon",
+    logo: "fa fa-stumbleupon"
 }
 ```
 

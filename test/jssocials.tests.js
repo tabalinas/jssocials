@@ -722,5 +722,95 @@
     });
 
 
+    QUnit.module("share strategies", {
+        setup: function() {
+            jsSocials.shares.testshare = {
+                shareUrl: "http://test.com/share",
+                countUrl: ""
+            };
+        },
+        teardown: function() {
+            delete jsSocials.shares.testshare;
+        }
+    });
+
+    QUnit.test("custom share strategy", function(assert) {
+        jsSocials.shareStrategies.custom = function(args) {
+            return $("<button>").attr("share-url", args.shareUrl);
+        };
+
+        try {
+            var $element = $("#share").jsSocials({
+                shareIn: "custom",
+                shares: ["testshare"]
+            });
+
+            var $shareLink = $element.find(".jssocials-share-link");
+            assert.equal($shareLink.attr("share-url"), "http://test.com/share");
+
+        } finally {
+            delete jsSocials.shareStrategies.custom;
+        }
+    });
+
+    QUnit.test("shareIn can be redefined by share", 1, function(assert) {
+        var customShareStrategyCalled = false;
+
+        jsSocials.shareStrategies.custom = function() {
+            customShareStrategyCalled = true;
+            return $("<button>");
+        };
+
+        jsSocials.shares.testshare.shareIn = "custom";
+
+        try {
+            $("#share").jsSocials({
+                shares: ["testshare"]
+            });
+
+            assert.ok(customShareStrategyCalled, "custom share strategy called");
+        } finally {
+            delete jsSocials.shareStrategies.custom;
+        }
+    });
+
+    QUnit.test("throw error on unknown share strategy", function(assert) {
+        assert.throws(
+            function() {
+                $("#share").jsSocials({
+                    shareIn: "unknown",
+                    shares: ["testshare"]
+                });
+            },
+            "Share strategy 'unknown' is not found"
+        );
+    });
+
+    QUnit.test("blank share strategy", function(assert) {
+        var $result = jsSocials.shareStrategies.blank({ shareUrl: "share.url" });
+        assert.equal($result.attr("href"), "share.url");
+        assert.equal($result.attr("target"), "_blank");
+    });
+
+    QUnit.test("self share strategy", function(assert) {
+        var $result = jsSocials.shareStrategies.self({ shareUrl: "share.url" });
+        assert.equal($result.attr("href"), "share.url");
+        assert.equal($result.attr("target"), "_self");
+    });
+
+    QUnit.test("blank share strategy", 1, function(assert) {
+        var originalWindowOpen = window.open;
+        window.open = function(url) {
+            assert.equal(url, "share.url");
+        };
+
+        try {
+            var $result = jsSocials.shareStrategies.popup({ shareUrl: "share.url" });
+            $result.click();
+        } finally {
+            window.open = originalWindowOpen;
+        }
+    });
+
 
 }(jQuery, window.jsSocials));

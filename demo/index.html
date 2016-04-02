@@ -59,6 +59,9 @@
 <h2>Button with Label and Count Inside</h2>
 <div id="shareButtonLabelCountInside"></div>
 
+<h2>Share in popup</h2>
+<div id="shareInPopup"></div>
+
 <h2>Icons with Counter</h2>
 <div id="shareIconsCounter"></div>
 
@@ -121,6 +124,14 @@
             showCount: "inside",
             showLabel: true,
             shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+        });
+
+        $("#shareInPopup").jsSocials({
+            url: url,
+            text: text,
+            shareIn: "popup",
+            showCount: "inside",
+            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon"]
         });
 
         $("#shareIconsCounter").jsSocials({

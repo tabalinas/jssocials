@@ -7,7 +7,7 @@
             logo: "fa fa-at",
             shareUrl: "mailto:{to}?subject={text}&body={url}",
             countUrl: "",
-            target: "_self"
+            shareIn: "self"
         },
 
         twitter: {
@@ -76,7 +76,7 @@
             logo: "fa fa-whatsapp",
             shareUrl: "whatsapp://send?text={url} {text}",
             countUrl: "",
-            target: "_self"
+            shareIn: "self"
         },
 
         line: {

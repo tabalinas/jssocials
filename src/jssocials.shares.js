@@ -3,7 +3,7 @@
     $.extend(jsSocials.shares, {
 
          stumbleupon: {
-            label: "StumbleUpon",
+            label: "Share",
             logo: "fa fa-stumbleupon",
             shareUrl: "http://www.stumbleupon.com/submit?url={url}&title={title}",
             countUrl:  "https://cors-anywhere.herokuapp.com/https://www.stumbleupon.com/services/1.01/badge.getinfo?url={url}",

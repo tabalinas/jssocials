@@ -1,6 +1,6 @@
-/*! jssocials - v1.1.0 - 2015-12-19
+/*! jssocials - v1.2.0 - 2016-04-04
 * http://js-socials.com
-* Copyright (c) 2015 Artem Tabalin; Licensed MIT */
+* Copyright (c) 2016 Artem Tabalin; Licensed MIT */
 (function(window, $, undefined) {
 
     var JSSOCIALS = "JSSocials",
@@ -14,8 +14,7 @@
     };
 
     var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp)$|^data:image\/(jpeg|png|gif|bmp);base64)/i;
-    var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)\{([a-zA-Z0-9]+)\}/g;
-    var FIELD_SUBSTITUTION_REGEX = /\{([a-zA-Z0-9]+)\}/g;
+    var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)?\{([a-zA-Z0-9]+)\}/g;
 
     var MEASURES = {
         "G": 1000000000,
@@ -23,7 +22,7 @@
         "K": 1000
     };
 
-    var shares = [];
+    var shares = {};
 
     function Socials(element, config) {
         var $element = $(element);
@@ -41,6 +40,7 @@
     Socials.prototype = {
         url: "",
         text: "",
+        shareIn: "blank",
 
         showLabel: function(screenWidth) {
             return (this.showCount === false) ?
@@ -167,9 +167,18 @@
         },
 
         _createShareLink: function(share) {
-            var $result = $("<a>").addClass(this.shareLinkClass)
-                .attr({ href: this._getShareUrl(share), target: "_blank" })
+            var shareStrategy = this._getShareStrategy(share);
+
+            var $result = shareStrategy({
+                shareUrl: this._getShareUrl(share)
+            });
+
+            $result.addClass(this.shareLinkClass)
                 .append(this._createShareLogo(share));
+
+            if(this._showLabel) {
+                $result.append(this._createShareLabel(share));
+            }
 
             $.each(this.on || {}, function(event, handler) {
                 if($.isFunction(handler)) {
@@ -177,11 +186,16 @@
                 }
             });
 
-            if(this._showLabel) {
-                $result.append(this._createShareLabel(share));
-            }
-
             return $result;
+        },
+
+        _getShareStrategy: function(share) {
+            var result = shareStrategies[share.shareIn || this.shareIn];
+
+            if(!result)
+                throw Error("Share strategy '" + this.shareIn + "' not found");
+
+            return result;
         },
 
         _getShareUrl: function(share) {
@@ -265,14 +279,9 @@
         },
 
         _formatShareUrl: function(url, share) {
-            url = url.replace(URL_PARAMS_REGEX, function(match, key, field) {
+            return url.replace(URL_PARAMS_REGEX, function(match, key, field) {
                 var value = share[field] || "";
-                return value ? (key + window.encodeURIComponent(value)) : "";
-            });
-
-            return url.replace(FIELD_SUBSTITUTION_REGEX, function(match, field) {
-                var value = share[field] || "";
-                return value ? window.encodeURIComponent(value) : "";
+                return value ? (key || "") + window.encodeURIComponent(value) : "";
             });
         },
 
@@ -343,7 +352,6 @@
             share[key] = value;
             this.refresh();
         }
-
     };
 
 
@@ -390,30 +398,44 @@
         $.extend(component, config);
     };
 
+    var shareStrategies = {
+        popup: function(args) {
+            return $("<a>").attr("href", "#")
+                .on("click", function() {
+                    window.open(args.shareUrl, null, "width=600, height=400, location=0, menubar=0, resizeable=0, scrollbars=0, status=0, titlebar=0, toolbar=0");
+                    return false;
+                });
+        },
+
+        blank: function(args) {
+            return $("<a>").attr({ target: "_blank", href: args.shareUrl });
+        },
+
+        self: function(args) {
+            return $("<a>").attr({ target: "_self", href: args.shareUrl });
+        }
+    };
+
     window.jsSocials = {
         Socials: Socials,
         shares: shares,
+        shareStrategies: shareStrategies,
         setDefaults: setDefaults
     };
 
 }(window, jQuery));
 
+
 (function(window, $, jsSocials, undefined) {
 
     $.extend(jsSocials.shares, {
 
-        whatsapp: {
-            label: "WhatsApp",
-            logo: "fa fa-whatsapp",
-            shareUrl: "whatsapp://send?text={url} {text}",
-            countUrl: ""
-        },
-
         email: {
             label: "E-mail",
             logo: "fa fa-at",
-            shareUrl: "mailto:?subject={text}&body={url}",
-            countUrl: ""
+            shareUrl: "mailto:{to}?subject={text}&body={url}",
+            countUrl: "",
+            shareIn: "self"
         },
 
         twitter: {
@@ -465,8 +487,34 @@
             getCount: function(data) {
                 return data.count;
             }
+        },
+
+        stumbleupon: {
+            label: "Share",
+            logo: "fa fa-stumbleupon",
+            shareUrl: "http://www.stumbleupon.com/submit?url={url}&title={title}",
+            countUrl:  "https://cors-anywhere.herokuapp.com/https://www.stumbleupon.com/services/1.01/badge.getinfo?url={url}",
+            getCount: function(data) {
+                return data.result.views;
+            }
+        },
+
+        whatsapp: {
+            label: "WhatsApp",
+            logo: "fa fa-whatsapp",
+            shareUrl: "whatsapp://send?text={url} {text}",
+            countUrl: "",
+            shareIn: "self"
+        },
+
+        line: {
+            label: "LINE",
+            logo: "fa fa-comment",
+            shareUrl: "http://line.me/R/msg/text/?{text} {url}",
+            countUrl: ""
         }
 
     });
 
 }(window, jQuery, window.jsSocials));
+

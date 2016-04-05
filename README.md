@@ -407,6 +407,15 @@ The build-in social network shares have following configuration
 }
 ```
 
+#### stumbleupon
+
+```javascript
+{
+    label: "StumbleUpon",
+    logo: "fa fa-stumbleupon"
+}
+```
+
 #### whatsapp
 > version added: 1.1
 
@@ -418,21 +427,12 @@ The build-in social network shares have following configuration
 }
 ```
 
-#### link
+#### line
 
 ```javascript
 {
-    label: "Link",
+    label: "LINE",
     logo: "fa fa-comment"
-}
-```
-
-#### stumbleupon
-
-```javascript
-{
-    label: "StumbleUpon",
-    logo: "fa fa-stumbleupon"
 }
 ```
 

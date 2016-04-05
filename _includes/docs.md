@@ -355,6 +355,16 @@ The build-in social network shares have following configuration
 }
 ```
 
+#### stumbleupon
+> version added: 1.2
+
+```javascript
+{
+    label: "Share",
+    logo: "fa fa-stumbleupon"
+}
+```
+
 #### whatsapp
 > version added: 1.1
 
@@ -365,6 +375,17 @@ The build-in social network shares have following configuration
     shareIn: "self"
 }
 ```
+
+#### line
+> version added: 1.2
+
+```javascript
+{
+    label: "LINE",
+    logo: "fa fa-comment"
+}
+```
+
 
 ### Custom Share
 
@@ -422,6 +443,7 @@ A function retrieving count value from response received from countUrl.
 Accepts response data. The response `data` is used as count if function is not specified.
 If `getCount` returns a number, it will be formatted (e.g. 1200 to 1.2K).
 Return a string value to avoid automatic formatting.
+
 
 
 ### Adaptiveness

@@ -551,17 +551,17 @@ It should be added to `jsSocials.shareStrategies` hash.
 In the following example we define a sharing strategy that shares in a browser window with custom params and instead of link `<a>` uses custom `<div>` element:
 
 ```js
-    jsSocials.shareStrategies["my_popup"] = function(args) {
-        return $("<div>").click(function() {
-                window.open(args.shareUrl, "MyShareWindow", 
-                    "width=800, height=600, location=1, resizeable=1, menubar=0, scrollbars=0, status=0, titlebar=0, toolbar=0");
-            });
-    };
-    
-    $("#jsSocials").jsSocials({
-        shareIn: "my_popup",
-        shares: ["twitter", "facebook", "googleplus"]
-    });
+jsSocials.shareStrategies["my_popup"] = function(args) {
+    return $("<div>").click(function() {
+            window.open(args.shareUrl, "MyShareWindow", 
+                "width=800, height=600, location=1, resizeable=1, menubar=0, scrollbars=0, status=0, titlebar=0, toolbar=0");
+        });
+};
+
+$("#share").jsSocials({
+    shareIn: "my_popup",
+    shares: ["twitter", "facebook", "googleplus"]
+});
 ```
 
 

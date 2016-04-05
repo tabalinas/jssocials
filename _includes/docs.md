@@ -7,6 +7,7 @@
 * [Build-in Shares](#build-in-shares)
 * [Custom Share](#custom-share)
 * [Adaptiveness](#adaptiveness)
+* [Custom Share Strategy](#custom-share-strategy)
 
 
 ### Themes
@@ -46,6 +47,7 @@ The config object may contain following options:
     text: "text to share",
     showLabel: true,
     showCount: true,
+    shareIn: "popup",
     on: {
         click: function(e) {},
         mouseenter: function(e) {},
@@ -92,6 +94,19 @@ Also accepts function returning `true|false` depending on the screen width for a
 
 A boolean or "inside" specifying whether and how to show share count.
 Also accepts function returning `true|false|"inside"` depending on the screen width for adaptive rendering. Read more in [Adaptiveness](#adaptiveness) section.
+
+#### shareIn : `"blank"|"popup"|"self"`
+> version added: 1.2
+
+A string specifying the name of sharing strategy. All strategies are stored in the registry `jsSocials.shareStrategy`.
+
+There are 3 built-in sharing strategies:
+
+**blank** - share in the new browser tab
+**popup** - share in the new browser popup window
+**self** - share in the same browser tab
+
+Custom sharing strategies can be added to registry `jsSocials.shareStrategy`. Find more in [Custom Share Strategy](#custom-share-strategy) section.
 
 #### on :`Object`
 > version added: v1.0
@@ -204,6 +219,7 @@ A share config has few applicable for all shares parameters. Yet each share may 
     label: "Tweet",
     logo: "fa fa-twitter",
     css: "custom-class",
+    shareIn: "blank",
     renderer: function() { ... }
 }
 ```
@@ -231,6 +247,19 @@ It accepts following values:
 #### css: `String`
 
 A string specifying spaces-separated custom css classes to attach to share DOM element.
+
+#### shareIn : `"blank"|"popup"|"self"`
+> version added: 1.2
+
+A string specifying the name of sharing strategy. It's identical to `shareIn` option of `jsSocials`, but specifies sharing strategy for a particular share.
+
+Accepts the following values for built-in strategies:
+
+**blank** - share in the new browser tab
+**popup** - share in the new browser popup window
+**self** - share in the same browser tab
+
+Custom sharing strategies can be added to registry `jsSocials.shareStrategy`. Find more in [Custom Share Strategy](#custom-share-strategy) section.
 
 #### renderer :`function()`
 
@@ -273,7 +302,8 @@ The build-in social network shares have following configuration
 {
     label: "E-mail",
     logo: "fa fa-at",
-    to: "my.address@test.com"
+    to: "my.address@test.com",
+    shareIn: "self"
 }
 ```
 
@@ -302,7 +332,7 @@ The build-in social network shares have following configuration
 ```javascript
 {
     label: "+1",
-    logo: "fa fa-google-plus",
+    logo: "fa fa-google-plus"
 }
 ```
 
@@ -311,7 +341,7 @@ The build-in social network shares have following configuration
 ```javascript
 {
     label: "Share",
-    logo: "fa fa-linkedin",
+    logo: "fa fa-linkedin"
 }
 ```
 
@@ -332,6 +362,7 @@ The build-in social network shares have following configuration
 {
     label: "WhatsApp",
     logo: "fa fa-whatsapp",
+    shareIn: "self"
 }
 ```
 
@@ -436,5 +467,29 @@ $("#share").jsSocials({
     },
 
     ...
+});
+```
+
+
+### Custom Share Strategy
+> version added: 1.2
+
+A custom share strategy can be used to redefine standard behavior of sharing or customize rendering of a sharing control.  
+The sharing strategy is a function that accepts a single parameter `{ shareUrl: "http://your.share.url" }` and should return a jQuery element. 
+It should be added to `jsSocials.shareStrategies` hash.
+
+In the following example we define a sharing strategy that shares in a browser window with custom params and instead of link `<a>` uses custom `<div>` element:
+
+```js
+jsSocials.shareStrategies["my_popup"] = function(args) {
+    return $("<div>").click(function() {
+            window.open(args.shareUrl, "MyShareWindow", 
+                "width=800, height=600, location=1, resizeable=1, menubar=0, scrollbars=0, status=0, titlebar=0, toolbar=0");
+        });
+};
+
+$("#jsSocials").jsSocials({
+    shareIn: "my_popup",
+    shares: ["twitter", "facebook", "googleplus"]
 });
 ```

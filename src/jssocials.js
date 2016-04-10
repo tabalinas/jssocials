@@ -166,7 +166,7 @@
         _createShareLink: function(share) {
             var shareStrategy = this._getShareStrategy(share);
 
-            var $result = shareStrategy({
+            var $result = shareStrategy.call(share, {
                 shareUrl: this._getShareUrl(share)
             });
 

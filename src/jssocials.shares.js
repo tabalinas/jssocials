@@ -31,7 +31,7 @@
 
         googleplus: {
             label: "+1",
-            logo: "fa fa-google-plus",
+            logo: "fa fa-google",
             shareUrl: "https://plus.google.com/share?url={url}",
             countUrl: function() {
                 return "https://cors-anywhere.herokuapp.com/https://plusone.google.com/_/+1/fastbutton?url="+ window.encodeURIComponent(this.url);

@@ -750,7 +750,7 @@
 
             var $shareLink = $element.find(".jssocials-share-link");
             assert.equal($shareLink.attr("share-url"), "http://test.com/share");
-            assert.equal(strategyContext, $element.jsSocials("option", "shares")[0], "strategy context is a share")
+            assert.equal(strategyContext, $element.jsSocials("option", "shares")[0], "strategy context is a share");
         } finally {
             delete jsSocials.shareStrategies.custom;
         }

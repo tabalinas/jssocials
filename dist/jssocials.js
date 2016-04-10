@@ -1,4 +1,4 @@
-/*! jssocials - v1.2.0 - 2016-04-04
+/*! jssocials - v1.2.1 - 2016-04-10
 * http://js-socials.com
 * Copyright (c) 2016 Artem Tabalin; Licensed MIT */
 (function(window, $, undefined) {
@@ -169,7 +169,7 @@
         _createShareLink: function(share) {
             var shareStrategy = this._getShareStrategy(share);
 
-            var $result = shareStrategy({
+            var $result = shareStrategy.call(share, {
                 shareUrl: this._getShareUrl(share)
             });
 
@@ -459,7 +459,7 @@
 
         googleplus: {
             label: "+1",
-            logo: "fa fa-google-plus",
+            logo: "fa fa-google",
             shareUrl: "https://plus.google.com/share?url={url}",
             countUrl: function() {
                 return "https://cors-anywhere.herokuapp.com/https://plusone.google.com/_/+1/fastbutton?url="+ window.encodeURIComponent(this.url);

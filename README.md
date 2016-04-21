@@ -43,7 +43,7 @@ Find demos on the [project site](http://js-socials.com/demos/).
     <script src="jssocials.min.js"></script>
     <script>
         $("#share").jsSocials({
-            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp", "link", "stumbleupon"]
+            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
         });
     </script>
 </body>
@@ -94,7 +94,7 @@ The config object may contain following options:
  
 ```javascript
 {
-    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp", "link","stumbleupon"],
+    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp", "line"],
     url: "http://url.to.share",
     text: "text to share",
     showLabel: true,
@@ -279,7 +279,7 @@ A share config has few applicable for all shares parameters. Yet each share may 
 #### share :`String`
 
 A string name of the share.
-jsSocials supports following build-in shares: `"email" | "twitter" | "facebook" | "googleplus" | "linkedin" | "pinterest" | "whatsapp" | "link" | "stumbleupon"`
+jsSocials supports following build-in shares: `"email" | "twitter" | "facebook" | "googleplus" | "linkedin" | "pinterest" | "stumbleupon" | "whatsapp" | "line"`
 
 Adding any new share is simple and described in [Custom Share](#custom-share) section.
 
@@ -460,8 +460,8 @@ If you wish to get your share styling for all supported themes, add its name and
 Currently `_shares.scss` contains following collections:
 
 ```scss
-$share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest', 'email', 'whatsapp', 'line', 'stumbleupon');
-$share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027, #3490F3, #29a628, #25af00, #eb4823);
+$share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest', 'email', 'stumbleupon', 'whatsapp', 'line');
+$share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027, #3490F3, #eb4823, #29a628, #25af00);
 ```
 
 Each share has following parameters:

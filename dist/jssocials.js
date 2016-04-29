@@ -13,7 +13,7 @@
         return value;
     };
 
-    var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp|svg\+xml)$|^data:image\/(jpeg|png|gif|bmp|svg\+xml);base64)/i;
+    var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp)$|^data:image\/(jpeg|png|gif|bmp);base64)/i;
     var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)?\{([a-zA-Z0-9]+)\}/g;
 
     var MEASURES = {

@@ -29,3 +29,39 @@ $feature-block-icon-color: $primary-color;
     color: $feature-block-icon-color;
   }
 }
+
+// Ads
+.carbon {
+  &-container {
+    padding-top: 1rem;
+  }
+
+  &-wrap {
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &-img {
+    display: block;
+  }
+
+  &-text {
+    display: block;
+    margin-top: .5em;
+    line-height: 1.5;
+    color: #fff;
+    font-size: .9rem;
+
+    &:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+
+  &-poweredby {
+    display: none;
+    color: #ADB0BA;
+    font-size: .8rem;
+    text-align: center;
+  }
+}

@@ -71,6 +71,14 @@
             }
         },
 
+        telegram: {
+            label: "Telegram",
+            logo: "fa fa-paper-plane",
+            shareUrl: "tg://msg?text={url} {text}",
+            countUrl: "",
+            shareIn: "self"
+        },
+
         whatsapp: {
             label: "WhatsApp",
             logo: "fa fa-whatsapp",

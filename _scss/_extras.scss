@@ -33,7 +33,7 @@ $feature-block-icon-color: $primary-color;
 // Ads
 .carbon {
   &-container {
-    padding-top: 1rem;
+    margin-top: 1rem;
   }
 
   &-wrap {
@@ -54,14 +54,17 @@ $feature-block-icon-color: $primary-color;
 
     &:hover {
       color: #fff;
-      text-decoration: underline;
     }
   }
 
   &-poweredby {
-    display: none;
-    color: #ADB0BA;
+    display: block;
+    color: lighten($primary-color, 30%);
     font-size: .8rem;
     text-align: center;
+
+    &:hover {
+      color: lighten($primary-color, 30%);
+    }
   }
 }

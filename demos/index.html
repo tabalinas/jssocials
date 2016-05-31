@@ -50,7 +50,7 @@ weight: 3
             <div class="demo-item content">
             <h2 class="demo-title">{{ demo.title }}</h2>
             {% if demo.note %}<div class="alert-box secondary">{{ demo.note | markdownify  }}</div>{% endif %}
-            <div id="{{ demo.id }}"></div>
+            <div id="{{ demo.name }}"></div>
             {% capture demoCode %}```javascript
 {{ demo.content }}
 ```{% endcapture %}

@@ -50,6 +50,7 @@ $transition: color 200ms ease-in-out !default;
     border-radius: $count-border-radius;
 
     .jssocials-share-count {
+        line-height: 1.2 * 1.5em;
         font-size: $text-size;
         color: $text-color;
     }

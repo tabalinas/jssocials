@@ -1,4 +1,4 @@
-/*! jssocials - v1.2.1 - 2016-04-10
+/*! jssocials - v1.3.0 - 2016-08-18
 * http://js-socials.com
 * Copyright (c) 2016 Artem Tabalin; Licensed MIT */
 (function(window, $, undefined) {
@@ -13,7 +13,7 @@
         return value;
     };
 
-    var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp)$|^data:image\/(jpeg|png|gif|bmp);base64)/i;
+    var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp|svg\+xml)$|^data:image\/(jpeg|png|gif|bmp|svg\+xml);base64)/i;
     var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)?\{([a-zA-Z0-9]+)\}/g;
 
     var MEASURES = {
@@ -497,6 +497,14 @@
             getCount: function(data) {
                 return data.result.views;
             }
+        },
+
+        telegram: {
+            label: "Telegram",
+            logo: "fa fa-paper-plane",
+            shareUrl: "tg://msg?text={url} {text}",
+            countUrl: "",
+            shareIn: "self"
         },
 
         whatsapp: {

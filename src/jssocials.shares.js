@@ -21,11 +21,9 @@
             label: "Like",
             logo: "fa fa-facebook",
             shareUrl: "https://facebook.com/sharer/sharer.php?u={url}",
-            countUrl: function() {
-                return "https://graph.facebook.com/fql?q=SELECT total_count FROM link_stat WHERE url='" + window.encodeURIComponent(this.url) + "'";
-            },
+            countUrl: "http://graph.facebook.com/?id={url}",
             getCount: function(data) {
-                return (data.data.length && data.data[0].total_count) || 0;
+                return data.share && data.share.share_count || 0;
             }
         },
 

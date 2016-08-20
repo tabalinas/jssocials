@@ -31,9 +31,7 @@
             label: "+1",
             logo: "fa fa-google",
             shareUrl: "https://plus.google.com/share?url={url}",
-            countUrl: function() {
-                return "https://cors-anywhere.herokuapp.com/https://plusone.google.com/_/+1/fastbutton?url="+ window.encodeURIComponent(this.url);
-            },
+            countUrl: "https://cors-anywhere.herokuapp.com/https://plusone.google.com/_/+1/fastbutton?url={url}",
             getCount: function(data) {
                 return parseFloat((data.match(/\{c: ([.0-9E]+)/) || [])[1]);
             }

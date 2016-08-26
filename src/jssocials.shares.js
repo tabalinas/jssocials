@@ -88,6 +88,14 @@
             logo: "fa fa-comment",
             shareUrl: "http://line.me/R/msg/text/?{text} {url}",
             countUrl: ""
+        },
+
+        viber: {
+            label: "Viber",
+            logo: "fa fa-volume-control-phone",
+            shareUrl: "viber://forward?text={url} {text}",
+            countUrl: "",
+            shareIn: "self"
         }
 
     });

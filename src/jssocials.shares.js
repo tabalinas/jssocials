@@ -96,6 +96,13 @@
             shareUrl: "viber://forward?text={url} {text}",
             countUrl: "",
             shareIn: "self"
+        },
+
+        pocket: {
+            label: "Pocket",
+            logo: "fa fa-get-pocket",
+            shareUrl: "https://getpocket.com/save?url={url}&title={title}",
+            countUrl: "",
         }
 
     });

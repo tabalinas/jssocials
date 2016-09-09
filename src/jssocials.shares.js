@@ -26,6 +26,16 @@
                 return data.share && data.share.share_count || 0;
             }
         },
+        
+        vkontakte: {
+            label: "Like",
+            logo: "fa fa-vk",
+            shareUrl: "https://vk.com/share.php?url={url}&title={title}&description={text}",
+            countUrl: "https://vk.com/share.php?act=count&index=1&url={url}",
+            getCount: function(data) {
+                return parseInt(data.slice(15, -2).split(', ')[1]);
+            }
+        },
 
         googleplus: {
             label: "+1",

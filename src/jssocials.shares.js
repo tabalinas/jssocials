@@ -103,6 +103,14 @@
             logo: "fa fa-get-pocket",
             shareUrl: "https://getpocket.com/save?url={url}&title={title}",
             countUrl: "",
+        },
+
+        messenger: {
+            label: "Messenger",
+            logo: "fa fa-commenting",
+            shareUrl: "fb-messenger://share?link={url}",
+            countUrl: "",
+            shareIn: "self"
         }
 
     });

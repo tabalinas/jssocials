@@ -26,7 +26,7 @@
                 return data.share && data.share.share_count || 0;
             }
         },
-        
+
         vkontakte: {
             label: "Like",
             logo: "fa fa-vk",

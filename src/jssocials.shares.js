@@ -116,7 +116,7 @@
         },
 
         messenger: {
-            label: "Messenger",
+            label: "Share",
             logo: "fa fa-commenting",
             shareUrl: "fb-messenger://share?link={url}",
             countUrl: "",

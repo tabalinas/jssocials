@@ -277,6 +277,23 @@
         assert.equal($shareLogo.attr("src"), imgBase64, "img has base64 src");
     });
 
+    QUnit.test("logo as svg image", function(assert) {
+        jsSocials.shares.testshare = {
+            shareUrl: "http://test.com/share"
+        };
+
+        var $element = $("#share").jsSocials({
+            shares: [{
+                share: "testshare",
+                logo: "test.svg"
+            }]
+        });
+
+        var $shareLogo = $element.find(".jssocials-share-logo");
+        assert.equal($shareLogo.get(0).tagName, "IMG", "<img> tag is rendered");
+        assert.equal($shareLogo.attr("src"), "test.svg", "img has svg image path");
+    });
+
     QUnit.test("share should get sharing url and text", function(assert) {
         jsSocials.shares.testshare = {
             shareUrl: "http://test.com/share/?url={url}&text={text}"

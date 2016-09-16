@@ -13,11 +13,7 @@ $external-margin: .2em 0 !default;
 .jssocials-share {
     display: inline-block;
     vertical-align: top;
-    margin: $base-padding;
-}
-
-.jssocials-share:first-child {
-    margin-left: 0;
+    margin: $base-padding 2*$base-padding $base-padding 0;
 }
 
 .jssocials-share:last-child {

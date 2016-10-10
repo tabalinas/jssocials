@@ -1,6 +1,6 @@
 {
     "name": "jssocials",
-    "version": "1.3.1",
+    "version": "1.4.0",
     "main": "dist/jssocials.js",
     "description": "jsSocials - jQuery Social Network Sharing Plugin",
     "homepage": "http://js-socials.com",
@@ -24,7 +24,7 @@
     },
     "license": "MIT",
     "scripts": {
-        "test": "grunt"
+        "test": "grunt test"
     },
     "dependencies": {},
     "devDependencies": {

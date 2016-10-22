@@ -118,6 +118,13 @@
             shareUrl: "fb-messenger://share?link={url}",
             countUrl: "",
             shareIn: "self"
+        },
+        rss: {
+            label: "RSS",
+            logo: "fa fa-rss",
+            shareUrl: "/feeds/",
+            countUrl: "",
+            shareIn: "blank"
         }
 
     });

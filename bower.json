@@ -3,8 +3,7 @@
     "version": "1.4.0",
     "main": [
         "dist/jssocials.js",
-        "dist/jssocials.css",
-        "dist/jssocials-theme-flat.css"
+        "dist/jssocials.css"
     ],
     "ignore": [
         "demo",
@@ -24,6 +23,7 @@
         "jquery": ">=1.10.2"
     },
     "devDependencies": {
-        "qunit": ">=1.12.0"
+        "qunit": ">=1.12.0",
+        "font-awesome": ">=1.0.0"
     }
 }

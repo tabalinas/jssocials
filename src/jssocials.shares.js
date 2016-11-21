@@ -76,7 +76,7 @@
 
         telegram: {
             label: "Telegram",
-            logo: "fa fa-paper-plane",
+            logo: "fa fa-telegram",
             shareUrl: "tg://msg?text={url} {text}",
             countUrl: "",
             shareIn: "self"

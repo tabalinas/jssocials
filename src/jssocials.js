@@ -74,8 +74,8 @@
         },
 
         _initDefaults: function() {
-            this.url = window.location.href;
-            this.text = $.trim($("meta[name=description]").attr("content") || $("title").text());
+            this.url = this._$element.data("url") || window.location.href;
+            this.text = $.trim(this._$element.data("title") || $("meta[name=description]").attr("content"));
         },
 
         _initShares: function() {

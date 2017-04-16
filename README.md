@@ -133,9 +133,13 @@ For instance for twitter the config might look like:
 
 A string specifying url to share. Value of `window.location.href` is used by default.
 
+The url can also be specified by adding a value for the "data-url" attribute on the sharing element itself.
+
 #### text :`String`
 
 A string specifying text to share. The content of `<meta name="description">` or `<title>` (if first is missing) is used by default.
+
+The text can also be specified by adding a value for the "data-url" attribute on the sharing element itself.
 
 #### showLabel :`true|false|function(screenWidth)`
 

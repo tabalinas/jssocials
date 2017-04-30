@@ -27,16 +27,6 @@
             }
         },
 
-        vkontakte: {
-            label: "Like",
-            logo: "fa fa-vk",
-            shareUrl: "https://vk.com/share.php?url={url}&title={title}&description={text}",
-            countUrl: "https://vk.com/share.php?act=count&index=1&url={url}",
-            getCount: function(data) {
-                return parseInt(data.slice(15, -2).split(', ')[1]);
-            }
-        },
-
         googleplus: {
             label: "+1",
             logo: "fa fa-google",
@@ -74,12 +64,11 @@
             }
         },
 
-        telegram: {
-            label: "Telegram",
-            logo: "fa fa-telegram",
-            shareUrl: "tg://msg?text={url} {text}",
-            countUrl: "",
-            shareIn: "self"
+        pocket: {
+            label: "Pocket",
+            logo: "fa fa-get-pocket",
+            shareUrl: "https://getpocket.com/save?url={url}&title={title}",
+            countUrl: ""
         },
 
         whatsapp: {
@@ -90,26 +79,12 @@
             shareIn: "self"
         },
 
-        line: {
-            label: "LINE",
-            logo: "fa fa-comment",
-            shareUrl: "http://line.me/R/msg/text/?{text} {url}",
-            countUrl: ""
-        },
-
         viber: {
             label: "Viber",
             logo: "fa fa-volume-control-phone",
             shareUrl: "viber://forward?text={url} {text}",
             countUrl: "",
             shareIn: "self"
-        },
-
-        pocket: {
-            label: "Pocket",
-            logo: "fa fa-get-pocket",
-            shareUrl: "https://getpocket.com/save?url={url}&title={title}",
-            countUrl: ""
         },
 
         messenger: {
@@ -119,12 +94,37 @@
             countUrl: "",
             shareIn: "self"
         },
+
+        telegram: {
+            label: "Telegram",
+            logo: "fa fa-telegram",
+            shareUrl: "tg://msg?text={url} {text}",
+            countUrl: "",
+            shareIn: "self"
+        },
+
+        vkontakte: {
+            label: "Like",
+            logo: "fa fa-vk",
+            shareUrl: "https://vk.com/share.php?url={url}&title={title}&description={text}",
+            countUrl: "https://vk.com/share.php?act=count&index=1&url={url}",
+            getCount: function(data) {
+                return parseInt(data.slice(15, -2).split(', ')[1]);
+            }
+        },
+
+        line: {
+            label: "LINE",
+            logo: "fa fa-comment",
+            shareUrl: "http://line.me/R/msg/text/?{text} {url}",
+            countUrl: ""
+        },
+
         rss: {
             label: "RSS",
             logo: "fa fa-rss",
             shareUrl: "/feeds/",
-            countUrl: "",
-            shareIn: "blank"
+            countUrl: ""
         }
 
     });

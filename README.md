@@ -94,7 +94,7 @@ The config object may contain following options:
  
 ```javascript
 {
-    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp", "telegram", "line"],
+    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "pocket", "whatsapp", "viber", "messenger", "vkontakte", "telegram", "line", "rss"],
     url: "http://url.to.share",
     text: "text to share",
     showLabel: true,
@@ -279,7 +279,7 @@ A share config has few applicable for all shares parameters. Yet each share may 
 #### share :`String`
 
 A string name of the share.
-jsSocials supports following build-in shares: `"email" | "twitter" | "facebook" | "googleplus" | "linkedin" | "pinterest" | "stumbleupon" | "whatsapp" | "telegram" | "line"`
+jsSocials supports following build-in shares: `"email" | "twitter" | "facebook" | "googleplus" | "linkedin" | "pinterest" | "stumbleupon" | "pocket" | "whatsapp" | "viber" | "messenger" | "vkontakte" | "telegram" | "line" | "rss"`
 
 Adding any new share is simple and described in [Custom Share](#custom-share) section.
 
@@ -416,6 +416,16 @@ The build-in social network shares have following configuration
 }
 ```
 
+#### pocket
+> version added: 1.4
+
+```javascript
+{
+    label: "Pocket",
+    logo: "fa fa-get-pocket"
+}
+```
+
 #### whatsapp
 > version added: 1.1
 
@@ -424,6 +434,38 @@ The build-in social network shares have following configuration
     label: "WhatsApp",
     logo: "fa fa-whatsapp",
     shareIn: "self"
+}
+```
+
+#### viber
+> version added: 1.4
+
+```javascript
+{
+    label: "Viber",
+    logo: "fa fa-volume-control-phone",
+    shareIn: "self"
+}
+```
+
+#### messenger
+> version added: 1.4
+
+```javascript
+{
+    label: "Share",
+    logo: "fa fa-commenting",
+    shareIn: "self"
+}
+```
+
+#### vkontakte
+> version added: 1.4
+
+```javascript
+{
+    label: "Like",
+    logo: "fa fa-vk"
 }
 ```
 
@@ -443,6 +485,16 @@ The build-in social network shares have following configuration
 {
     label: "LINE",
     logo: "fa fa-comment"
+}
+```
+
+#### rss
+> version added: 1.5
+
+```javascript
+{
+    label: "RSS",
+    logo: "fa fa-rss"
 }
 ```
 
@@ -470,8 +522,8 @@ If you wish to get your share styling for all supported themes, add its name and
 Currently `_shares.scss` contains following collections:
 
 ```scss
-$share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest', 'email', 'stumbleupon', 'whatsapp', 'telegram', 'line');
-$share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027, #3490F3, #eb4823, #29a628, #2ca5e0, #25af00);
+$share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest', 'email', 'stumbleupon', 'whatsapp', 'telegram', 'line', 'viber', 'pocket', 'messenger', 'vkontakte', 'rss') !default;
+$share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027, #3490F3, #eb4823, #29a628, #2ca5e0, #25af00, #7b519d, #ef4056, #0084ff, #45668e, #ff9900) !default;
 ```
 
 Each share has following parameters:

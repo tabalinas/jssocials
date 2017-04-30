@@ -42,7 +42,7 @@ The config object may contain following options:
 
 ```javascript
 {
-    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "pocket", "whatsapp", "viber", "messenger", "vkontakte", "telegram", "line"],
+    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "pocket", "whatsapp", "viber", "messenger", "vkontakte", "telegram", "line", "rss"],
     url: "http://url.to.share",
     text: "text to share",
     showLabel: true,
@@ -438,6 +438,16 @@ The build-in social network shares have following configuration
 }
 ```
 
+#### rss
+> version added: 1.5
+
+```javascript
+{
+    label: "RSS",
+    logo: "fa fa-rss"
+}
+```
+
 
 ### Custom Share
 
@@ -462,8 +472,8 @@ If you wish to get your share styling for all supported themes, add its name and
 Currently `_shares.scss` contains following collections:
 
 ```scss
-$share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest', 'email', 'stumbleupon', 'whatsapp', 'telegram', 'line', 'viber', 'pocket', 'messenger', 'vkontakte');
-$share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027, #3490F3, #eb4823, #29a628, #2ca5e0, #25af00, #7b519d, #ef4056, #0084ff, #45668e);
+$share-names: ('twitter', 'facebook', 'googleplus', 'linkedin', 'pinterest', 'email', 'stumbleupon', 'whatsapp', 'telegram', 'line', 'viber', 'pocket', 'messenger', 'vkontakte', 'rss');
+$share-colors: (#00aced, #3b5998, #dd4b39, #007bb6, #cb2027, #3490F3, #eb4823, #29a628, #2ca5e0, #25af00, #7b519d, #ef4056, #0084ff, #45668e, #ff9900);
 ```
 
 Each share has following parameters:

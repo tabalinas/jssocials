@@ -7,7 +7,7 @@
             logo: "fa fa-at",
             shareUrl: "mailto:{to}?subject={text}&body={url}",
             countUrl: "",
-            shareIn: "self"
+            shareIn: "top"
         },
 
         twitter: {
@@ -76,7 +76,7 @@
             logo: "fa fa-whatsapp",
             shareUrl: "whatsapp://send?text={url} {text}",
             countUrl: "",
-            shareIn: "self"
+            shareIn: "top"
         },
 
         viber: {
@@ -84,7 +84,7 @@
             logo: "fa fa-volume-control-phone",
             shareUrl: "viber://forward?text={url} {text}",
             countUrl: "",
-            shareIn: "self"
+            shareIn: "top"
         },
 
         messenger: {
@@ -92,7 +92,7 @@
             logo: "fa fa-commenting",
             shareUrl: "fb-messenger://share?link={url}",
             countUrl: "",
-            shareIn: "self"
+            shareIn: "top"
         },
 
         telegram: {
@@ -100,7 +100,7 @@
             logo: "fa fa-telegram",
             shareUrl: "tg://msg?text={url} {text}",
             countUrl: "",
-            shareIn: "self"
+            shareIn: "top"
         },
 
         vkontakte: {

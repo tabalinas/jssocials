@@ -408,6 +408,10 @@
             return $("<a>").attr({ target: "_blank", href: args.shareUrl });
         },
 
+        top: function(args) {
+            return $("<a>").attr({ target: "_top", href: args.shareUrl });
+        },
+
         self: function(args) {
             return $("<a>").attr({ target: "_self", href: args.shareUrl });
         }

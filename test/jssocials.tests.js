@@ -406,6 +406,23 @@
         assert.equal($element.text(), "testLabel2", "set share option by share index");
     });
 
+    QUnit.test("share URL and share text encoded in data attributes of element", function(assert) {
+        jsSocials.shares.testshare = {
+            label: "testLabel",
+            shareUrl: "http://test.com/share/?url={url}&text={text}"
+        };
+
+        var $element = $("#share").clone().data("url","newurl").data("title","newtext").jsSocials({
+            showCount: false,
+            shares: ["testshare"]
+        });
+
+        var instance = $element.data(JSSOCIALS_DATA_KEY);
+
+        assert.equal(instance.shares[0].url, "newurl", "url is passed to share");
+        assert.equal(instance.shares[0].text, "newtext", "text is passed to share");
+    });
+
 
     QUnit.module("share counter", {
         setup: function() {

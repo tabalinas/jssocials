@@ -95,6 +95,14 @@
             shareIn: "top"
         },
 
+        browser_messenger: {
+            label: "Share",
+            logo: "fa fa-commenting",
+            shareUrl: "https://www.facebook.com/dialog/send?app_id={appid}&link={url}&redirect_uri={redirect}",
+            countUrl: "",
+            shareIn: "top"
+        },
+
         telegram: {
             label: "Telegram",
             logo: "fa fa-telegram",

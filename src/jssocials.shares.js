@@ -133,6 +133,15 @@
             logo: "fa fa-rss",
             shareUrl: "/feeds/",
             countUrl: ""
+        },
+
+	sms: {
+            label: "SMS",
+            logo: "fa fa-comments-o",
+            shareUrl: "sms:{delimiter}body={text} {url}",
+            delimiter: "?",
+            countUrl: "",
+            shareIn: "top"
         }
 
     });

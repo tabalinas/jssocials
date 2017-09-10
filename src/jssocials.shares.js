@@ -95,6 +95,14 @@
             shareIn: "top"
         },
 
+        browser_messenger: {
+            label: "Share",
+            logo: "fa fa-commenting",
+            shareUrl: "https://www.facebook.com/dialog/send?app_id={appid}&link={url}&redirect_uri={redirect}",
+            countUrl: "",
+            shareIn: "top"
+        },
+
         telegram: {
             label: "Telegram",
             logo: "fa fa-telegram",
@@ -125,6 +133,15 @@
             logo: "fa fa-rss",
             shareUrl: "/feeds/",
             countUrl: ""
+        },
+
+	sms: {
+            label: "SMS",
+            logo: "fa fa-comments-o",
+            shareUrl: "sms:{delimiter}body={text} {url}",
+            delimiter: "?",
+            countUrl: "",
+            shareIn: "top"
         }
 
     });

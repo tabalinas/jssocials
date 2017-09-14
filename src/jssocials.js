@@ -278,7 +278,7 @@
         _formatShareUrl: function(url, share) {
             return url.replace(URL_PARAMS_REGEX, function(match, key, field) {
                 var value = share[field] || "";
-                return value ? field == "delimiter" ? value : (key || "") + window.encodeURIComponent(value) : "";
+                return value ? field === "delimiter" ? value : (key || "") + window.encodeURIComponent(value) : "";
             });
         },
 

@@ -89,7 +89,8 @@
     background: #cc7a00; }
 
 .jssocials-share-reddit .jssocials-share-link {
-  background: #64a4ff; }
+  background: #64a4ff;
+  border: 1px solid #4d97ff; }
  .jssocials-share-reddit .jssocials-share-link:hover {
     background: #4585ee; }
 

@@ -553,6 +553,13 @@
             shareUrl: "/feeds/",
             countUrl: "",
             shareIn: "blank"
+        },
+        
+        reddit: {
+            label: "Reddit",
+            logo: "fa fa-reddit",
+            shareUrl: "https://www.reddit.com/submit?url={url}",
+            countUrl: ""
         }
 
     });

@@ -8,4 +8,4 @@ before_script:
   - 'npm install -g bower'
   - 'bower install'
 
-script: grunt test --verbose --force
+script: grunt test --verbose

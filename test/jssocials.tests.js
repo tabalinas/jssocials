@@ -1,5 +1,7 @@
 (function($, jsSocials) {
 
+    "use strict";
+
     var Socials = jsSocials.Socials,
 
         JSSOCIALS = "JSSocials",

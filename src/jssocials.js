@@ -1,5 +1,7 @@
 (function(window, $, undefined) {
 
+    "use strict";
+
     var JSSOCIALS = "JSSocials",
         JSSOCIALS_DATA_KEY = JSSOCIALS;
 
@@ -11,7 +13,7 @@
     };
 
     var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp|svg)$|^data:image\/(jpeg|png|gif|bmp|svg\+xml);base64)/i;
-    var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)?\{([a-zA-Z0-9]+)\}/g;
+    var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)?{([a-zA-Z0-9]+)}/g;
 
     var MEASURES = {
         "G": 1000000000,
@@ -189,8 +191,9 @@
         _getShareStrategy: function(share) {
             var result = shareStrategies[share.shareIn || this.shareIn];
 
-            if(!result)
+            if(!result) {
                 throw Error("Share strategy '" + this.shareIn + "' not found");
+            }
 
             return result;
         },
@@ -276,6 +279,9 @@
         },
 
         _formatShareUrl: function(url, share) {
+            if (!url)
+                return url;
+
             return url.replace(URL_PARAMS_REGEX, function(match, key, field) {
                 var value = share[field] || "";
                 return value ? (key || "") + window.encodeURIComponent(value) : "";

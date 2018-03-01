@@ -284,7 +284,7 @@
 
             return url.replace(URL_PARAMS_REGEX, function(match, key, field) {
                 var value = share[field] || "";
-                return value ? (key || "") + window.encodeURIComponent(value) : "";
+                return value ? field === "delimiter" ? value : (key || "") + window.encodeURIComponent(value) : "";
             });
         },
 

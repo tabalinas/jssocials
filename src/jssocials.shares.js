@@ -106,7 +106,7 @@
         telegram: {
             label: "Telegram",
             logo: "fa fa-telegram",
-            shareUrl: "tg://msg?text={url} {text}",
+            shareUrl: "tg://msg_url?url={url}&text={text}",
             countUrl: "",
             shareIn: "top"
         },

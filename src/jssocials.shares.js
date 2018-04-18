@@ -22,7 +22,7 @@
         facebook: {
             label: "Like",
             logo: "fa fa-facebook",
-            shareUrl: "https://facebook.com/sharer/sharer.php?u={url}",
+            shareUrl: "https://facebook.com/sharer/sharer.php?u={url}&quote={text}",
             countUrl: "https://graph.facebook.com/?id={url}",
             getCount: function(data) {
                 return data.share && data.share.share_count || 0;

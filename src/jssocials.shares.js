@@ -56,14 +56,11 @@
             }
         },
 
-        stumbleupon: {
-            label: "Share",
-            logo: "fa fa-stumbleupon",
-            shareUrl: "http://www.stumbleupon.com/submit?url={url}&title={title}",
-            countUrl:  "https://cors-anywhere.herokuapp.com/https://www.stumbleupon.com/services/1.01/badge.getinfo?url={url}",
-            getCount: function(data) {
-                return data.result && data.result.views;
-            }
+        mix: {
+            label: "Collect",
+            logo: "fab fa-mix",
+            shareUrl: "https://mix.com/add?url={url}",
+            countUrl:  ""
         },
 
         pocket: {
@@ -144,6 +141,13 @@
             delimiter: "?",
             countUrl: "",
             shareIn: "top"
+        },
+        
+        reddit: {
+            label: "Reddit",
+            logo: "fa fa-reddit",
+            shareUrl: "https://www.reddit.com/submit?url={url}",
+            countUrl: ""
         }
 
     });

@@ -1,4 +1,6 @@
-(function($, jsSocials) {
+(function($, QUnit, jsSocials) {
+
+    "use strict";
 
     var Socials = jsSocials.Socials,
 
@@ -832,5 +834,4 @@
         }
     });
 
-
-}(jQuery, window.jsSocials));
+}(window.jQuery, window.QUnit, window.jsSocials));

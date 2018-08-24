@@ -23,7 +23,7 @@
         "jquery": ">=1.10.2"
     },
     "devDependencies": {
-        "qunit": ">=1.12.0",
+        "qunit": "~1.12.x",
         "font-awesome": ">=1.0.0"
     }
 }

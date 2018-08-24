@@ -1,5 +1,7 @@
 (function(window, $, jsSocials, undefined) {
 
+    "use strict";
+
     $.extend(jsSocials.shares, {
 
         email: {

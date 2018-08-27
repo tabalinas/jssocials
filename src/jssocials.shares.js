@@ -117,7 +117,7 @@
             label: "Like",
             logo: "fa fa-vk",
             shareUrl: "https://vk.com/share.php?url={url}&title={title}&description={text}",
-            countUrl: "https://vk.com/share.php?act=count&index=1&url={url}",
+            countUrl: "https://cors-anywhere.herokuapp.com/https://vk.com/share.php?act=count&index=1&url={url}",
             getCount: function(data) {
                 return parseInt(data.slice(15, -2).split(', ')[1]);
             }

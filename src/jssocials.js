@@ -405,7 +405,7 @@
         popup: function(args) {
             return $("<a>").attr("href", "#")
                 .on("click", function() {
-                    window.open(args.shareUrl, null, "width=600, height=400, location=0, menubar=0, resizeable=0, scrollbars=0, status=0, titlebar=0, toolbar=0");
+                    window.open(args.shareUrl, "", "width=600, height=400, location=0, menubar=0, resizeable=0, scrollbars=0, status=0, titlebar=0, toolbar=0");
                     return false;
                 });
         },

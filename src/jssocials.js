@@ -78,6 +78,7 @@
         _initDefaults: function() {
             this.url = window.location.href;
             this.text = $.trim($("meta[name=description]").attr("content") || $(document).prop("title"));
+			this.title =$("title").text();
         },
 
         _initShares: function() {
@@ -92,7 +93,7 @@
                     throw Error("Share '" + shareConfig.share + "' is not found");
                 }
 
-                return $.extend({ url: this.url, text: this.text }, share, shareConfig);
+                return $.extend({ url: this.url, text: this.text, title: this.title }, share, shareConfig);
             }, this));
         },
 

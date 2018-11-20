@@ -1,4 +1,4 @@
-/*! jssocials - v1.5.0 - 2018-10-26
+/*! jssocials - v1.5.0 - 2018-11-20
 * http://js-socials.com
 * Copyright (c) 2018 Artem Tabalin; Licensed MIT */
 (function(window, $, undefined) {
@@ -507,14 +507,14 @@
         pocket: {
             label: "Pocket",
             logo: "fab fa-get-pocket",
-            shareUrl: "https://getpocket.com/save?title={title}&url={url}",
+            shareUrl: "https://getpocket.com/save?url={url}&title={title}",
             countUrl: ""
         },
 
         whatsapp: {
             label: "WhatsApp",
             logo: "fab fa-whatsapp",
-            shareUrl: "whatsapp://send?text={text} {url}",
+            shareUrl: "whatsapp://send?text={url} {text}",
             countUrl: "",
             shareIn: "top"
         },
@@ -522,7 +522,7 @@
         viber: {
             label: "Viber",
             logo: "fab fa-volume-control-phone",
-            shareUrl: "viber://forward?text={text} {url",
+            shareUrl: "viber://forward?text={url} {text}",
             countUrl: "",
             shareIn: "top"
         },
@@ -546,7 +546,7 @@
         telegram: {
             label: "Telegram",
             logo: "fab fa-telegram",
-            shareUrl: "tg://msg?text={text} {url}",
+            shareUrl: "tg://msg?text={url} {text}",
             countUrl: "",
             shareIn: "top"
         },

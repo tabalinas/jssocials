@@ -514,7 +514,7 @@
         whatsapp: {
             label: "WhatsApp",
             logo: "fab fa-whatsapp",
-            shareUrl: "whatsapp://send?text={url} {text}",
+            shareUrl: "whatsapp://send?text={text} {url}",
             countUrl: "",
             shareIn: "top"
         },

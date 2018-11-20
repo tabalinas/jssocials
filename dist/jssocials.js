@@ -507,7 +507,7 @@
         pocket: {
             label: "Pocket",
             logo: "fab fa-get-pocket",
-            shareUrl: "https://getpocket.com/save?url={url}&title={title}",
+            shareUrl: "https://getpocket.com/save?title={title}&url={url}",
             countUrl: ""
         },
 
@@ -522,7 +522,7 @@
         viber: {
             label: "Viber",
             logo: "fab fa-volume-control-phone",
-            shareUrl: "viber://forward?text={url} {text}",
+            shareUrl: "viber://forward?text={text} {url",
             countUrl: "",
             shareIn: "top"
         },
@@ -546,7 +546,7 @@
         telegram: {
             label: "Telegram",
             logo: "fab fa-telegram",
-            shareUrl: "tg://msg?text={url} {text}",
+            shareUrl: "tg://msg?text={text} {url}",
             countUrl: "",
             shareIn: "top"
         },

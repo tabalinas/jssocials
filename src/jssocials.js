@@ -82,6 +82,7 @@
 
         _initShares: function() {
             this.shares = $.map(this.shares, $.proxy(function(shareConfig) {
+                if(!shareConfig) return; // this will fix the undefined shareConfig issue
                 if(typeof shareConfig === "string") {
                     shareConfig = { share: shareConfig };
                 }

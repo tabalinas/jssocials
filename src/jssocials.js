@@ -13,6 +13,7 @@
     };
 
     var IMG_SRC_REGEX = /(\.(jpeg|png|gif|bmp|svg)$|^data:image\/(jpeg|png|gif|bmp|svg\+xml);base64)/i;
+    var SVG_EXTENSION_REGEX = /(\.svg)/i;
     var URL_PARAMS_REGEX = /(&?[a-zA-Z0-9]+=)?{([a-zA-Z0-9]+)}/g;
 
     var MEASURES = {
@@ -205,14 +206,32 @@
 
         _createShareLogo: function(share) {
             var logo = share.logo;
-
-            var $result = IMG_SRC_REGEX.test(logo) ?
-                $("<img>").attr("src", share.logo) :
-                $("<i>").addClass(logo);
-
-            $result.addClass(this.shareLogoClass);
+            var isInlineSvg = share.inlineSvg;
+            var $result;
+            if(isInlineSvg && SVG_EXTENSION_REGEX.test(logo)) {
+                var shareLogoClass = this.shareLogoClass;
+                $.ajax({
+                    type: "GET",
+                    url: logo,
+                    async: false,
+                    data: {},
+                    success: function(data) {
+                        var $svg = $(data).find('svg');
+                        $svg = $($svg);
+                        $svg.removeAttr('xmlns:a');
+                        $result = $svg.addClass(shareLogoClass)
+                     }
+                 });
+            } else {
+               $result = IMG_SRC_REGEX.test(logo) ?
+                    $("<img>").attr("src", share.logo) :
+                    $("<i>").addClass(logo);
+    
+                $result.addClass(this.shareLogoClass);
+            }
 
             return $result;
+
         },
 
         _createShareLabel: function(share) {

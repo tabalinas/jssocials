@@ -206,9 +206,9 @@
 
         _createShareLogo: function(share) {
             var logo = share.logo;
-            var isConvertSvg = share.convertSvg;
+            var isInlineSvg = share.inlineSvg;
             var $result;
-            if(isConvertSvg && SVG_EXTENSION_REGEX.test(logo)) {
+            if(isInlineSvg && SVG_EXTENSION_REGEX.test(logo)) {
                 var shareLogoClass = this.shareLogoClass;
                 $.ajax({
                     type: "GET",
@@ -222,16 +222,6 @@
                         $result = $svg.addClass(shareLogoClass)
                      }
                  });
-                // $.get(logo, function(data) {
-                //     var $svg = $(data).find('svg');
-                //     $svg = $($svg);
-                //     $svg.removeAttr('xmlns:a');
-                //     $result = $("<div>")
-                //         .addClass(this.shareLogoClass)
-                //         .append($svg);
-                //     // return $result
-                //     return $("<div>").addClass(logo);
-                // })
             } else {
                $result = IMG_SRC_REGEX.test(logo) ?
                     $("<img>").attr("src", share.logo) :

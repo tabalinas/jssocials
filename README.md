@@ -297,6 +297,10 @@ It accepts following values:
 * **image url** - string in image url format is rendered as `<img src="image url" />`.
 * **image base64 url** - string in image base64 url format is rendered as `<img src="image base64 url" />`.
 
+#### inlineSvg :`Boolean`
+
+If `true` and logo has correct image url with `*.svg`, it will use it as a inline SVG instead of `<img src="image url" />`.
+
 #### css: `String`
 
 A string specifying spaces-separated custom css classes to attach to share DOM element.
